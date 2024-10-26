@@ -21,7 +21,7 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Github_Picture.png"
+  avatar           : "images/Github_Picture.png"
   name             : "Marcus N. Gomes Jr., Ph.D."
   pronouns         : # example: "he/him"  
   bio              : "Postdoctoral Researcher Associate I"
@@ -31,13 +31,13 @@ author:
   email            : "marcusnobrega.engcivil@gmail.com" 
 
   # Academic websites
-  arxiv            : "https://arxiv.org/search/physics?searchtype=author&query=Gomes,+M+N"
+  researchgate     : "https://www.researchgate.net/profile/Marcus-Gomes-Jr/research"
   googlescholar    : "https://scholar.google.com/citations?user=Ls-Nj0YAAAAJ&hl=en&oi=ao"
+  arxiv            : "https://arxiv.org/search/physics?searchtype=author&query=Gomes,+M+N"
   impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : "http://orcid.org/0000-0002-8250-8195"
   semantic         : # URL
   pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : "https://www.researchgate.net/profile/Marcus-Gomes-Jr/research"
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
@@ -57,7 +57,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         :  https://www.linkedin.com/in/marcus-n%C3%B3brega-744b61138/?locale=en_US
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
