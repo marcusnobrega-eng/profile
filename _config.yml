@@ -21,7 +21,7 @@ repository               : "marcusnobrega-eng/profile"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/Picture.png"
+  avatar           : "Picture.png"
   name             : "Marcus N. Gomes Jr., Ph.D."
   pronouns         : # example: "he/him"  
   bio              : "Postdoctoral Researcher Associate I"
