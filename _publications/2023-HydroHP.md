@@ -2,7 +2,7 @@
 title: "Modeling unsteady and steady 1-D hydrodynamics under different hydraulic conceptualizations: Model/software development and case studies"
 collection: publications
 category: manuscripts
-permalink: /publication/2023-HydroHP
+permalink: publication/2023-HydroHP
 excerpt: 'We develop the HydroHP-1D Model: A one-dimensional full momentum solver based on de St. Venant Equations for rectangular, trapezoid, circular, parabolic, composite, and irregular cross-sections.'
 date: 2023-06-01
 venue: 'Environmental Modeling and Software'
