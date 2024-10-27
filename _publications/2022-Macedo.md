@@ -2,7 +2,7 @@
 title: "Low Impact Development practices in the context of United Nations Sustainable Development Goals: A new concept, lessons learned and challenges."
 collection: publications
 category: manuscripts
-permalink: /publication/2022-Macedo
+permalink: publication/2022-Macedo
 excerpt: 'In this paper we review the current state of the art regarding LID implementation towards the attachment of the SDGs'
 date: 2022-06-01
 venue: 'Critical Reviews in Environmental Science and Technology'
