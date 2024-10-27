@@ -7,7 +7,7 @@ excerpt: 'Detention ponds can mitigate flooding and improve water quality by all
 date: 10/2024
 venue: 'Journal of Hydrology'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: '[http://academicpages.github.io/files/paper1.pdf](https://doi.org/10.1016/j.jhydrol.2024.131866)'
-citation: 'Gomes Jr., et al. (2024). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+paperurl: '[[http://academicpages.github.io/files/paper1.pdf](https://doi.org/10.1016/j.jhydrol.2024.131866)](https://doi.org/10.1016/j.jhydrol.2024.131866)'
+citation: 'Gomes Jr., et al. (2024). Gomes Jr, M.N., Taha, A.F., Rápalo, L.M.C., Mendiondo, E.M. and Giacomoni, M.H., 2024. Real-time regulation of detention ponds via feedback control: Balancing flood mitigation and water quality. Journal of Hydrology, 643, p.131866.'
 ---
 
