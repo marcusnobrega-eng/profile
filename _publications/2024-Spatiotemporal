@@ -1,0 +1,14 @@
+---
+title: "Spatio-Temporal Performance of 2D Local Inertial Hydrodynamic Models for Urban Drainage and Dam-Break Applications"
+collection: publications
+category: manuscripts
+permalink: /2024-Spatiotemporal
+excerpt: 'We tested different local-inertial 2D hydrodynamic numerical schemes to represent flood dynamics in domains with the influence of urban drainage and cases of rapid flows with large Froude numbers as a dam-break scenario.'
+date: 2024-10-01
+venue: 'Journal of Hydrology (Under Review)'
+# slidesurl: '[)'
+paperurl: 'https://arxiv.org/abs/2410.09325'
+citation: 'Gomes Jr, M.N., Castro, M.A., Castillo, L.M., Sánchez, M.H., Giacomoni, M.H., de Paiva, R.C. and Bates, P.D., 2024. Spatio-Temporal Performance of 2D Local Inertial Hydrodynamic Models for Urban Drainage and Dam-Break Applications. arXiv preprint arXiv:2410.09325.'
+---
+Abstract:
+Accurate flood modeling is crucial for effective analysis and forecasting. Full momentum hydrodynamic models often require extensive computational time, sometimes exceeding the forecast horizon. In contrast, low-complexity models, like local-inertial approximations, provide accurate results in subcritical flows but may have limited skillfulness in supercritical conditions. This paper explores two main aspects: (i) the impact of urban infrastructure on 2D hydrodynamic modeling without detailed sewer and drainage data, and (ii) the accuracy of 2D local-inertial modeling using three numerical schemes (original formulation, s-centered, and s-upwind) in a dam-break scenario on complex, flat terrain. The HydroPol2D model is benchmarked against HEC-RAS 2D full momentum solver. We present one numerical case study and three real-world scenarios in São Paulo, Brazil: a detention pond with a 1 in 100-year inflow, a highly urbanized catchment with a 1 in 50-year hyetograph, and a dam-break scenario threatening a coastal city of nearly 200,000 residents. Results show that the model accurately simulates internal boundary conditions, achieving peak errors under 5\% compared to HEC-RAS 2D. However, neglecting urban infrastructure can lead to a 17.5\% difference in peak discharges at the outlet and significant mismatches in hydrographs, with computational times nearly doubling. The dam-break scenario demonstrates good predictive performance for maximum flood depths (CSI = 0.95 for the original model, 0.92 for s-centered, and 0.89 for s-upwind), though the model's lack of convective inertia results in faster flood wave propagation than the full momentum solver. Notably, HydroPol2D is 23 times faster than HEC-RAS 2D, making it well-suited for simulating dam collapses in forecasting systems and capable of modeling urban drainage infrastructure such as orifices, weirs, and pumps.
