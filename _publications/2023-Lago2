@@ -1,17 +1,15 @@
-
 ---
 title: "Improving pluvial flood mapping resolution of large coarse models with deep learning"
 collection: publications
 category: manuscripts
-permalink: /publication/2010-10-01-paper-title-number-2
-excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
+permalink: /publication/2023-Lago2
+excerpt: 'We explore the use of convolution and generative adversarial neural networks to map maximum flood depths using coarse gridded hydrologic-hydrodynamic models to provide training data.'
 date: OCT-2023
 venue: 'Hydrological Sciences'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
-paperurl: '[http://academicpages.github.io/files/paper2.pdf](https://www.sciencedirect.com/science/article/pii/S0022169423009241](https://www.sciencedirect.com/science/article/pii/S0022169423009241)'
+paperurl: 'https://www.tandfonline.com/doi/full/10.1080/02626667.2024.2329268'
 citation: 'Ambrogi Ferreira Do Lago, C., Brasil, J.A.T., Nóbrega Gomes, M., Mendiondo, E.M. and Giacomoni, M.H., 2024. Improving pluvial flood mapping resolution of large coarse models with deep learning. Hydrological Sciences Journal, 69(5), pp.607-621.'
 ---
 
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
-
+Deep learning (DL) models are a promising complement to hydrodynamic models. However, the application of DL for detailed predictions in large domains has not yet been tested. We aim to narrow this gap by improving flood mapping resolution derived from large coarse flood models. We used cGAN-Flood, a conditional generative adversarial-based model (cGAN), that showed satisfactory generalization. We demonstrate the applicability of cGAN-Flood by coupling it with mesh- and raster-based coarse models. A Hydrologic Engineering Center (HEC) River Analysis System (RAS) model (cell size of 32 m), which is mesh-based, was created for a 350 km2 watershed. In contrast, a HydroPol2D model, raster-based, was created for a 150 km2 watershed with a 15 m pixel size. We evaluated our method’s performance against a 3 m resolution HEC-RAS model in seven catchments across the cities of San Antonio and Sao Paulo. Results indicate the cGAN-Flood improved flood map accuracy, illustrating how DL can enhance flood mapping resolution.
 
