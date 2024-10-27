@@ -2,7 +2,7 @@
 title: "Different configurations of a bioretention system focused on stormwater harvesting in Brazil"
 collection: publications
 category: manuscripts
-permalink: publications/2021-Thalita
+permalink: publication/2021-Thalita
 excerpt: 'Using a plot-scale bioretention system, we empirically evaluate the role of internal water storage and antecedent moisture condition in terms of water quality treatment'
 date: 2021-06-01
 venue: 'Journal of Environmental Engineering'
