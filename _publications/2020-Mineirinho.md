@@ -3,7 +3,7 @@ title: "Towards urban resilience through sustainable drainage systems: A multi-o
 collection: publications
 category: manuscripts
 permalink: publication/2020-Mineirinho
-excerpt: 'We introduce a multi-objective optimization problem to place low-impact development techniques in a peri-urban catchment using hydrologic-hydrodynamic modeling with SWMM. Resilience metrics are defined as evaluating runoff reduction, water quality enhancement, and the positive effects that green infrastructure can have on society's well-being'.
+excerpt: 'We introduce a multi-objective optimization problem to place low-impact development techniques in a peri-urban catchment using hydrologic-hydrodynamic modeling with SWMM. Resilience metrics are defined as evaluating runoff reduction, water quality enhancement, and the positive effects that green infrastructure can have on society's well-being.'
 date: 2020-06-01
 venue: 'Journal of Environmental Management'
 # slidesurl: 'https://www.sciencedirect.com/science/article/pii/S2212420924003054'
