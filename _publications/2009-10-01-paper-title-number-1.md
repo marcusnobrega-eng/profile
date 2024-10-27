@@ -1,14 +1,14 @@
 ---
-title: "Paper Title Number 1"
+title: "Real-time regulation of detention ponds via feedback control: Balancing flood mitigation and water quality"
 collection: publications
 category: manuscripts
 permalink: /publication/2009-10-01-paper-title-number-1
 excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+date: 10/2024
+venue: 'Journal of Hydrology'
+# slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
+paperurl: '[http://academicpages.github.io/files/paper1.pdf](https://doi.org/10.1016/j.jhydrol.2024.131866)'
+citation: 'Gomes Jr., et al. (2024). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
 ---
 
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+Detention ponds can mitigate flooding and improve water quality by allowing the settlement of pollutants. Typically, they are operated with fully open orifices and weirs (i.e., passive control). Active controls can improve the performance of these systems: orifices can be retrofitted with controlled valves, and spillways can have controllable gates.  The real-time optimal operation of its hydraulic devices can be achieved with techniques such as Model Predictive Control (MPC). A distributed quasi-2D hydrologic-hydrodynamic coupled with a reservoir flood routing model is developed and integrated with an MPC algorithm to estimate the operation of valves and movable gates in real-time. The control optimization problem is adapted to switch from a flood-related algorithm focusing on mitigating floods to a heuristic objective function that aims to increase the detention time when no inflow hydrographs are predicted. The case studies show the potential results of applying the methods developed in a catchment in Sao Paulo, Brazil. The performance of MPC compared to alternatives that do not change the operation over time with either fully or partially open valves and gates are tested. Comparisons with HEC-RAS 2D indicate volume and peak flow errors of approximately 1.4%  and 0.91% for the watershed module. Simulating two consecutive 10-year storms shows that the MPC strategy can achieve peak flow reductions of 79%. In contrast, the passive scenario has nearly half of the performance (41%). A 1-year continuous simulation results show that the passive scenario with 25% of the valves opened can treat 12% more runoff compared to the developed MPC approach, with an average detention time of approximately 6 hours. For the MPC approach, however, the average detention time is nearly 14 hours, indicating that both control techniques can treat similar volumes; however, the proxy water quality for the MPC approach is enhanced due to the longer detention times achieved. 
