@@ -2,7 +2,7 @@
 title: "A Simple Method for Designing Infiltration Low Impact Development Techniques Considering Effects of Urbanization and Climate Change"
 collection: publications
 category: manuscripts
-permalink: /publication/2024-LIDmethod
+permalink: publication/2024-LIDmethod
 excerpt: 'We introduce a multi-objective optimization problem to place low-impact development techniques in a peri-urban catchment using hydrologic-hydrodynamic modeling with SWMM. Resilience metrics are defined as evaluating runoff reduction, water quality enhancement, and the positive effects that green infrastructure can have on society's well-being.'
 date: 2024-09-01
 venue: 'on EarthArXiv, Submitted to Brazilian Journal of Water Resources (Under Review)'
