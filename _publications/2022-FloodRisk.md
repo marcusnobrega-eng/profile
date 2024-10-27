@@ -2,12 +2,12 @@
 title: "Flood Risk Mitigation and Valve Control in Stormwater Systems: State-Space Modeling, Control Algorithms, and Case Studies"
 collection: publications
 category: manuscripts
-permalink: /publication/2022-FloodRisk
+permalink: publication/2022-FloodRisk
 excerpt: 'We develop a state-space model to simulate catchments, reservoirs, and channels hydrologic-hydrodynamic processes. We coupled the model with multiple predictive and reactive control algorithms such as: Model Predictive Control, Linear Quadratic Regulators, and Linear Quadratic Integrators.'
 date: 2022-02-17
 venue: 'Journal of Water Resources Planning and Management'
 paperurl: 'https://ascelibrary.org/doi/10.1061/%28ASCE%29WR.1943-5452.0001588'
 citation: 'Gomes Júnior, M.N., Giacomoni, M.H., Taha, A.F. and Mendiondo, E.M., 2022. Flood risk mitigation and valve control in stormwater systems: State-space modeling, control algorithms, and case studies. Journal of Water Resources Planning and Management, 148(12), p.04022067.'
 ---
-
+Abstract:
 The increasing access to inexpensive sensors, computing power, and more accurate forecasting of storm events provides unique opportunities to shift flood management practices from static approaches to an optimization-based real-time control (RTC) of urban drainage systems. Recent studies have addressed a plethora of strategies for flood control in stormwater reservoirs; however, advanced control theoretic techniques are not yet fully investigated and applied to these systems. In addition, there is an absence of a coupled integrated control model for systems composed of watersheds, reservoirs, and channels for flood mitigation. To this end, we developed a novel nonlinear state-space model of hydrologic and hydrodynamic processes in watersheds, reservoirs, and one-dimensional channels. The model was tested under different types of reservoir control strategies based on real-time measurements (reactive control) and predictions of the future behavior of the system (predictive control) using rainfall forecastings. We applied the modeling approach in a system composed of a single watershed, reservoir, and channel connected in series for the observed rainfall data in San Antonio. Results indicate that for flood mitigation, the predictive control strategy outperforms the reactive controls not only when applied for synthetic design storm events, but also for a continuous simulation. Moreover, the predictive control strategy requires smaller valve operations while still guaranteeing efficient hydrological performance. From the results, we recommend the use of the nonlinear model predictive control strategy to control stormwater systems because of the ability to handle different objective functions, which can be altered according to rainfall forecasting and shift the reservoir operation from flood-based control to strategies focused on increasing detention times, depending on the forecasting.
