@@ -1,0 +1,14 @@
+---
+title: "Exploring the Impact of Rainfall Temporal Distribution and Critical Durations on Flood Hazard Modeling."
+collection: publications
+category: manuscript
+permalink: /2024-Exploring
+excerpt: 'We tested different local-inertial 2D hydrodynamic numerical schemes to represent flood dynamics in domains with the influence of urban drainage and cases of rapid flows with large Froude numbers as a dam-break scenario.'
+date: 2024-01-01
+venue: 'Research Square, submitted to Natural Hazards (Under Review)'
+# slidesurl: '[)'
+paperurl: 'https://www.researchsquare.com/article/rs-4000788/v1'
+citation: 'Gomes Jr, M.N., Jalihal, V. and Mendiondo, E.M., 2024. Exploring the Impact of Rainfall Temporal Distribution and Critical Durations on Flood Hazard Modeling.'
+---
+Abstract:
+Urbanization and climate change amplify challenges posed by floods for both city dwellers and planners. Flood modeling, rooted in geosciences and atmospheric sciences, operates in a non-linear and multi-modal fashion, marked by uncertainties from factors like soil infiltration characteristics, floodplain roughness, and spatio-temporal variations in rainfall volume, distribution, and intensities. This paper addresses these challenges by introducing a flood mapping methodology that incorporates synthetic design storms and compares them with a fitted median rainfall distribution derived from high-resolution observed rainfall data in the catchment. The flood hazard effect of choosing different rainfall temporal distribution methods is investigated. The Alternating Blocks Method and the Huff curves method, one of the most widely used methods in engineering hydrology, were chosen as representative synthetic rainfall methods for flood mapping assessment and compared against the measured median rainfall distribution. The framework was applied in a 131 km2 flood-prone urban catchment in Bangalore, India. Evaluation of different rainfall distributions reveals a potential 50% smaller areas with flood hazard, for the same return period and duration, simply by selecting a specific rainfall distribution compared to the expected fitted median rainfall distribution based on observed data. This research not only underscores the importance of appropriate rainfall distribution selection and critical rainfall duration, but also highlights the need for accurate data-driven methodologies in flood mapping, particularly in the face of urbanization and climate-induced complexities.
