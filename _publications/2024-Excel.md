@@ -2,7 +2,7 @@
 title: "Modeling and Design Optimization of Looped Water Distribution Networks using MS Excel: Developing the Open-Source X-WHAT Model"
 collection: publications
 category: manuscripts
-permalink: /publication/2024-Excel
+permalink: publication/2024-Excel
 excerpt: 'We developed a simple Excel spreadsheet capable of simulating the flow water problem in looped hydraulic networks and optimize the network cost by accounting for pipe properties, reservoir costs, and structural foundation costs.'
 date: 2024-02-01
 venue: 'on ArXiv and Submitter to Computer Applications in Engineering Education (Under Review) '
