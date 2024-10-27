@@ -2,7 +2,7 @@
 title: "Increasing flood awareness through dam-break serious games"
 collection: publications
 category: manuscripts
-permalink: /publication/2024-Dambreak
+permalink: publication/2024-Dambreak
 excerpt: 'We developed a Dam-Break serious game that can be downloaded and installed in Matlab. The game simulates the flood wave propagation of a dam-break and allows users to learn the characteristics of dam-break flood waves.
 date: 2024-02-17
 venue: 'International Journal of Disaster Risk Reduction'
