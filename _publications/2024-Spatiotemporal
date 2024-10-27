@@ -2,7 +2,7 @@
 title: "Spatio-Temporal Performance of 2D Local Inertial Hydrodynamic Models for Urban Drainage and Dam-Break Applications"
 collection: publications
 category: manuscripts
-permalink: /publication/2024-Spatiotemporal
+permalink: publications/2024-Spatiotemporal
 excerpt: 'We tested different local-inertial 2D hydrodynamic numerical schemes to represent flood dynamics in domains with the influence of urban drainage and cases of rapid flows with large Froude numbers as a dam-break scenario.'
 date: 2024-10-01
 venue: 'ArXiv, submitted to Journal of Hydrology (Under Review)'
