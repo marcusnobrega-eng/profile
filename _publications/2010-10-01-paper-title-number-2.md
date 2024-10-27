@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/2010-10-01-paper-title-number-2
 excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
-date: OCT-2024
+date: OCT-2023
 venue: 'Journal of Hydrology'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
 paperurl: '[http://academicpages.github.io/files/paper2.pdf](https://www.sciencedirect.com/science/article/pii/S0022169423009241](https://www.sciencedirect.com/science/article/pii/S0022169423009241)'
