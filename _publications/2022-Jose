@@ -3,15 +3,16 @@ title: "Can we scale digital twins of nature-based solutions for stormwater and 
 collection: publications
 category: manuscripts
 permalink: /publication/2010-10-01-paper-title-number-2
-excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
+excerpt: 'Digital twins are numerical-physical representation of real-world systems with human in the loop actuations. In this paper we investigate how they can be applied for water security issues using NBS.'
 date: 2022-01-01
 venue: 'Journal of Hydroinformatics'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
-paperurl: '[http://academicpages.github.io/files/paper2.pdf](https://www.sciencedirect.com/science/article/pii/S0022169423009241](https://www.sciencedirect.com/science/article/pii/S0022169423009241)'
+paperurl: 'https://iwaponline.com/jh/article/24/4/749/88480/Can-we-scale-Digital-Twins-of-Nature-based'
 citation: 'Brasil, J.A.T., de Macedo, M.B., de Oliveira, T.R.P., Ghiglieno, F.G., de Souza, V.C.B., Marinho e Silva, G., Gomes Júnior, M.N., de Souza, F.A.A. and Mendiondo, E.M., 2022. Can we scale Digital Twins of Nature-based Solutions for stormwater and transboundary water security projects?. Journal of hydroinformatics, 24(4), pp.749-764.'
 ---
+Abstract:
+Nature-based Solutions (NbS) are presented as an alternative and decentralized solutions with different application scales for problems addressed to urban expansion as water quality reduction and floods. The usage of control strategies and mathematical modeling techniques has shown promising results for optimizing hydraulic and water treatment processes. The Digital Twins (DT) as process integration technology are widely used in industry, and recently these technique usages in urban water systems are showing effective results in both management and planning. However, there is a lack of proper literature definition for DT applied to NbS, especially for stormwater and transboundary water security projects. Thus, this paper sought through a literature review to access the existing conceptual challenges and the DT definition as a framework, identify how the mathematical modeling reported in the literature can improve the DT development, and evaluate the potential benefits associated with the application of DT in NbS.
 
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
 
 
 
