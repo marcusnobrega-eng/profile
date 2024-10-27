@@ -7,4 +7,4 @@ venue: "USP - Hydraulics and Sanitation Engineering"
 date: 2023-09-01
 location: "Sao Carlos, Sao Paulo, Brazil"
 ---
-A 3-day course of HydroPol2D fully distributed hydrologic-hydrodynamic modeling.
+A 3-day course of [HydroPol2D](https://arxiv.org/abs/2410.09325) fully distributed hydrologic-hydrodynamic modeling.
