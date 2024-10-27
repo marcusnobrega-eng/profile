@@ -3,7 +3,7 @@ title: "Improving pluvial flood mapping resolution of large coarse models with d
 collection: publications
 category: manuscripts
 permalink: /publication/2023-Lago2
-excerpt: 'We explore the use of convolution and generative adversarial neural networks to map maximum flood depths using coarse gridded hydrologic-hydrodynamic models to provide training data.'
+excerpt: 'We explore the use of conditional and generative adversarial neural networks to map maximum flood depths using coarse gridded hydrologic-hydrodynamic models to provide training data.'
 date: OCT-2023
 venue: 'Hydrological Sciences'
 # slidesurl: 'http://academicpages.github.io/files/slides2.pdf'
