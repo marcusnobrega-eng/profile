@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/2022-FloodRisk
 excerpt: 'We develop a state-space model to simulate catchments, reservoirs, and channels hydrologic-hydrodynamic processes. We coupled the model with multiple predictive and reactive control algorithms such as: Model Predictive Control, Linear Quadratic Regulators, and Linear Quadratic Integrators.'
-date: 2024-02-17
+date: 2022-02-17
 venue: 'Journal of Water Resources Planning and Management'
 paperurl: 'https://ascelibrary.org/doi/10.1061/%28ASCE%29WR.1943-5452.0001588'
 citation: 'Gomes Júnior, M.N., Giacomoni, M.H., Taha, A.F. and Mendiondo, E.M., 2022. Flood risk mitigation and valve control in stormwater systems: State-space modeling, control algorithms, and case studies. Journal of Water Resources Planning and Management, 148(12), p.04022067.'
