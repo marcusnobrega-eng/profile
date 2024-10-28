@@ -1,6 +1,6 @@
 ---
 permalink: /Developed_Models/
-title: "Selected Open-Source Code from my Github Account"
+title: "Selected Published Open-Source Code from my Github Account"
 author_profile: true
 redirect_from: 
   - /md/
@@ -25,13 +25,15 @@ Model Description:
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
-<i> Example of a 1 in 50-year rain-on-the-grid simulation in an urban area in Sao Paulo, Brazil with the influence of hydraulic devices such as culverts or by urban infrastructure such as bridges</i>.
+<i> Example of a composite channel receiving a 1 in a 100 year unsteady-state inflow hydrograph</i>
 
-<img src="https://marcusnobrega-eng.github.io/profile//files/Rain_on_the_grid.gif">
+<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_2.gif">
 
-<i> Example of a dam-break scenario simulated with the local-inertial solver of HydroPol2D </i>
+<i> Example of the state evolution in this case of a 1 in a 100 year unsteady inflow hydrograph in a composite channel</i>
 
-<img src="https://marcusnobrega-eng.github.io/profile//files/dam_break.gif">
+<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1.gif">
+
+[Download Model](https://github.com/marcusnobrega-eng/HydroHP)
 
 [Download Model](https://github.com/marcusnobrega-eng/HydroPol2D)
 ## HydroHP-1D
@@ -72,6 +74,9 @@ The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics 
 - Reservoirs simulated by mass and energy conservation equations
 - Channels solved by the diffusive-wave model
 
+<i> Conceptual Example of the RTC-Stormwater Model, available at Gomes Jr., et al., (2024)</i>
+<img src="https://marcusnobrega-eng.github.io/profile//files/Graphical_Abstract_MPC-1.png">
+
 [Download Model](https://github.com/marcusnobrega-eng/RTC---Flood-and-Water-Quality)
 
 ## TC-Hydro
@@ -86,6 +91,7 @@ TC-Hydro is a bioretention system analysis model with a variety of design and an
 
 The model is designed in Excel-VBA and also has a version in Matlab.
 
+<i> Conceptual Example of the RTC-Stormwater Model, available at Gomes Jr., et al., (2023)</i>
 <img src="https://marcusnobrega-eng.github.io/profile//files/Conceptual_Model-1.png">
 
 [Download Model](https://github.com/marcusnobrega-eng/TC-Hydro)
