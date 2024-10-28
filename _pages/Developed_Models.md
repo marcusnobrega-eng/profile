@@ -49,7 +49,7 @@ Model Description:
 
 <i> Example of the state evolution in a unsteady-state simulation</i>
 
-<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1".gif>
+<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1.gif">
 
 <i> Example of a composite channel receiving a 100 in a year unsteady-state inflow hydrograph</i>
 
