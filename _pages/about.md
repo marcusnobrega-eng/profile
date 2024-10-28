@@ -27,11 +27,11 @@ I would resume myself as a simple, passionate kid about water resources, trying 
 
 My formal education includes a background in <i>Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation</i>.
 
-Currently, I am a postdoctoral researcher at the University of Arizona - Hydrology and Atmospheric Sciences studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
+Currently, I am a postdoctoral researcher at the [University of Arizona - Hydrology and Atmospheric Sciences](https://has.arizona.edu/) studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
 
 I hold a bachelor's degree in Civil Engineering (2013-2018), a Master's degree (2018-2020) and Ph.D. (2020-2023) in Hydraulics and Sanitation Engineering at the University of Sao Paulo.
 
-In addition, I also have another ongoing Ph.D., which I started in 2020, in Civil and Environmental Engineering from the University of Texas at San Antonio, from which I still have one last credit to graduate, with plans to graduate in 2024.
+In addition, I also have another ongoing Ph.D., which I started in 2020, in [Civil and Environmental Engineering from the University of Texas at San Antonio](https://klesse.utsa.edu/civil-environmental-construction-management/), from which I still have one last credit to graduate, with plans to graduate in 2024.
 
 Research
 ======
