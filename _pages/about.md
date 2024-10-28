@@ -11,11 +11,15 @@ Welcome to my GitHub page.
 
 Hi, I am Marcus N. Gomes Jr, a 29-year-old born and raised in Brazil who likes barbecuing, watching soccer games, and loves seeing how water moves differently depending on the circumstances.
 
-Bruce Lee once said, "When you pour water in a teapot, it becomes the teapot. Water can drip, and it can crash, be water my friend". This has always been on my mind.
+Bruce Lee once said: 
 
-Studying how water can change its shape, force, speed, and physical properties, and how it can rapidly or sometimes take years to move under a specific media, is just one of the few amazing phenomena I am interested in understanding and learning.
+"If you put water into a cup, it becomes the cup. You put water into a bottle and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend". 
 
-I am one of the guys who keep seeing the waves form in a pool when we throw a rock in the middle and keep thinking about how I could simulate that :)
+This has always been on my mind. The water movement shapes the way how life works somehow.
+
+Studying how water can change its shape, force, velocity, and physical properties, and how it can rapidly or sometimes take years to move under a specific media, is just one of the few amazing phenomena I am interested in understanding and learning from.
+
+I am one of the guys who keep seeing the waves form in a lake when we throw a rock in the middle and keep thinking about how beautiful that is and how I could model that :)
 
 I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field.
 
@@ -75,3 +79,5 @@ Mathematics
 - Particle Filter
 
 Please feel free to reach out to me at marcusnobrega.engcivil@gmail.com or through any other social media links available on this page.
+
+I will be pleased to help and collaborate :)
