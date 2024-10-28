@@ -91,7 +91,7 @@ TC-Hydro is a bioretention system analysis model with a variety of design and an
 
 The model is designed in Excel-VBA and also has a version in Matlab.
 
-<i> Conceptual Example of the RTC-Stormwater Model, available at Gomes Jr., et al., (2023)</i>
+<i> Conceptual Example of the TC-Hydro Model, available at Gomes Jr., et al., (2023)</i>
 <img src="https://marcusnobrega-eng.github.io/profile//files/Conceptual_Model-1.png">
 
 [Download Model](https://github.com/marcusnobrega-eng/TC-Hydro)
