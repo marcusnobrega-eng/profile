@@ -23,6 +23,8 @@ I am one of the guys who keep seeing the waves form in a lake when we throw a ro
 
 I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field.
 
+<img src='/files/water_gif.gif'>
+
 My formal education includes a background in Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation.
 
 Currently, I am a postdoctoral researcher at the University of Arizona - Hydrology and Atmospheric Sciences studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
