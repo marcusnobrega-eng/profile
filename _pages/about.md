@@ -23,9 +23,7 @@ I am one of the guys who keep seeing the waves form in a lake when we throw a ro
 
 I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field. 
 
-<img src="/files/water_gif.gif">
-
-<img src="/images/profile.png">
+<img src="https://marcusnobrega-eng.github.io/profile//files/water_gif.gif">
 
 My formal education includes a background in <i>Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation</i>.
 
