@@ -1,6 +1,6 @@
 ---
 permalink: /Developed_Models/
-title: "Developed Models"
+title: "Selected Open-Source Code from my Github Account"
 author_profile: true
 redirect_from: 
   - /md/
@@ -24,6 +24,10 @@ Model Description:
 - One-at-the-time sensitivity analysis code
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
+
+https://github.com/user-attachments/assets/ac6ad337-e3d7-48ec-ac68-8be9a5e8af04
+
+
 
 [Download Model](https://github.com/marcusnobrega-eng/HydroPol2D)
 ## HydroHP-1D
@@ -91,5 +95,4 @@ By merging hydraulics with structural design, the simple Excel-VBA tool can opti
 I developed a simple, well-balanced, conservative shallow-water equations solver to visualize 2D problems involving fluid dynamics using a 4-point explicit numerical scheme.
 
 [Download Model](https://github.com/marcusnobrega-eng/SWE_Solver)
-
 
