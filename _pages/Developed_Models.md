@@ -39,7 +39,7 @@ Model Description:
 - (d) Stage-Hydrographs
 - (e) Combination of previous cases
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
-- 
+
 [Download Model](https://github.com/marcusnobrega-eng/HydroHP)
 
 ## RTC-Stormwater
@@ -92,7 +92,4 @@ I developed a simple, well-balanced, conservative shallow-water equations solver
 
 [Download Model](https://github.com/marcusnobrega-eng/SWE_Solver)
 
-
-
-The footnotes in the page will be returned following this line, return to the section on <a href="#footnotes">Markdown Footnotes</a>.
 
