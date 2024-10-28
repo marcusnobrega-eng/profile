@@ -28,13 +28,13 @@ Model Description:
 <i> Example of a rain-on-the-grid simulation in an urban area with the influence of hydraulic devices such as culverts or by urban infrastructure such as bridges</i>.
 
 <video loop>
-  <source src="files/Rain_on_the_grid.mp4" type="video/mp4">
+  <source src="https://marcusnobrega-eng.github.io/profile//filesRain_on_the_grid.mp4" type="video/mp4">
 </video>
 
 <i> Example of a dam-break scenario simulated with the local-inertial solver of HydroPol2D </i>
 
 <video loop>
-  <source src="files/Dam_Break.mp4" type="video/mp4">
+  <source src="https://marcusnobrega-eng.github.io/profile//files/Dam_Break.mp4" type="video/mp4">
 </video>
 
 
