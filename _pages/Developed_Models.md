@@ -25,16 +25,16 @@ Model Description:
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
-<i> Example of a rain-on-the grid simulation in a urban area with influence of hydraulic devices such as culverts or by urban infrastructure such as bridges</i>.
+<i> Example of a rain-on-the-grid simulation in an urban area with the influence of hydraulic devices such as culverts or by urban infrastructure such as bridges</i>.
 
 <video loop>
-  <source src="https://github.com/marcusnobrega-eng/profile/files/Rain_on_the_grid.mp4" type="video/mp4">
+  <source src="files/Rain_on_the_grid.mp4" type="video/mp4">
 </video>
 
 <i> Example of a dam-break scenario simulated with the local-inertial solver of HydroPol2D </i>
 
 <video loop>
-  <source src="https://github.com/marcusnobrega-eng/profile/files/Dam_Break.mp4" type="video/mp4">
+  <source src="files/Dam_Break.mp4" type="video/mp4">
 </video>
 
 
