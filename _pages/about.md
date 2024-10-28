@@ -21,7 +21,7 @@ Studying how water can change its shape, force, velocity, and physical propertie
 
 I am one of the guys who keep seeing the waves form in a lake when we throw a rock in the middle and keep thinking about how beautiful that is and how I could model that :)
 
-I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field. 
+I would resume myself as a simple, passionate kid about water resources, trying to learn something new every day about this amazing field. 
 
 <img src="https://marcusnobrega-eng.github.io/profile//files/water_gif.gif">
 
@@ -60,10 +60,10 @@ Fields and Keywords of Interest
 <i>Civil and Environmental Engineering</i>
 - Flood Control,
 - Water Quality Transport and Fate
-- System Analysis
+- Water Availability 
 - Water Resources Planning and Management
 
-<i>Electrical Engineering</i>
+<i>System Analysis</i>
 - Linear Systems and Control
 - Control of Non-Linear Systems
 - Feedback Control
