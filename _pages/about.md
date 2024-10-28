@@ -21,7 +21,9 @@ Studying how water can change its shape, force, velocity, and physical propertie
 
 I am one of the guys who keep seeing the waves form in a lake when we throw a rock in the middle and keep thinking about how beautiful that is and how I could model that :)
 
-I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field. <br/><img src='/files/water_gif.gif'>"
+I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field. 
+
+<img src="/files/water_gif.gif" alt="">
 
 My formal education includes a background in <i>Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation</i>.
 
