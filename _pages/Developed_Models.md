@@ -25,17 +25,17 @@ Model Description:
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
-<i> Example of a rain-on-the grid simulation of a 1 in 50 year rainfall in a urban area with influence of urban drainage - Sao Paulo, Brazil.h</i>
+<i> Example of a rain-on-the grid simulation of a 1 in 50 year rainfall in an urban area with influence of urban drainage - Sao Paulo, Brazil.h</i>
 
 <img src="https://marcusnobrega-eng.github.io/profile//files/Rain_on_the_grid.gif">
 
 <i> Example of a total dam-break collapse scenario in a city in Pernambuco, Northeast - Brazil. </i>
 
-<img src="https://marcusnobrega-eng.github.io/profile//files/Dam_Break.gif">
+<img src="https://marcusnobrega-eng.github.io/profile//files/dam_break.gif">
 
 [Download Model](https://github.com/marcusnobrega-eng/HydroPol2D)
 ## HydroHP-1D
-HydroHP-1D is a 1D full momentum saint-venant solver for a variety of different cross-sections under a variety of boundary conditions.
+HydroHP-1D is a 1D full momentum de St. Venant solver for a variety of different cross-sections under a variety of boundary conditions.
 
 Model Description:
 - A variety of cross-sections (XS) can be simulated, such as (i) rectangular, (ii) triangular, (iii) trapezoidal, (iv) parabolic, (v) circular, (vi) irregular, and (vii) composite
@@ -48,7 +48,7 @@ Model Description:
 - (e) Combination of previous cases
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
-<i> Example of the state evolution in a unsteady-state simulation</i>
+<i> Example of the state evolution in an unsteady-state simulation</i>
 
 <img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1.gif">
 
@@ -106,6 +106,9 @@ The model is developed in Excel-VBA and is available in
 The x-WHAT model is a hydraulic solver for the flow-water problem in looped hydraulic networks. The model solves the conservation of mass and energy in hydraulic networks and allows the optimization of tanks considering pipeline costs, reservoir costs, and foundation costs by estimating lateral wind stresses at the surface of the reservoir, later translated to bending moment and shear forces at the foundation of the reservoir.
 
 By merging hydraulics with structural design, the simple Excel-VBA tool can optimally design hydraulic network systems.
+
+<i> Conceptual Example of the X-WHAT model, available at Gomes Jr., et al., (2024)</i>
+<img src="https://marcusnobrega-eng.github.io/profile//files/General_user_algorithm-1.png">
 
 [Download Model](https://github.com/marcusnobrega-eng/X-WHAT)
 
