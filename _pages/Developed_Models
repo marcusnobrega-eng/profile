@@ -7,20 +7,71 @@ redirect_from:
   - /markdown.html
 ---
 
-## Locations of key files/directories
+## HydroPol2D
+HydroPol2D is a fully distributed hydrologic-hydrodynamic model capable of simulating a variety of flood-related problems.
 
-* Basic config options: _config.yml
-* Top navigation bar config: _data/navigation.yml
-* Single pages: _pages/
-* Collections of pages are .md or .html files in:
-  * _publications/
-  * _portfolio/
-  * _posts/
-  * _teaching/
-  * _talks/
-* Footer: _includes/footer.html
-* Static files (like PDFs): /files/
-* Profile image (can set in _config.yml): images/profile.png
+Model Description:
+- Spatially varied inputs given by rasters representing the land use and land cover, terrain elevation, and soil texture characteristics
+- Possibility to simulate a variety of rain-on-the-grid boundary conditions such as: (i) concentrated rainfall, (ii) interpolated rainfall from known rain gauges, (iii) maps of rainfall, and (iv) satellite rainfall from PERSIAN-PDIR (automatically)
+- Possibility to simulate inflow hydrographs, stage hydrographs, dam-break scenarios, monte-carlo simulations, and control of valves and gauges spatially in the catchment
+- Possibility to simulate internal boundary conditions to represent flow controls and detention ponds
+- Infiltration simulated by Green-Ampt model
+- Evapotranspiration simulated by Penman-Monteith formulation
+- Groundwater replenishing by SWMM approach
+- Momentum equations solved by the local-inertial 2D approximations or by cellular automata approach
+- Outlet boundary conditions of normal flow or critical flow
+- Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
+- Model is fully written in Matlab with all input data from Excel spreadsheets.
+
+## HydroHP-1D
+HydroHP-1D is a 1D full momentum saint-venant solver for a variety of different cross-sections under a variety of boundary conditions.
+
+Model Description:
+- A variety of cross-sections (XS) can be simulated, such as (i) rectangular, (ii) triangular, (iii) trapezoidal, (iv) parabolic, (v) circular, (vi) irregular, and (vii) composite
+- Different conceptualizations of Manning's roughness coefficients can be assigned, such as: (i) depth varying, (ii) constant in the XS, (iii) different values for inbanks and overbanks, (iv) constant at the section and varied in space
+- HydroHP can deal with boundary conditions of:
+- (a) Inflow hydrographs
+- (b) Nash hydrographs
+- (c) Tidal Outlet Hydrographs
+- (d) Stage-Hydrographs
+- (e) Combination of previous cases
+
+## RTC-Stormwater
+The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics of catchments, reservoirs, and channels dynamical equations and provide a state-space model approach that is designed to be coupled with reactive and predictive control algorithms.
+
+<i>Model Description</i>
+- Watershed hydrodynamics simulated by a kinematic wave approach
+- Infiltration through Green-Ampt Model
+- Evapotranspiration simulated by Penman-Monteith formulation
+- Groundwater replenishing by SWMM approach
+- Model predictive control 
+- Linear Quadratic Regulators
+- Linear Quadratic Integrators
+- Reservoirs simulated by mass and energy conservation equations
+- Channels solved by the diffusive-wave model
+
+## TC-Hydro
+TC-Hydro is a bioretention system analysis model with a variety of design and analysis methods
+
+## MODOBR
+
+## X-WHAT 
+
+## SWE-Solver
+
+## MatSEHA
+
+## PFSA
+
+## Dam-break Module
+
+## Alternated Blocks Hyetograph
+
+## SCS-Hydrologic Model
+
+## 
+
+
 
 ## Tips and hints
 
