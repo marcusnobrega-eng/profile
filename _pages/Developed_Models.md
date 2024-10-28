@@ -86,6 +86,8 @@ TC-Hydro is a bioretention system analysis model with a variety of design and an
 
 The model is designed in Excel-VBA and also has a version in Matlab.
 
+<img src="https://marcusnobrega-eng.github.io/profile//files/Conceptual_Model-1.png">
+
 [Download Model](https://github.com/marcusnobrega-eng/TC-Hydro)
 
 ## MODOBR
