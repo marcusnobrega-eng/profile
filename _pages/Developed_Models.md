@@ -1,4 +1,4 @@
----
+![image](https://github.com/user-attachments/assets/ccd6167e-19f8-4440-8fb9-596aa88951c2)---
 permalink: /Developed_Models/
 title: "Selected Open-Source Code from my Github Account"
 author_profile: true
@@ -25,7 +25,7 @@ Model Description:
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
-<i> Example of a rain-on-the-grid simulation in an urban area with the influence of hydraulic devices such as culverts or by urban infrastructure such as bridges</i>.
+<i> Example of a 1 in 50-year rain-on-the-grid simulation in an urban area in Sao Paulo, Brazil with the influence of hydraulic devices such as culverts or by urban infrastructure such as bridges</i>.
 
 <img src="https://marcusnobrega-eng.github.io/profile//files/Rain_on_the_grid.gif">
 
@@ -48,10 +48,18 @@ Model Description:
 - (e) Combination of previous cases
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
+<i> Example of the state evolution in a unsteady-state simulation</i>
+
+<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1".gif>
+
+<i> Example of a composite channel receiving a 100 in a year unsteady-state inflow hydrograph</i>
+
+<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_2.gif">
+
 [Download Model](https://github.com/marcusnobrega-eng/HydroHP)
 
 ## RTC-Stormwater
-The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics of catchments, reservoirs, and channels dynamical equations and provide a state-space model approach that is designed to be coupled with reactive and predictive control algorithms.
+The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics of catchments, reservoirs, and channels dynamical equations and provides a state-space model approach that is designed to be coupled with reactive and predictive control algorithms.
 
 <i>Model Description</i>
 - Watershed hydrodynamics simulated by a kinematic wave approach
