@@ -29,7 +29,7 @@ My formal education includes a background in <i>Civil and Environmental Engineer
 
 Currently, I am a postdoctoral researcher at the [University of Arizona - Hydrology and Atmospheric Sciences](https://has.arizona.edu/) studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
 
-I hold a bachelor's degree in Civil Engineering (2013-2018), a Master's degree (2018-2020) and Ph.D. (2020-2023) in Hydraulics and Sanitation Engineering at the University of Sao Paulo.
+I hold a bachelor's degree in Civil Engineering (2013-2018), a Master's degree (2018-2020) and Ph.D. (2020-2023) in Hydraulics and Sanitation Engineering at the [University of Sao Paulo](https://www.riotimesonline.com/brazil-news/brazil/university-of-sao-paulo-in-the-list-of-the-100-best-universities-in-the-world-for-the-first-time/#:~:text=The%20University%20of%20S%C3%A3o%20Paulo%20%28USP%29%20has%20achieved,USP%20at%20the%2085th%20position%20among%201%2C499%20institutions.).
 
 In addition, I also have another ongoing Ph.D., which I started in 2020, in [Civil and Environmental Engineering from the University of Texas at San Antonio](https://klesse.utsa.edu/civil-environmental-construction-management/), from which I still have one last credit to graduate, with plans to graduate in 2024.
 
