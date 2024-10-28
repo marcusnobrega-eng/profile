@@ -9,7 +9,7 @@ redirect_from:
 
 Welcome to my GitHub page.
 
-Hi, I am Marcus N. Gomes Jr, a 29-year-old born and raised in Brazil who likes barbecuing, watching soccer games, and loves seeing how water moves differently depending on the circumstances.
+Hi, I am Marcus N. Gomes Jr, a 29-year-old researcher originally from Brazil who likes barbecuing, watching soccer games, and loves seeing how water moves differently depending on the circumstances.
 
 Bruce Lee once said: 
 
