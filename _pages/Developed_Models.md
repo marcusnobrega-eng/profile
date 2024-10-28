@@ -25,15 +25,13 @@ Model Description:
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
 - The model is fully written in Matlab and includes all input data from Excel spreadsheets.
 
-<i> Example of a composite channel receiving a 1 in a 100 year unsteady-state inflow hydrograph</i>
+<i> Example of a rain-on-the grid simulation of a 1 in 50 year rainfall in a urban area with influence of urban drainage - Sao Paulo, Brazil.h</i>
 
-<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_2.gif">
+<img src="https://marcusnobrega-eng.github.io/profile//files/Rain_on_the_grid.gif">
 
-<i> Example of the state evolution in this case of a 1 in a 100 year unsteady inflow hydrograph in a composite channel</i>
+<i> Example of a total dam-break collapse scenario in a city in Pernambuco, Northeast - Brazil. </i>
 
-<img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1.gif">
-
-[Download Model](https://github.com/marcusnobrega-eng/HydroHP)
+<img src="https://marcusnobrega-eng.github.io/profile//files/Dam_Break.gif">
 
 [Download Model](https://github.com/marcusnobrega-eng/HydroPol2D)
 ## HydroHP-1D
