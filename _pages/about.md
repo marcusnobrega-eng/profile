@@ -7,9 +7,19 @@ redirect_from:
   - /about.html
 ---
 
-Hi, and be very welcome to my GitHub page.
+Welcome to my GitHub page.
 
-I am Marcus N. Gomes Jr., a passionate water resources scientist with a background in Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation.
+Hi, I am Marcus N. Gomes Jr, a 29-year-old born and raised in Brazil who likes barbecuing and watching soccer games and loves seeing how water moves differently depending on the circumstances.
+
+Bruce Lee once said, "When you pour water in a teapot, it becomes the teapot. Water can drip, and it can crash". This has always been on my mind.
+
+Studying how water can change its shape, force, speed, and physical properties, and how it can rapidly or sometimes take years to move under a specific media, is just one of the few amazing phenomena I am interested in understanding and learn.
+
+I am one of the guys who keep seeing the waves form in a pool when we throw a rock in the middle of a pool and keep thinking about how I could simulate that :)
+
+I would resume myself as a simple kid passionate about water resources, trying to learn something new every day about this amazing field.
+
+My formal education includes a background in Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation.
 
 Currently, I am a postdoctoral researcher at the University of Arizona - Hydrology and Atmospheric Sciences studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
 
