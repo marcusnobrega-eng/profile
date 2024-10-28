@@ -33,6 +33,8 @@ Model Description:
 
 <i> Example of a dam-break scenario simulated with the local-inertial solver of HydroPol2D </i>
 
+https://marcusnobrega-eng.github.io/profile//files/Dam_Break.mp4
+
 <video loop>
   <source src="https://marcusnobrega-eng.github.io/profile//files/Dam_Break.mp4" type="video/mp4">
 </video>
