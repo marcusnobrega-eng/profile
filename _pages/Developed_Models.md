@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/ccd6167e-19f8-4440-8fb9-596aa88951c2)---
 permalink: /Developed_Models/
 title: "Selected Open-Source Code from my Github Account"
 author_profile: true
