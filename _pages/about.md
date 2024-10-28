@@ -13,7 +13,7 @@ Hi, I am Marcus N. Gomes Jr, a 29-year-old born and raised in Brazil who likes b
 
 Bruce Lee once said: 
 
-"If you put water into a cup, it becomes the cup. You put water into a bottle and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend". 
+"<i>If you put water into a cup, it becomes the cup. You put water into a bottle and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend</i>". 
 
 This has always been on my mind. The water movement shapes the way how life works somehow.
 
@@ -25,7 +25,7 @@ I would resume myself as a simple kid passionate about water resources, trying t
 
 <img src='/files/water_gif.gif'>
 
-My formal education includes a background in Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation.
+My formal education includes a background in <i>Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation</i>.
 
 Currently, I am a postdoctoral researcher at the University of Arizona - Hydrology and Atmospheric Sciences studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
 
@@ -57,20 +57,20 @@ In addition to this primary focus, I also have interest in:
 
 Fields and Keywords of Interest
 =======
-Civil and Environmental Engineering
+<i>Civil and Environmental Engineering</i>
 - Flood Control,
 - Water Quality Transport and Fate
 - System Analysis
 - Water Resources Planning and Management
 
-Electrical Engineering
+<i>Electrical Engineering</i>
 - Linear Systems and Control
 - Control of Non-Linear Systems
 - Feedback Control
 - Model Predictive Control
 - Linear Quadratic Regulators
 
-Mathematics
+<i>Mathematics</i>
 - Numerical Modeling
 - Explicit Methods
 - Finite-Difference Methods
