@@ -44,6 +44,8 @@ In addition to this primary focus, I also have interest in:
 - Hydrologic Modeling
 - Hydrodynamic Modeling
 - GPU Processing
+- Geographical Information Systems
+- Remote Sensing
 - Green Infrastructure
 - Low Impact Development
 - Sustainable Drainage Systems
