@@ -12,7 +12,7 @@ HydroPol2D is a fully distributed hydrologic-hydrodynamic model capable of simul
 
 Model Description:
 - Spatially varied inputs given by rasters representing the land use and land cover, terrain elevation, and soil texture characteristics
-- Possibility to simulate a variety of rain-on-the-grid boundary conditions such as: (i) concentrated rainfall, (ii) interpolated rainfall from known rain gauges, (iii) maps of rainfall, and (iv) satellite rainfall from PERSIAN-PDIR (automatically)
+- Possibility to simulate a variety of rain-on-the-grid boundary conditions such as: (i) concentrated rainfall, (ii) interpolated rainfall from known rain gauges, (iii) maps of rainfall, and (iv) satellite rainfall from PERSIANN-PDIR (automatically)
 - Possibility to simulate inflow hydrographs, stage hydrographs, dam-break scenarios, monte-carlo simulations, and control of valves and gauges spatially in the catchment
 - Possibility to simulate internal boundary conditions to represent flow controls and detention ponds
 - Infiltration simulated by Green-Ampt model
