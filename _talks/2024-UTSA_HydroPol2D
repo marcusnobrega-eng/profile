@@ -1,0 +1,11 @@
+---
+title: "HydroPol2D short course for the graduate students of UTSA"
+collection: talks
+type: "Research Talk"
+permalink: /talks/2024-UTSA_HydroPol2D
+venue: "University of Texas at San Antonio"
+date: 2024-11-21
+location: "San Antonio, Texas"
+---
+A HydroPol2D course was given on Tuesday and Thursday in Dr. Giacomoni's class at UTSA. I showcased the derivation of HydroPol2D, including governing equations, model applications, the automation of GIS processing with Google Earth Engine, and the application of HydroPol2D for flood inundation mapping. 
+Recorded classes, including slides (100+) available in the HydroPol2D [GitHub repositry](https://github.com/marcusnobrega-eng/HydroPol2D).
