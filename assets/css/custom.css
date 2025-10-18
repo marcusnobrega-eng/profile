@@ -1,0 +1,26 @@
+/* Use Inter everywhere (keep code blocks monospace) */
+html, body {
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1, "cv11" 1, "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Many Jekyll themes set serif for headings; force inheritance */
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 700;           /* tweak if you want lighter headings */
+  letter-spacing: -0.01em;    /* Inter likes a touch of tightening */
+}
+
+/* Preserve monospace for code */
+code, pre, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace;
+}
+
+/* Optional: readability tuning */
+body {
+  font-size: 17px;    /* adjust to taste */
+  line-height: 1.6;
+}
