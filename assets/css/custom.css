@@ -82,3 +82,42 @@ code, pre, kbd, samp {
 }
 .ai { font-family: "Academicons" !important; }
 
+/* ----- LOAD A WEIRD FONT (Nunito) ----- */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap");
+
+/* ----- APPLY EVERYWHERE (high specificity + !important to win) ----- */
+:root {
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* Global */
+html, body {
+  font-family: var(--font-body) !important;
+}
+
+/* Headings & titles used by Academic Pages */
+h1, h2, h3, h4, h5, h6,
+.page-title, .page_title,  /* list/section titles */
+.article-title, .publication-title, .project-title,
+.navbar-brand, .docs-title {
+  font-family: var(--font-body) !important;
+  font-weight: 800; /* make it very obvious */
+  letter-spacing: .01em;
+}
+
+/* Navigation, menus, buttons */
+.navbar, .navbar-nav .nav-link, .dropdown-menu, .btn, .badge, .pagination,
+.sidebar, .menu, .menu a {
+  font-family: var(--font-body) !important;
+}
+
+/* Form controls */
+input, select, textarea, label {
+  font-family: var(--font-body) !important;
+}
+
+/* Optional: lighten paragraph weight to accentuate the change */
+p { font-weight: 400; }
+
+
