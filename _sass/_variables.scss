@@ -37,9 +37,9 @@ $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
 
 /* UPDATED: Apply Inter everywhere (body, headings, captions) */
-$global-font-family         : $sans-serif; // UPDATED
-$header-font-family         : $sans-serif; // UPDATED
-$caption-font-family        : $sans-serif; // UPDATED (was $serif)
+$global-font-family         : $garamond; // UPDATED
+$header-font-family         : $garamon; // UPDATED
+$caption-font-family        : $garamond; // UPDATED (was $serif)
 
 /* type scale (kept as-is for safety)
    If you want slightly stronger headings with Inter, you can bump 1–3.
