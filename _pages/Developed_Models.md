@@ -7,6 +7,7 @@ redirect_from:
   - /Developed_Models.html
 ---
 
+
 ## HydroPol2D
 HydroPol2D is a fully distributed hydrologic-hydrodynamic model capable of simulating a variety of flood-related problems.
 
@@ -96,6 +97,7 @@ The model is designed in Excel-VBA and also has a version in Matlab.
 
 ## MODOBR
 MODOBR is a retention pond design algorithm focused on maximizing the hydrological routing maximum ponding depth with the depth required in case the media and/or the hydraulic devices are clogged and cannot store or release any water.
+<img width="1460" height="448" alt="image" src="https://github.com/user-attachments/assets/03e8fba3-7ac8-4494-91c6-bc36c4ab8526" />
 
 The model is developed in Excel-VBA and is available in
 
@@ -110,10 +112,23 @@ By merging hydraulics with structural design, the simple Excel-VBA tool can opti
 <i> Conceptual Example of the X-WHAT model, available at Gomes Jr., et al., (2024)</i>
 <img src="https://marcusnobrega-eng.github.io/profile//files/General_user_algorithm-1.png">
 
-[Download Model](https://github.com/marcusnobrega-eng/X-WHAT)
+<i> Conceptual framework and reservoir design assumptions</i>
+<img width="968" height="764" alt="image" src="https://github.com/user-attachments/assets/30935368-5d42-4f3d-8ba5-ffed752f7617" />
+
 
 ## SWE-Solver
 I developed a simple, well-balanced, conservative shallow-water equations solver to visualize 2D problems involving fluid dynamics using a 4-point explicit numerical scheme.
+<i> Example of an instantenous dam-break propagation</i>
+<img width="532" height="411" alt="image" src="https://github.com/user-attachments/assets/a2b137cc-7131-4c10-b446-600bc91911e5" />
 
 [Download Model](https://github.com/marcusnobrega-eng/SWE_Solver)
+
+## 1D Hillslope Storage Boussinesq Model
+Hillslopes can be accurately simulated with simplified 1D Hillslope-Storage-Boussinesq models following the approach developed in Troch (1993). In this model, I develop a finite-volume approach to solve the 1D saturated flow problem in porous media following diffusive and kinematic effects of the wave under hillslope defined by its hillslope width function.
+<i> hsB Modeln</i>
+<img width="1563" height="430" alt="image" src="https://github.com/user-attachments/assets/f6457b81-f280-4e35-8201-2ca5856dfc3e" />
+
+[Download Model]([https://github.com/marcusnobrega-eng/X-WHAT](https://github.com/marcusnobrega-eng/1D_hsB?tab=readme-ov-file
+))
+
 
