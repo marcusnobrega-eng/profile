@@ -1,180 +1,209 @@
 /* ==========================================================================
    Variables  (Minimal Mistakes-style variables file)
-   This version updates only the Typography stack to use Inter everywhere.
-   Everything else remains unchanged to avoid regressions.
+   Professional, accessible palette + Inter-first typography
    ========================================================================== */
 
 /*
    Typography
    ========================================================================== */
 
-/* Base document font size
-   - UPDATED: 17 improves readability with Inter (was 16). Change back to 16 if you prefer. */
-$doc-font-size              : 17; // UPDATED
+/* Base document font size (Inter reads well slightly larger than 16) */
+$doc-font-size              : 17;
 
-/* paragraph indention */
-$paragraph-indent           : false; // true, false (default)
+/* Paragraph indentation */
+$paragraph-indent           : false;
 $indent-var                 : 1.3em;
 
-/* system typefaces (fallbacks) */
-$serif                      : Georgia, Times, serif;
+/* System fallbacks */
+$serif                      : Georgia, "Times New Roman", Times, serif;
 
-/* UPDATED: Inter-first modern sans stack. Keep robust fallbacks for cross-OS consistency. */
-$sans-serif                 : "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-                              Arial, "Noto Sans", "Liberation Sans", sans-serif; // UPDATED
+/* Inter-first modern sans stack with robust fallbacks */
+$sans-serif                 : "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                              "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 
-$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
+/* Developer-friendly monospace with ligature fallbacks */
+$monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono",
+                              "Courier New", monospace;
 
-/* sans serif typefaces */
-$sans-serif-narrow          : $sans-serif; // ensure sidebars/nav use the same Inter stack
+/* Keep narrow the same as sans for consistent nav/sidebar appearance */
+$sans-serif-narrow          : $sans-serif;
 $helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
 
-/* serif typefaces (unused for body after we switch) */
+/* Serif families (rarely used now) */
 $georgia                    : Georgia, serif;
 $times                      : Times, serif;
 $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
 
-/* UPDATED: Apply Inter everywhere (body, headings, captions) */
-$global-font-family         : $garamond; // UPDATED
-$header-font-family         : $garamon; // UPDATED
-$caption-font-family        : $garamond; // UPDATED (was $serif)
+/* Apply Inter everywhere (body, headings, captions) */
+$global-font-family         : $sans-serif;
+$header-font-family         : $sans-serif;
+$caption-font-family        : $sans-serif;
 
-/* type scale (kept as-is for safety)
-   If you want slightly stronger headings with Inter, you can bump 1–3.
-   Example (optional):
-   $type-size-1: 2.6em;  // was 2.441em
-   $type-size-2: 2.0em;  // was 1.953em
-   $type-size-3: 1.6em;  // was 1.563em
-*/
-$type-size-1                : 2.441em;  // ~39.056px
-$type-size-2                : 1.953em;  // ~31.248px
-$type-size-3                : 1.563em;  // ~25.008px
-$type-size-4                : 1.25em;   // ~20px
-$type-size-5                : 1em;      // ~16px
-$type-size-6                : 0.75em;   // ~12px
-$type-size-7                : 0.6875em; // ~11px
-$type-size-8                : 0.625em;  // ~10px
+/* Type scale: slightly strengthened headings for polish */
+$type-size-1                : 2.55em;   // ~43.35px on base 17
+$type-size-2                : 2.0em;    // ~34px
+$type-size-3                : 1.6em;    // ~27.2px
+$type-size-4                : 1.28em;   // ~21.76px
+$type-size-5                : 1em;      // ~17px
+$type-size-6                : 0.82em;   // ~13.94px
+$type-size-7                : 0.72em;   // ~12.24px
+$type-size-8                : 0.66em;   // ~11.22px
 
-/* masthead properties */
-$masthead-height            : 70px;
+/* Masthead size tuned for 16–20px nav */
+$masthead-height            : 72px;
 
-/* Sidebar properties */
+/* Sidebar */
 $sidebar-screen-min-width   : 1024px;
-$sidebar-link-max-width     : 250px;
-
+$sidebar-link-max-width     : 260px;
 
 /*
-   Colors  (unchanged)
+   Color System — Accessible, modern, brand-forward
+   Palette grounded in neutral slate with a clean blue primary.
    ========================================================================== */
 
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
-$lighter-gray               : mix(#fff, $gray, 90%);
+/* Neutrals */
+$gray-50    : #f8fafc;
+$gray-100   : #f1f5f9;
+$gray-200   : #e2e8f0;
+$gray-300   : #cbd5e1;
+$gray-400   : #94a3b8;
+$gray-500   : #64748b;
+$gray-600   : #475569;
+$gray-700   : #334155;
+$gray-800   : #1f2937;
+$gray-900   : #0b1220;
 
-$body-color                 : #fff;
-$background-color           : #fff;
+/* Brand & semantic */
+$brand-50   : #eef5ff;
+$brand-100  : #d9e8ff;
+$brand-200  : #bcd7ff;
+$brand-300  : #8fbaff;
+$brand-400  : #5b97ff;
+$brand-500  : #3b82f6;  /* Primary (AA on white for body text size >= 17px) */
+$brand-600  : #2f6bd7;
+$brand-700  : #2757b1;
+$brand-800  : #1f468d;
+$brand-900  : #17356a;
+
+$success-500: #16a34a;  /* Emerald */
+$warning-500: #d97706;  /* Amber */
+$danger-500 : #dc2626;  /* Red   */
+$info-500   : #0891b2;  /* Cyan  */
+
+/* Legacy color aliases (retain variables the theme expects) */
+$gray                       : $gray-500;
+$dark-gray                  : $gray-700;
+$darker-gray                : $gray-800;
+$light-gray                 : $gray-300;
+$lighter-gray               : $gray-100;
+
+$body-color                 : #ffffff;
+$background-color           : #ffffff;
 $code-background-color      : #fafafa;
-$code-background-color-dark : #000000;
-$text-color                 : #000000;
-$border-color               : #000000;
+$code-background-color-dark : #0b0b0b;
+$text-color                 : $gray-900;
+$border-color               : rgba(2, 6, 23, 0.10); /* subtle hairline borders */
 
-$primary-color              : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
-$danger-color               : #ee5f5b;
-$info-color                 : #52adc8;
+/* Primary & semantic (legacy aliases) */
+$primary-color              : $brand-600;
+$success-color              : $success-500;
+$warning-color              : $warning-500;
+$danger-color               : $danger-500;
+$info-color                 : $info-500;
 
-/* brands */
-$behance-color              : #1769FF;
+/* Social brand colors (kept, refreshed where needed) */
+$behance-color              : #1769ff;
 $bluesky-color              : #1184fe;
 $dribbble-color             : #ea4c89;
-$facebook-color             : #3b5998;
+$facebook-color             : #1877f2;
 $flickr-color               : #ff0084;
-$foursquare-color           : #0072b1;
+$foursquare-color           : #0072b1; /* LinkedIn blue (legacy) */
 $github-color               : #171516;
 $google-plus-color          : #dd4b39;
-$instagram-color            : #517fa4;
+$instagram-color            : #e1306c;
 $kaggle-color               : #20c0ff;
 $lastfm-color               : #d51007;
-$linkedin-color             : #007bb6;
+$linkedin-color             : #0a66c2;
 $mastodon-color             : #6364ff;
 $orcid-color                : #a6ce39;
 $pinterest-color            : #cb2027;
 $rss-color                  : #fa9b39;
 $soundcloud-color           : #ff3300;
-$stackoverflow-color        : #fe7a15;
-$tumblr-color               : #32506d;
-$twitter-color              : #55acee;
+$stackoverflow-color        : #f48024;
+$tumblr-color               : #35465c;
+$twitter-color              : #1d9bf0;
 $vimeo-color                : #1ab7ea;
 $vine-color                 : #00bf8f;
-$youtube-color              : #bb0000;
+$youtube-color              : #ff0000;
 $xing-color                 : #006567;
 
-
-/* links */
-$link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 25%);
-$link-color-visited         : mix(#fff, $link-color, 25%);
-$masthead-link-color        : $primary-color;
-$masthead-link-color-hover  : mix(#000, $primary-color, 25%);
-
+/* Links — tasteful, high-contrast, with clear hover/visited states */
+$link-color                 : $brand-600;
+$link-color-hover           : $brand-700;
+$link-color-visited         : $brand-800;
+$masthead-link-color        : $gray-700;
+$masthead-link-color-hover  : $gray-900;
 
 /*
-   Breakpoints  (unchanged)
+   Breakpoints — sane defaults for modern devices
    ========================================================================== */
 
 @include breakpoint-set("to ems", true);
-/*
-$small                      : 400px;
-$medium                     : 500px;
-$medium-wide                : 550px;
-$large                      : 1200px;
-$x-large                    : 1800px;
-*/
 
 $small                      : 600px !default;
 $medium                     : 768px !default;
-$medium-wide                : 900px !default;
-$large                      : 925px !default;
-$x-large                    : 1280px !default;
-
+$medium-wide                : 960px !default;  /* a bit wider for comfy line length */
+$large                      : 1140px !default; /* tighter max width for readability */
+$x-large                    : 1440px !default;
 
 /*
-   Grid  (unchanged)
+   Grid — keep columns but use a slightly narrower container for elegance
    ========================================================================== */
 
-$right-sidebar-width-narrow : 200px !default;
+$right-sidebar-width-narrow : 220px !default;
 $right-sidebar-width        : 300px !default;
-$right-sidebar-width-wide   : 400px !default;
+$right-sidebar-width-wide   : 380px !default;
 
 $susy: (
   columns: 12,
-  column-width: 120px,
+  column-width: 96px,   /* slightly smaller column for better rhythm */
   gutters: 1/4,
   math: fluid,
   output: float,
   gutter-position: after,
   container: $large,
   global-box-sizing: border-box,
-  // debug: (
-  //   image: show,
-  //   color: blue,
-  //   output: overlay,
-  //   toggle: top right,
-  // ),
 );
 
-
 /*
-   Other  (unchanged)
+   Components polish
    ========================================================================== */
 
-$border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+/* Softer radii + premium shadow */
+$border-radius              : 8px;
+$box-shadow                 : 0 1px 2px rgba(2, 6, 23, 0.06),
+                              0 2px 8px rgba(2, 6, 23, 0.08);
+
+/* Burger icon sizing */
 $navicon-width              : 28px;
-$navicon-height             : 4px;
-$global-transition          : all 0.2s ease-in-out;
+$navicon-height             : 3px;
+
+/* Motion — fast but not twitchy */
+$global-transition          : all 0.18s ease-in-out;
+
+/*
+   Optional: refined focus ring for accessibility (if your theme uses this var)
+   (If not, keep as reference for custom CSS)
+*/
+$focus-ring                 : 0 0 0 3px rgba(59, 130, 246, 0.35);
+
+/*
+   Notes:
+   - Inter is now truly global ($global-font-family/$header-font-family/$caption-font-family).
+   - Palette updated to accessible neutrals + brand blue; link states tuned for clarity.
+   - Border color uses a subtle translucent stroke for refined separation lines.
+   - Container width narrowed for optimal line length (~70–85 chars).
+   - Shadows/radii adjusted for a premium, modern look.
+*/
