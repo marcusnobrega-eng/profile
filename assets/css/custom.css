@@ -24,3 +24,61 @@ body {
   font-size: 17px;    /* adjust to taste */
   line-height: 1.6;
 }
+
+/* ===========================
+   Responsive Inter Typography
+   (append to assets/css/custom.css)
+   =========================== */
+
+/* Body copy — responsive between 17–20px */
+html { font-size: 100%; } /* keep rems stable */
+body {
+  color: #000; /* redundancy to be safe */
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: clamp(17px, 0.9vw + 12px, 20px);
+}
+
+/* Headings — clean, roomy Inter scale */
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2; /* tighter, headline feel */
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+/* Responsive sizes (approx. like your reference screenshot) */
+h1 { font-size: clamp(2.2rem, 2.6vw + 0.6rem, 3.25rem); }
+h2 { font-size: clamp(1.8rem, 2.0vw + 0.5rem, 2.5rem); }
+h3 { font-size: clamp(1.4rem, 1.2vw + 0.6rem, 1.9rem); }
+h4 { font-size: clamp(1.2rem, 0.8vw + 0.6rem, 1.4rem); }
+h5 { font-size: clamp(1.05rem, 0.5vw + 0.6rem, 1.2rem); }
+h6 { font-size: 1rem; }
+
+/* Navigation & small UI bits — slightly stronger weight */
+.nav__list, .site-nav, .greedy-nav, .site-title,
+.btn, .pagination, .sidebar {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Paragraph rhythm */
+p { margin: 0.75em 0 1.1em; }
+
+/* Blockquotes — keep elegant & readable on white */
+blockquote {
+  color: #111;
+  border-left: 4px solid #e6e6e6;
+  padding-left: 1rem;
+}
+
+/* Code stays mono (don’t turn black icons into boxes) */
+code, pre, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace !important;
+}
+.ai { font-family: "Academicons" !important; }
+
