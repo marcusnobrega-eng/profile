@@ -25,6 +25,11 @@ $sans-serif                 : "Inter", ui-sans-serif, system-ui, -apple-system, 
 $monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono",
                               "Courier New", monospace;
 
+/* Nunito-first modern sans stack with robust fallbacks */
+$nunito                     : "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                              Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
+                              "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+
 /* Keep narrow the same as sans for consistent nav/sidebar appearance */
 $sans-serif-narrow          : $sans-serif;
 $helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
@@ -37,9 +42,9 @@ $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
 
 /* Apply Inter everywhere (body, headings, captions) */
-$global-font-family         : $Courier New;
-$header-font-family         : $Courier New;
-$caption-font-family        : $sans-serif;
+$global-font-family         : $nunito;
+$header-font-family         : $nunito;
+$caption-font-family        : $nunito;
 
 /* Type scale: slightly strengthened headings for polish */
 $type-size-1                : 2.55em;   // ~43.35px on base 17
