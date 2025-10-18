@@ -22,8 +22,6 @@ $nunito                     : "Nunito", ui-sans-serif, system-ui, -apple-system,
                               Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
                               "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 
-$sans-serif                 : $nunito;
-
 /* Developer-friendly monospace (unchanged) */
 $monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono",
                               "Courier New", monospace;
@@ -33,9 +31,9 @@ $sans-serif-narrow          : $sans-serif;
 $helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
 
 /* Apply Nunito everywhere */
-$global-font-family         : $sans-serif;
-$header-font-family         : $sans-serif;
-$caption-font-family        : $sans-serif;
+$global-font-family         : $monospace;                  
+$header-font-family         : $monospace;
+$caption-font-family        : $monospace;
 /* Type scale: slightly strengthened headings for polish */
 $type-size-1                : 2.55em;   // ~43.35px on base 17
 $type-size-2                : 2.0em;    // ~34px
