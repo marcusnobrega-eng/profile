@@ -1,38 +1,53 @@
 /* ==========================================================================
-   Variables
+   Variables  (Minimal Mistakes-style variables file)
+   This version updates only the Typography stack to use Inter everywhere.
+   Everything else remains unchanged to avoid regressions.
    ========================================================================== */
 
 /*
    Typography
    ========================================================================== */
 
-$doc-font-size              : 16;
+/* Base document font size
+   - UPDATED: 17 improves readability with Inter (was 16). Change back to 16 if you prefer. */
+$doc-font-size              : 17; // UPDATED
 
 /* paragraph indention */
 $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
-/* system typefaces */
+/* system typefaces (fallbacks) */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+
+/* UPDATED: Inter-first modern sans stack. Keep robust fallbacks for cross-OS consistency. */
+$sans-serif                 : "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+                              Arial, "Noto Sans", "Liberation Sans", sans-serif; // UPDATED
+
 $monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* sans serif typefaces */
-$sans-serif-narrow          : $sans-serif;
+$sans-serif-narrow          : $sans-serif; // ensure sidebars/nav use the same Inter stack
 $helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
 
-/* serif typefaces */
+/* serif typefaces (unused for body after we switch) */
 $georgia                    : Georgia, serif;
 $times                      : Times, serif;
 $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
 
-$global-font-family         : $sans-serif;
-$header-font-family         : $sans-serif;
-$caption-font-family        : $serif;
+/* UPDATED: Apply Inter everywhere (body, headings, captions) */
+$global-font-family         : $sans-serif; // UPDATED
+$header-font-family         : $sans-serif; // UPDATED
+$caption-font-family        : $sans-serif; // UPDATED (was $serif)
 
-/* type scale */
+/* type scale (kept as-is for safety)
+   If you want slightly stronger headings with Inter, you can bump 1–3.
+   Example (optional):
+   $type-size-1: 2.6em;  // was 2.441em
+   $type-size-2: 2.0em;  // was 1.953em
+   $type-size-3: 1.6em;  // was 1.563em
+*/
 $type-size-1                : 2.441em;  // ~39.056px
 $type-size-2                : 1.953em;  // ~31.248px
 $type-size-3                : 1.563em;  // ~25.008px
@@ -50,9 +65,8 @@ $sidebar-screen-min-width   : 1024px;
 $sidebar-link-max-width     : 250px;
 
 
-
 /*
-   Colors
+   Colors  (unchanged)
    ========================================================================== */
 
 $gray                       : #7a8288;
@@ -110,7 +124,7 @@ $masthead-link-color-hover  : mix(#000, $primary-color, 25%);
 
 
 /*
-   Breakpoints
+   Breakpoints  (unchanged)
    ========================================================================== */
 
 @include breakpoint-set("to ems", true);
@@ -128,8 +142,9 @@ $medium-wide                : 900px !default;
 $large                      : 925px !default;
 $x-large                    : 1280px !default;
 
+
 /*
-   Grid
+   Grid  (unchanged)
    ========================================================================== */
 
 $right-sidebar-width-narrow : 200px !default;
@@ -155,7 +170,7 @@ $susy: (
 
 
 /*
-   Other
+   Other  (unchanged)
    ========================================================================== */
 
 $border-radius              : 4px;
