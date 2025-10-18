@@ -7,7 +7,7 @@
    Typography
    ========================================================================== */
 
-/* Base document font size (Inter reads well slightly larger than 16) */
+/* Base document font size (Nunito reads well at 17–18) */
 $doc-font-size              : 17;
 
 /* Paragraph indentation */
@@ -17,35 +17,25 @@ $indent-var                 : 1.3em;
 /* System fallbacks */
 $serif                      : Georgia, "Times New Roman", Times, serif;
 
-/* Inter-first modern sans stack with robust fallbacks */
-$sans-serif                 : "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-                              "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-
-/* Developer-friendly monospace with ligature fallbacks */
-$monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono",
-                              "Courier New", monospace;
-
 /* Nunito-first modern sans stack with robust fallbacks */
 $nunito                     : "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
                               Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
                               "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 
+$sans-serif                 : $nunito;
+
+/* Developer-friendly monospace (unchanged) */
+$monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono",
+                              "Courier New", monospace;
+
 /* Keep narrow the same as sans for consistent nav/sidebar appearance */
 $sans-serif-narrow          : $sans-serif;
 $helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
 
-/* Serif families (rarely used now) */
-$georgia                    : Georgia, serif;
-$times                      : Times, serif;
-$bodoni                     : "Bodoni MT", serif;
-$calisto                    : "Calisto MT", serif;
-$garamond                   : Garamond, serif;
-
-/* Apply Inter everywhere (body, headings, captions) */
-$global-font-family         : $Nunito;
-$header-font-family         : $Nunito;
-$caption-font-family        : $Nunito;
-
+/* Apply Nunito everywhere */
+$global-font-family         : $sans-serif;
+$header-font-family         : $sans-serif;
+$caption-font-family        : $sans-serif;
 /* Type scale: slightly strengthened headings for polish */
 $type-size-1                : 2.55em;   // ~43.35px on base 17
 $type-size-2                : 2.0em;    // ~34px
