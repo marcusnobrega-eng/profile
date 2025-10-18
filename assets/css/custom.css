@@ -120,4 +120,19 @@ input, select, textarea, label {
 /* Optional: lighten paragraph weight to accentuate the change */
 p { font-weight: 400; }
 
+<!-- Nunito Google Font -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+:root {
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+html, body { font-family: var(--font-body) !important; }
+h1, h2, h3, h4, h5, h6,
+.page-title, .page_title, .article-title, .publication-title, .project-title,
+.navbar-brand { font-family: var(--font-body) !important; font-weight: 800; }
+.navbar, .nav-link, .dropdown-menu, .btn, .badge { font-family: var(--font-body) !important; }
+input, select, textarea, label { font-family: var(--font-body) !important; }
+
 
