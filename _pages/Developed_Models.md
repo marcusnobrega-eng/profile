@@ -84,7 +84,7 @@ The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics 
 - Watershed hydrodynamics simulated by a kinematic wave approach
 - Infiltration through Green-Ampt Model
 - Evapotranspiration simulated by the Penman-Monteith formulation
-- Groundwater replenishment bythe  SWMM approach
+- Groundwater replenishment by the SWMM approach
 - Model predictive control 
 - Linear Quadratic Regulators
 - Linear Quadratic Integrators
@@ -98,7 +98,7 @@ The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics 
 
 ## TC-Hydro
 TC-Hydro is a bioretention system analysis model with a variety of design and analysis methods, including:
-- Design of bioretention systems by methods such as Envelope Curve, Pre-development Flow Conditions, Biorerention Manyal
+- Design of bioretention systems by methods such as Envelope Curve, Pre-development Flow Conditions, Biorerention Manual
 - Hydrologic routing of the bioretention system by solving Green-Ampt model merged with pool-level routing schemes
 - One-at-the-time sensitivity analysis
 - Global sensitivity analysis
@@ -106,7 +106,7 @@ TC-Hydro is a bioretention system analysis model with a variety of design and an
 - Automatic Calibration
 - Design Optimization considering construction costs
 
-The model is designed in Excel-VBA and also has a version in Matlab.
+The model is designed in Excel-VBA and also has a version in MATLAB.
 
 <i> Conceptual Example of the TC-Hydro Model, available at Gomes Jr., et al., (2023)</i>
 <img src="https://marcusnobrega-eng.github.io/profile//files/Conceptual_Model-1.png">
@@ -114,7 +114,7 @@ The model is designed in Excel-VBA and also has a version in Matlab.
 [Download Model](https://github.com/marcusnobrega-eng/TC-Hydro)
 
 ## MODOBR
-MODOBR is a retention pond design algorithm focused on maximizing the hydrological routing maximum ponding depth with the depth required in case the media and/or the hydraulic devices are clogged and cannot store or release any water.
+MODOBR is a retention pond design algorithm focused on maximizing the hydrological routing maximum ponding depth, with the depth required in case the media and/or the hydraulic devices are clogged and cannot store or release any water.
 <img width="1460" height="448" alt="image" src="https://github.com/user-attachments/assets/03e8fba3-7ac8-4494-91c6-bc36c4ab8526" />
 
 The model is developed in Excel-VBA and is available in
@@ -146,8 +146,7 @@ Hillslopes can be accurately simulated with simplified 1D Hillslope-Storage-Bous
 <i> hsB Modeln</i>
 <img width="1563" height="430" alt="image" src="https://github.com/user-attachments/assets/f6457b81-f280-4e35-8201-2ca5856dfc3e" />
 
-[Download Model]([https://github.com/marcusnobrega-eng/X-WHAT](https://github.com/marcusnobrega-eng/1D_hsB?tab=readme-ov-file
-)
+[Download Model](https://github.com/marcusnobrega-eng/1D_hsB?tab=readme-ov-file)
 
 ## Coupled hsB-SM Model
 The hsB–SM is a parsimonious, coupled surface–subsurface hillslope model that links atmosphere, soil, and groundwater to predict outlet flow. It partitions precipitation via a canopy interception–evapotranspiration scheme (wet-canopy evaporation, transpiration, bare-soil evaporation from Penman–Monteith potentials modulated by soil-moisture stress), then tracks soil water in two layers—a root zone and a deeper transmission zone—whose drainage provides recharge to a 1-D hillslope-storage Boussinesq aquifer. Surface runoff arises from infiltration-excess and saturation-excess at each node and is routed to the outlet with a geomorphically averaged, linearized de Saint–Venant unit hydrograph, while lateral groundwater produces instantaneous baseflow; an optional deep aquifer acts as a linear reservoir. A conservative finite-volume solver with robust flux splitting, adaptive stepping, and clear mass-balance diagnostics ensures stable, unit-consistent simulation of total discharge as the sum of routed surface flow, perched-aquifer baseflow, and optional deep outflow. Under development.
