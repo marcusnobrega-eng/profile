@@ -13,20 +13,21 @@ HydroPol2D is a fully distributed hydrologic-hydrodynamic model capable of simul
 
 Model Description:
 - Spatially varied inputs given by rasters representing the land use and land cover, terrain elevation, and soil texture characteristics
-- Possibility to simulate a variety of rain-on-the-grid boundary conditions such as: (i) concentrated rainfall, (ii) interpolated rainfall from known rain gauges, (iii) maps of rainfall, and (iv) satellite rainfall from PERSIANN-PDIR (automatically)
-- Possibility to simulate inflow hydrographs, stage hydrographs, dam-break scenarios, monte-carlo simulations, and control of valves and gauges spatially in the catchment
+- Possibility to simulate a variety of rain-on-the-grid boundary conditions, such as: (i) concentrated rainfall, (ii) interpolated rainfall from known rain gauges, (iii) maps of rainfall, and (iv) satellite rainfall from PERSIANN-PDIR (automatically)
+- Possibility to simulate inflow hydrographs, stage hydrographs, dam-break scenarios, Monte-Carlo simulations, and control of valves and gauges spatially in the catchment
 - Possibility to simulate internal boundary conditions to represent flow controls and detention ponds
-- Infiltration simulated by Green-Ampt model
-- Evapotranspiration simulated by Penman-Monteith formulation
-- Groundwater replenishing by SWMM approach
+- Infiltration simulated by the Green-Ampt model
+- Evapotranspiration simulated by the Penman-Monteith formulation
+- Groundwater replenishment by the SWMM approach
+- Groundwater fluxes simulated with 2D Boussinesq Model
 - Momentum equations solved by the local-inertial 2D approximations or by cellular automata approach
 - Outlet boundary conditions of normal flow or critical flow
 - Automatic calibration algorithm provided
 - One-at-the-time sensitivity analysis code
 - Outputs saved in a variety of formats, such as .TIF rasters, .mp4 animations, .csv stage-discharge values in internal gauges and at the outlet, .png figures of the input data, etc.
-- The model is fully written in Matlab and includes all input data from Excel spreadsheets.
+- The model is fully written in MATLAB and includes all input data from Excel spreadsheets.
 
-<i> Example of a rain-on-the grid simulation of a 1 in 50 year rainfall in an urban area with influence of urban drainage - Sao Paulo, Brazil.h</i>
+<i> Example of a rain-on-the-grid simulation of a 1 in 50 year rainfall in an urban area with influence of urban drainage - Sao Paulo, Brazil.h</i>
 
 <img src="https://marcusnobrega-eng.github.io/profile//files/Rain_on_the_grid.gif">
 
@@ -47,7 +48,7 @@ Model Description:
 - (c) Tidal Outlet Hydrographs
 - (d) Stage-Hydrographs
 - (e) Combination of previous cases
-- The model is fully written in Matlab and includes all input data from Excel spreadsheets.
+- The model is fully written in MATLAB and includes all input data from Excel spreadsheets.
 
 <i> Example of the state evolution in an unsteady-state simulation</i>
 
@@ -74,17 +75,16 @@ GRIDF-BR is a set of tools to analyze and process rasterized rainfall data from 
 
 GRIDF 
 [https://github.com/marcusnobrega-eng/DRAIN-LID](https://gridf-470516.projects.earthengine.app/view/gridf-br)
-
 [Download Code](https://github.com/marcusnobrega-eng/GRIDF).
 
 ## RTC-Stormwater
-The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics of catchments, reservoirs, and channels dynamical equations and provides a state-space model approach that is designed to be coupled with reactive and predictive control algorithms.
+The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics of catchments, reservoirs, and channels' dynamical equations and provides a state-space model approach that is designed to be coupled with reactive and predictive control algorithms.
 
 <i>Model Description</i>
 - Watershed hydrodynamics simulated by a kinematic wave approach
 - Infiltration through Green-Ampt Model
-- Evapotranspiration simulated by Penman-Monteith formulation
-- Groundwater replenishing by SWMM approach
+- Evapotranspiration simulated by the Penman-Monteith formulation
+- Groundwater replenishment bythe  SWMM approach
 - Model predictive control 
 - Linear Quadratic Regulators
 - Linear Quadratic Integrators
@@ -147,6 +147,10 @@ Hillslopes can be accurately simulated with simplified 1D Hillslope-Storage-Bous
 <img width="1563" height="430" alt="image" src="https://github.com/user-attachments/assets/f6457b81-f280-4e35-8201-2ca5856dfc3e" />
 
 [Download Model]([https://github.com/marcusnobrega-eng/X-WHAT](https://github.com/marcusnobrega-eng/1D_hsB?tab=readme-ov-file
-))
+)
 
+## Coupled hsB-SM Model
+The hsB–SM is a parsimonious, coupled surface–subsurface hillslope model that links atmosphere, soil, and groundwater to predict outlet flow. It partitions precipitation via a canopy interception–evapotranspiration scheme (wet-canopy evaporation, transpiration, bare-soil evaporation from Penman–Monteith potentials modulated by soil-moisture stress), then tracks soil water in two layers—a root zone and a deeper transmission zone—whose drainage provides recharge to a 1-D hillslope-storage Boussinesq aquifer. Surface runoff arises from infiltration-excess and saturation-excess at each node and is routed to the outlet with a geomorphically averaged, linearized de Saint–Venant unit hydrograph, while lateral groundwater produces instantaneous baseflow; an optional deep aquifer acts as a linear reservoir. A conservative finite-volume solver with robust flux splitting, adaptive stepping, and clear mass-balance diagnostics ensures stable, unit-consistent simulation of total discharge as the sum of routed surface flow, perched-aquifer baseflow, and optional deep outflow. Under development.
+
+<img width="1652" height="403" alt="hsb_coupled" src="https://github.com/user-attachments/assets/fee4ac8e-3dab-4f4a-82c4-7a2d6b58173c" />
 
