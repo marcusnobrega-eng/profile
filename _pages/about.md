@@ -11,7 +11,7 @@ Welcome to my GitHub page.
 
 Hi, I am Marcus, a researcher originally from Brazil who enjoys barbecuing, watching soccer games, trying new recipes in my free time, and is passionate about understanding how water behaves.
 
-I was born in a small town with fewer than 20k people in the state of Paraná, Brazil. Growing up in such a small country city allowed me to explore my curiosity for nature to a wonderful level. I always remind myself as a kid playing in the storm (still do to this day sometimes :)), building small earth dams, perhaps that was my first memory with something related to civil/environmental or water resources engineering.
+I was born in 1995 and spent my early years, up to my 18th birthday, in my hometown in the state of Paraná, Brazil. Growing up in such a small country city allowed me to explore my curiosity for nature to a wonderful level. I always remind myself, as a kid playing in the storm (still do to this day sometimes), building small earth dams - perhaps that was my first memory related to civil/environmental or water resources engineering.
 
 Life was simple; we had no cellphones, no internet, and it was just our free time and curiosity to play with my friends, fail, learn, grow, have fun, and that inspired me so much to develop the intimate desire to not only see work as a responsibility, but also to find joy in doing it. 
 
@@ -23,11 +23,11 @@ Bruce Lee once said:
 
 "<i>If you put water into a cup, it becomes the cup. You put water into a bottle, and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend</i>". 
 
-This has always been on my mind. The water movement shapes the way life works, somehow.
+This has always been on my mind. The movement of water shapes the way life works, in some way.
 
 Studying how water can change its shape, force, velocity, and physical properties, and how it can rapidly or sometimes take years to move under a specific medium, is just one of the few amazing phenomena I am interested in understanding and learning from. This is beautiful.
 
-I would describe myself as a simple, passionate researcher about water resources, trying to learn something new every day about this amazing field. 
+I would describe myself as a simple, passionate researcher in the field of water resources, continually striving to learn something new every day about this fascinating area. 
 
 <img src="https://marcusnobrega-eng.github.io/profile//files/water_gif.gif">
 
