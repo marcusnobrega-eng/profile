@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Marcus N. Gomes Jr., Homepage"
+title                    : "Marcus N. Gomes Jr, PhD.,"
 title_separator          : "-"
 name                     : &name "Marcus N. Gomes Jr."
 description              : &description "personal description"
@@ -24,7 +24,7 @@ author:
   avatar           : "Picture.png"
   name             : "Marcus N. Gomes Jr., Ph.D."
   pronouns         : # example: "he/him"  
-  bio              : "Postdoctoral Researcher Associate I"
+  bio              : "Postdoctoral Researcher Associate II"
   location         : "Tucson - AZ"
   employer         : "University of Arizona"
   uri              : # URL
