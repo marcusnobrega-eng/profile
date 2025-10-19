@@ -59,6 +59,24 @@ Model Description:
 
 [Download Model](https://github.com/marcusnobrega-eng/HydroHP)
 
+## DRAIN-LID: Darcy–Richards Analysis of Infiltration in Nature-based Low Impact Development
+DRAIN-LID is a Mixed-Form Richard Solver for 1D simulation of saturated/unsaturated flow in saturated media. The model is written in MATLAB and allows the evaluation of the long-term performance of infiltration techniques by making it possible to perform continuous high-resolution simulations over decades.  
+<i> Conceptual Example framework of DRAIN-LID, currently under review on Environmental Modelling and Software</i>
+<img width="1987" height="861" alt="DRAIN_LID" src="https://github.com/user-attachments/assets/cf5fca6c-4d27-4e32-af86-5f17bf0261f6" />
+
+[Download Model](https://github.com/marcusnobrega-eng/DRAIN-LID).
+
+## GRIDF-BR: Gridded Intensity–Duration–Frequency Curves for Brazil
+GRIDF-BR is a set of tools to analyze and process rasterized rainfall data from satellite dataframes such as IMERG, PERSIANN, CHRIPs, and BR-DWGD. The series of Python and Matlab codes allows for the extraction of maximum time series, extreme events, performing bias correction, extracting gauge precipitation from the ANA database, computing rainfall intensity duration curves, and more. Preliminary results of my paper (currently under review in JoH) show a framework to evaluate IDF curves for the Brazilian boundaries.
+
+<i> GRIDF toolbox, currently under review in JoH</i>
+<img width="1389" height="759" alt="image" src="https://github.com/user-attachments/assets/1090dd66-fa1f-47b7-9207-df39a5387208" />
+
+GRIDF 
+[https://github.com/marcusnobrega-eng/DRAIN-LID](https://gridf-470516.projects.earthengine.app/view/gridf-br)
+
+[Download Code](https://github.com/marcusnobrega-eng/GRIDF).
+
 ## RTC-Stormwater
 The RTC-Stormwater model linearizes the non-linear hydrologic and hydrodynamics of catchments, reservoirs, and channels dynamical equations and provides a state-space model approach that is designed to be coupled with reactive and predictive control algorithms.
 
