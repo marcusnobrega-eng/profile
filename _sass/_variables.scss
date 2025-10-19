@@ -1,13 +1,13 @@
 /* ==========================================================================
    Variables  (Minimal Mistakes-style variables file)
-   Professional, accessible palette + Nunito-first typography
+   Professional, accessible palette + Inter-first typography
    ========================================================================== */
 
 /*
    Typography
    ========================================================================== */
 
-/* Base document font size (Nunito reads well at 17–18) */
+/* Base document font size (Inter reads well slightly larger than 16) */
 $doc-font-size              : 17;
 
 /* Paragraph indentation */
@@ -17,12 +17,11 @@ $indent-var                 : 1.3em;
 /* System fallbacks */
 $serif                      : Georgia, "Times New Roman", Times, serif;
 
-/* Nunito-first modern sans stack with robust fallbacks */
-$nunito                     : "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-                              Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
-                              "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+/* Inter-first modern sans stack with robust fallbacks */
+$sans-serif                 : "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                              "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 
-/* Define sans + monospace families */
+/* Developer-friendly monospace with ligature fallbacks */
 $monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono",
                               "Courier New", monospace;
 
@@ -30,24 +29,27 @@ $monospace                  : "JetBrains Mono", "Fira Code", Menlo, Monaco, Cons
 $sans-serif-narrow          : $sans-serif;
 $helvetica                  : Helvetica, "Helvetica Neue", Arial, sans-serif;
 
-/* Apply Nunito everywhere (was mistakenly monospace) */
-$global-font-family         : $monospace;
-$header-font-family         : $monospace;
-$caption-font-family        : $monospace;
+/* Serif families (rarely used now) */
+$georgia                    : Georgia, serif;
+$times                      : Times, serif;
+$bodoni                     : "Bodoni MT", serif;
+$calisto                    : "Calisto MT", serif;
+$garamond                   : Garamond, serif;
 
-/* Type scale — fluid headings, stable body */
-$type-size-1: clamp(2.2rem, 1.4rem + 2.5vw, 2.8rem); // H1
-$type-size-2: clamp(1.9rem, 1.2rem + 2.0vw, 2.2rem); // H2
-$type-size-3: clamp(1.4rem, 1.0rem + 1.2vw, 1.7rem); // H3
-$type-size-4: clamp(1.2rem, 0.95rem + 0.6vw, 1.35rem);
-$type-size-5: 1rem;   // body stays stable
-$type-size-6: 0.92rem;
+/* Apply Inter everywhere (body, headings, captions) */
+$global-font-family         : $sans-serif;
+$header-font-family         : $sans-serif;
+$caption-font-family        : $sans-serif;
+
+/* Type scale: slightly strengthened headings for polish */
+$type-size-1                : 2.55em;   // ~43.35px on base 17
+$type-size-2                : 2.0em;    // ~34px
+$type-size-3                : 1.6em;    // ~27.2px
+$type-size-4                : 1.28em;   // ~21.76px
+$type-size-5                : 1em;      // ~17px
+$type-size-6                : 0.82em;   // ~13.94px
 $type-size-7                : 0.72em;   // ~12.24px
 $type-size-8                : 0.66em;   // ~11.22px
-
-/* Comfortable rhythm tuned for Nunito */
-$base-line-height           : 1.6;
-$heading-line-height        : 1.25;
 
 /* Masthead size tuned for 16–20px nav */
 $masthead-height            : 72px;
@@ -99,11 +101,8 @@ $lighter-gray               : $gray-100;
 
 $body-color                 : #ffffff;
 $background-color           : #ffffff;
-
-/* Slightly stronger code bg for legibility */
-$code-background-color      : #f7f7f9;
+$code-background-color      : #fafafa;
 $code-background-color-dark : #0b0b0b;
-
 $text-color                 : $gray-900;
 $border-color               : rgba(2, 6, 23, 0.10); /* subtle hairline borders */
 
@@ -202,9 +201,9 @@ $focus-ring                 : 0 0 0 3px rgba(59, 130, 246, 0.35);
 
 /*
    Notes:
-   - Nunito is now truly global ($global-font-family/$header-font-family/$caption-font-family).
-   - Fluid heading sizes via clamp(); body kept stable for legibility.
-   - Line-heights tuned for readable rhythm.
-   - Code background slightly strengthened for better contrast.
-   - Palette, grid, and shadows remain aligned with your previous setup.
+   - Inter is now truly global ($global-font-family/$header-font-family/$caption-font-family).
+   - Palette updated to accessible neutrals + brand blue; link states tuned for clarity.
+   - Border color uses a subtle translucent stroke for refined separation lines.
+   - Container width narrowed for optimal line length (~70–85 chars).
+   - Shadows/radii adjusted for a premium, modern look.
 */
