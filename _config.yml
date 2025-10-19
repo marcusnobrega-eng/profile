@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Marcus N. Gomes Jr, PhD.,"
+title                    : "Marcus - Homepage"
 title_separator          : "-"
 name                     : &name "Marcus N. Gomes Jr."
 description              : &description "personal description"
@@ -21,7 +21,7 @@ repository               : "marcusnobrega-eng/profile"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Picture.png"
+  avatar           : "Picture1.png"
   name             : "Marcus N. Gomes Jr., Ph.D."
   pronouns         : # example: "he/him"  
   bio              : "Postdoctoral Researcher Associate II"
