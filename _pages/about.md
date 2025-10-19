@@ -11,7 +11,7 @@ Welcome to my GitHub page.
 
 Hi, I am Marcus, a researcher originally from Brazil who enjoys barbecuing, watching soccer games, trying new recipes in my free time, and is passionate about understanding how water behaves.
 
-I was born in 1995 and spent my early years, up to my 18th birthday, in my hometown in the state of Paraná, Brazil. Growing up in such a small country city allowed me to explore my curiosity for nature to a wonderful level. I always remind myself, as a kid playing in the storm (still do to this day sometimes), building small earth dams - perhaps that was my first memory related to civil/environmental or water resources engineering.
+I was born in 1995 and spent my early years up to college in my hometown in the state of Paraná, Brazil. Growing up in such a small city allowed me to explore my curiosity for nature to a wonderful level. I always remind myself, as a kid playing in the storm (still do to this day sometimes), building small earth dams - perhaps that was my first memory related to civil/environmental or water resources engineering.
 
 Life was simple; we had no cellphones, no internet, and it was just our free time and curiosity to play with my friends, fail, learn, grow, have fun, and that inspired me so much to develop the intimate desire to not only see work as a responsibility, but also to find joy in doing it. 
 
