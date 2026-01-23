@@ -1,0 +1,13 @@
+---
+title: "Multiple levels of human instability due to urban overland flow within the 21st century: An urban Catchment study case in Brazil"
+collection: publications
+category: manuscripts
+permalink: publication/2025-mutiple
+excerpt: 'In this paper, we use a 2D hydrodynamic model to compute future changes in human instability due to climate change in an urban catchment in Sao Paulo. We illustrate that the effect of climate change can increase human instability to sliding and topling by 10-20%, and we show that children and elderly people are the most affected.'
+date: 2025-11-16
+venue: 'International Journal of Disaster Risk Reduction'
+paperurl: 'https://www.sciencedirect.com/science/article/pii/S2212420925007551?via%3Dihub'
+citation: 'Rápalo LM, Gomes Jr MN, Mendiondo EM. Multiple levels of human instability due to urban overland flow within the 21st century: An urban Catchment study case in Brazil. International Journal of Disaster Risk Reduction. 2025 Nov 27:105931.'
+---
+Abstract:
+Extreme rainfall events in urban environments are a well-known issue in society due to the multiple impacts that can induce, which are expected to increase due to climate change effects. During high intensity rainfall events, an often overlooked risk is the threat to pedestrian stability posed by overland flow forces that can induce instability when crossing the streets. To analyze this gap, we employ hydrodynamic modeling in a catchment in São Paulo city, Brazil, under climate change conditions to assess human instability with multiple levels of vulnerability, according to the age, gender, weight and height of the people. Our results allowed us to identify zones with potential risk that tend to increase along the 21st century, where children are the most significant vulnerability group to potential injuries compared to adults. We observed that human instability is more sensitive to pulses of rainfall intensity than to the total rainfall volume, indicating that even low volume rainfall events can pose a considerable danger to pedestrians. The Results provide valuable insights to decision-makers for better urban planning against challenges exacerbated by climate change in the future. This research, as the first of its kind, helps to identify risk zones for the implementation of measures to reduce both flow depth and velocity. In addition, this study offers a potential tool for enhancing communication and knowledge sharing with society, aiming to influence the perception of this type of risk, which is often underestimated, especially by pedestrians, in order to help prevent injuries or potential fatalities.
