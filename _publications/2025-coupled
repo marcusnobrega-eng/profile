@@ -9,7 +9,6 @@ venue: 'Environmental Modelling and Software'
 paperurl: 'https://www.sciencedirect.com/science/article/abs/pii/S1364815225004505'
 citation: 'Gomes Jr MN, Brasil JA, Johnson D, Papagiannakis AT, Giacomoni MH. A coupled Darcy-Richards framework for hydrological modeling of permeable pavements, green roofs, and bioretention systems. Environmental Modelling & Software. 2025 Nov 7:106766.'
 ---
+
 Abstract:
 Urbanization and climate change decrease groundwater recharge while increasing rapid runoff. Low-Impact-Development (LID) practices — such as permeable pavements, green roofs, and bioretention — can mitigate these impacts, but many models oversimplify infiltration and lack long-term capabilities to simulate decades of continuous simulations usually required to capture hydrologic signatures. This study presents a physics-based, open-source framework coupling a one-dimensional mixed-form Richards equation solver with a conceptual rainfall–runoff model. Benchmarking against Hydrus-1D showed strong agreement across soil types (RMSE  0.020 m for pressure head; 0.003 for water content). Calibration/validation with 255-day field data from a permeable asphalt site yielded NSE = 0.93 and = 0.94 for calibration, NSE = 0.729 and = 0.80 for validation. A 30-year continuous simulation for four U.S. cities revealed distinct regional runoff retention, evaporation efficiency, and flow duration patterns, indicating differences in runoff partitioning among typical designs of bioretention systems, green roofs, and permeable pavements across climate gradients.
-
-
