@@ -6,9 +6,11 @@ permalink: publication/2025-Exploring
 excerpt: 'We evaluate the impact of different methods of predicting rainfall temporal variability and its impacts on flood hazard assessment. Using a 2D hydrologic-hydrodynamic model (HydroPol2D), we specifically evaluate the impact of typical synthetic rainfall distributions compared to the pattern of rainfall distribution derived from high-resolution rainfall data.'
 date: 2025-03-01
 venue: 'Natural Hazards'
-# slidesurl: '[)'
+# slidesurl: 'https://link.springer.com/article/10.1007/s11069-025-07186-3'
 paperurl: 'https://link.springer.com/article/10.1007/s11069-025-07186-3'
 citation: 'Gomes, M.N., Jalihal, V., Castro, M. and Mendiondo, E.M., 2025. Exploring the impact of rainfall temporal distribution and critical durations on flood hazard modeling. Natural Hazards, 121(9), pp.10989-11012.'
 ---
 
 Abstract:
+Flood modeling is influenced by uncertainties from factors like soil infiltration characteristics, floodplain roughness, and spatio-temporal variations in rainfall volume, distribution, and intensities. Although multiple uncertain sources arise in flood modeling, the detailed evaluation of rainfall characteristics in flood mapping is not fully investigated. This paper addresses the role of rainfall temporal distribution on flood mapping by introducing a methodology that contrasts standard synthetic design storms and compares them to the 50th percentile rainfall temporal distribution derived from high-resolution 15-min observed rainfall data. The Alternating Blocks and the Huff rainfall temporal distribution methods were chosen as representative synthetic rainfall methods for flood mapping assessment. The framework was applied in a 131 km2 urban catchment in Bangalore, India. Evaluation of different rainfall temporal distributions reveals a potential 50% smaller areas with flood hazard, for the same return period and duration, simply by selecting a specific rainfall temporal that is not the critical for the catchment. This research not only underscores the importance of the effect of rainfall temporal distribution selection and assessment of the critical rainfall duration but also highlights the need for accurate data-driven methodologies in flood mapping, particularly in the face of urbanization and climate-induced complexities.
+
