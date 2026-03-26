@@ -24,11 +24,11 @@ author:
   avatar           : "Picture1.png"
   name             : "Marcus N. Gomes Jr., Ph.D."
   pronouns         : # example: "he/him"  
-  bio              : "Postdoctoral Researcher Associate II"
-  location         : "Tucson - AZ"
-  employer         : "University of Arizona"
+  bio              : "Postdoctoral Researcher"
+  location         : "Stanford - CA"
+  employer         : "Stanford University"
   uri              : # URL
-  email            : "marcusnobrega.engcivil@gmail.com" 
+  email            : "mngomes@stanford.edu" 
 
   # Academic websites
   researchgate     : "https://www.researchgate.net/profile/Marcus-Gomes-Jr/research"
