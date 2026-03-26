@@ -6,7 +6,7 @@ permalink: publication/2026_Milena
 excerpt: 'Sao Carlos is a very flood-prone city. Even though it is home to two of the largest universities in Brazil, producing significant research and scientific progress in several fields, São Carlos has a very poor drainage system, and the city was urbanized, conversely maximizing flood effects by having its downtown in a natural floodplain. In this paper, we build a hydrologic-hydrodynamic model to investigate the effects of climate change on rare storms such as the 100-yr storm. We show that flood depths can increase up to several meters in some areas due to climate change, showing a critical scenario for the future.'
 date: 2026-02-24
 venue: 'RBRH'
-paperurl: 'https://www.mdpi.com/2073-4441/18/5/561'
+paperurl: 'https://www.scielo.br/j/rbrh/a/KFQjyK4vxHPscnyCCRrBGjH/?format=pdf&lang=en'
 citation: 'Sousa, M.R.D., Mendiondo, E.M. and Gomes Júnior, M.N., 2026. Modelagem hidrológica-hidrodinâmica de inundações urbanas induzidas por mudanças climáticas com chuvas de projeto usando o HydroPol2D: estudo de caso em São Carlos, Brasil. RBRH, 31, p.e02.'
 ---
 
