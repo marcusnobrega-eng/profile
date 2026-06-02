@@ -100,6 +100,22 @@ redirect_from:
       </div>
     </article>
 
+    <article class="model-card model-card--text">
+      <div class="model-card__content">
+        <p class="model-card__kicker">DEM conditioning and bathymetry preparation</p>
+        <h3>HydroBathyDEM</h3>
+        <p>HydroBathyDEM is a Python toolbox for adapting existing digital elevation models into hydrologic-hydrodynamic conditioned DEMs. It supports workflows where terrain data need to be prepared for flood, river, and surface-flow modeling applications.</p>
+        <ul class="model-card__features">
+          <li>Hydrologic-hydrodynamic DEM conditioning workflow</li>
+          <li>River-aware terrain and bathymetry preparation</li>
+          <li>Python-based tooling for preprocessing model-ready elevation data</li>
+        </ul>
+        <div class="model-card__actions">
+          <a class="model-button" href="https://github.com/marcusnobrega-eng/HydroBathyDEM">Repository</a>
+        </div>
+      </div>
+    </article>
+
     <article class="model-card">
       <div class="model-card__content">
         <p class="model-card__kicker">Control-oriented stormwater modeling</p>
@@ -136,6 +152,22 @@ redirect_from:
           <img src="https://marcusnobrega-eng.github.io/profile//files/Conceptual_Model-1.png" alt="TC-Hydro conceptual model">
           <figcaption>TC-Hydro conceptual model.</figcaption>
         </figure>
+      </div>
+    </article>
+
+    <article class="model-card model-card--text">
+      <div class="model-card__content">
+        <p class="model-card__kicker">Lot-scale LID reservoir design</p>
+        <h3>LotScaleReservoir</h3>
+        <p>LotScaleReservoir contains the software developed for the study on accounting for spatial runoff variability in LID design for urban catchments. The tool supports lot-scale reservoir and low-impact development design where runoff contribution varies across urban parcels.</p>
+        <ul class="model-card__features">
+          <li>Catchment-aware lot-scale reservoir sizing</li>
+          <li>Software companion to the spatial runoff variability LID design paper</li>
+          <li>Design workflow for urban catchment mitigation and adaptation studies</li>
+        </ul>
+        <div class="model-card__actions">
+          <a class="model-button" href="https://github.com/marcusnobrega-eng/LotScaleReservoir">Repository</a>
+        </div>
       </div>
     </article>
 

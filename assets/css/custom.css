@@ -1113,6 +1113,10 @@ body {
   grid-template-columns: minmax(0, 1fr) minmax(220px, 0.8fr);
 }
 
+.model-card--text {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .model-card__content {
   display: grid;
   align-content: start;
