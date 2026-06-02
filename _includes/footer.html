@@ -1,25 +1,57 @@
-{% include base_path %}
+<div class="site-footer">
+  <div class="site-footer__top">
+    <div class="site-footer__brand">
+      <p class="site-footer__eyebrow">Marcus N. Gomes Jr.</p>
+      <p class="site-footer__name">{{ site.author.name | default: site.name }}</p>
+      <p class="site-footer__tagline">
+        Hydrology, urban flooding, stormwater systems, and open-source water resources modeling.
+      </p>
+    </div>
 
-{% if site.author.github or site.author.bitbucket or site.atom_feed.hide != true %}
-<div class="page__footer-follow">
-  <ul class="social-icons">
-    {% if site.data.ui-text[site.locale].follow_label %}
-      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
-    {% endif %}
-    {% if site.author.github %}
-      <li><a href="http://github.com/{{ site.author.github }}"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
-    {% endif %}
-    {% if site.author.bitbucket %}
-      <li><a href="http://bitbucket.org/{{ site.author.bitbucket }}"><i class="fab fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
-    {% endif %}
-    {% if site.atom_feed.hide != true %}
-    <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
-    {% endif %}
-  </ul>
-</div>
-{% endif %}
+    <a class="site-footer__cta" href="mailto:{{ site.author.email | default: 'mngomes@stanford.edu' }}">
+      <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+      Contact
+    </a>
+  </div>
 
-<div class="page__footer-copyright">
-  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}, {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated {{ "now" | date: '%Y-%m-%d' %}}
+  <div class="site-footer__grid">
+    <nav class="site-footer__group" aria-label="Footer site navigation">
+      <p class="site-footer__heading">Explore</p>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/publications/' | relative_url }}">Publications</a>
+      <a href="{{ '/news/' | relative_url }}">News</a>
+      <a href="{{ '/talks/' | relative_url }}">Talks</a>
+      <a href="{{ '/Developed_Models/' | relative_url }}">Developed Models</a>
+    </nav>
+
+    <nav class="site-footer__group" aria-label="Footer academic links">
+      <p class="site-footer__heading">Academic</p>
+      {% if site.author.googlescholar %}
+        <a href="{{ site.author.googlescholar }}"><i class="ai ai-google-scholar ai-fw" aria-hidden="true"></i>Google Scholar</a>
+      {% endif %}
+      {% if site.author.orcid %}
+        <a href="{{ site.author.orcid }}"><i class="ai ai-orcid ai-fw" aria-hidden="true"></i>ORCID</a>
+      {% endif %}
+      {% if site.author.researchgate %}
+        <a href="{{ site.author.researchgate }}"><i class="ai ai-researchgate ai-fw" aria-hidden="true"></i>ResearchGate</a>
+      {% endif %}
+      <a href="{{ '/files/CV___Marcus_N__Gomes_Jr.pdf' | relative_url }}">CV</a>
+    </nav>
+
+    <nav class="site-footer__group" aria-label="Footer project links">
+      <p class="site-footer__heading">Projects</p>
+      {% if site.author.github %}
+        <a href="https://github.com/{{ site.author.github }}"><i class="fab fa-fw fa-github" aria-hidden="true"></i>GitHub</a>
+      {% endif %}
+      <a href="https://github.com/marcusnobrega-eng/HydroPol2D">HydroPol2D Code</a>
+      <a href="https://marcusnobrega-eng.github.io/HydroPol2D-docs/">HydroPol2D Docs</a>
+      <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a>
+    </nav>
+  </div>
+
+  <div class="site-footer__meta">
+    <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</span>
+    <span>Built with Jekyll and AcademicPages</span>
+    <span>Last updated {{ "now" | date: '%Y-%m-%d' }}</span>
+  </div>
 </div>

@@ -5,12 +5,22 @@ permalink: /talks/
 author_profile: true
 ---
 
+<section class="talks-page">
+  <div class="talks-hero">
+    <p class="talks-eyebrow">Invited lectures, courses, and conference presentations</p>
+    <h2>Research talks and teaching presentations</h2>
+    <p>Selected presentations on hydrologic and hydraulic modeling, flood and water-quality simulation, low-impact development, dam-break analysis, and open-source model development.</p>
+  </div>
+
 {% if site.talkmap_link == true %}
 
 <p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
 
 {% endif %}
 
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
-{% endfor %}
+  <div class="talks-list">
+  {% for post in site.talks reversed %}
+    {% include archive-single-talk.html %}
+  {% endfor %}
+  </div>
+</section>

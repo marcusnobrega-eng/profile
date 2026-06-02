@@ -1,0 +1,81 @@
+{% assign news_items = site.news | sort: "date" | reverse %}
+{% assign rendered_count = 0 %}
+{% assign current_year = "" %}
+{% assign initial_count = include.initial | default: nil %}
+{% if initial_count %}
+  {% assign initial_count = initial_count | plus: 0 %}
+{% endif %}
+{% assign reveal_count = include.reveal | default: 18 | plus: 0 %}
+
+<div class="news-timeline">
+  {% for item in news_items %}
+    {% if include.limit and rendered_count >= include.limit %}
+      {% break %}
+    {% endif %}
+
+    {% assign item_hidden = false %}
+    {% if initial_count and rendered_count >= initial_count %}
+      {% assign item_hidden = true %}
+    {% endif %}
+
+    {% assign item_year = item.date | date: "%Y" %}
+    {% if item_year != current_year %}
+      {% assign current_year = item_year %}
+      <h3 class="news-year{% if item_hidden %} is-hidden{% endif %}">{{ current_year }}</h3>
+    {% endif %}
+
+    {% assign type_class = item.type | default: "Update" | downcase | replace: " ", "-" %}
+    <article class="news-item news-item--{{ type_class }}{% if item_hidden %} is-hidden{% endif %}">
+      <div class="news-date">
+        <span class="news-icon" aria-hidden="true"></span>
+        <span class="news-month-day">{{ item.date | date: "%b %d" }}</span>
+      </div>
+      <div class="news-body">
+        {% if item.type %}
+          <span class="news-type news-type--{{ type_class }}">{{ item.type }}</span>
+        {% endif %}
+        <div class="news-copy">
+          {{ item.content | markdownify }}
+        </div>
+        {% if item.link %}
+          <a class="news-link" href="{{ item.link }}">{{ item.link_label | default: "Read more" }}</a>
+        {% endif %}
+      </div>
+    </article>
+
+    {% assign rendered_count = rendered_count | plus: 1 %}
+  {% endfor %}
+
+  {% if initial_count and news_items.size > initial_count %}
+    <div class="news-actions">
+      <button class="news-load-more" type="button" data-reveal-count="{{ reveal_count }}">Read more news</button>
+    </div>
+  {% endif %}
+</div>
+
+{% if initial_count and news_items.size > initial_count %}
+  <script>
+    document.addEventListener("click", function(event) {
+      var button = event.target.closest(".news-load-more");
+      if (!button) return;
+
+      var timeline = button.closest(".news-timeline");
+      var revealCount = parseInt(button.getAttribute("data-reveal-count"), 10) || 18;
+      var hiddenItems = Array.prototype.slice.call(timeline.querySelectorAll(".news-item.is-hidden"));
+      var itemsToShow = hiddenItems.slice(0, revealCount);
+
+      itemsToShow.forEach(function(item) {
+        var previous = item.previousElementSibling;
+        while (previous && previous.classList.contains("news-year") && previous.classList.contains("is-hidden")) {
+          previous.classList.remove("is-hidden");
+          previous = previous.previousElementSibling;
+        }
+        item.classList.remove("is-hidden");
+      });
+
+      if (!timeline.querySelector(".news-item.is-hidden")) {
+        button.remove();
+      }
+    });
+  </script>
+{% endif %}
