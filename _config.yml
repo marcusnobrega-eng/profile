@@ -12,8 +12,8 @@ title                    : "Marcus - Homepage"
 title_separator          : "-"
 name                     : &name "Marcus N. Gomes Jr."
 description              : &description "personal description"
-url                      : https://marcusnobrega-eng.github.io/profile/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
+url                      : https://marcusnobrega-eng.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "/profile" # the subpath of your site, e.g. "/blog"
 repository               : "marcusnobrega-eng/profile"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
