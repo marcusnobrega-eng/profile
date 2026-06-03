@@ -598,6 +598,10 @@ input, select, textarea, label { font-family: var(--font-body) !important; }
   --source-accent: #0b5f8f;
 }
 
+.news-source--wrm {
+  --source-accent: #0d6b56;
+}
+
 .news-source--jhe,
 .news-source--asce {
   --source-accent: #244b7a;

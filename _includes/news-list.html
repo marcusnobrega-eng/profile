@@ -37,6 +37,11 @@
       {% assign source_name = "Water Resources Research" %}
       {% assign source_class = "wrr" %}
       {% assign source_logo = "/assets/img/news-logos/wrr.ico" | relative_url %}
+    {% elsif source_text contains "water resources management" %}
+      {% assign source_label = "WRM" %}
+      {% assign source_name = "Water Resources Management" %}
+      {% assign source_class = "wrm" %}
+      {% assign source_logo = "/assets/img/news-logos/springer.png" | relative_url %}
     {% elsif source_text contains "journal of hydrologic engineering" or source_text contains "jhyeff" %}
       {% assign source_label = "JHE" %}
       {% assign source_name = "Journal of Hydrologic Engineering" %}
