@@ -25,15 +25,171 @@
     {% endif %}
 
     {% assign type_class = item.type | default: "Update" | downcase | replace: " ", "-" %}
-    <article class="news-item news-item--{{ type_class }}{% if item_hidden %} is-hidden{% endif %}">
+    {% capture source_text %}{{ item.title }} {{ item.content | strip_html }} {{ item.link }}{% endcapture %}
+    {% assign source_text = source_text | downcase %}
+    {% assign source_label = item.type | default: "N" | slice: 0, 1 %}
+    {% assign source_name = item.type | default: "News" %}
+    {% assign source_class = "generic" %}
+
+    {% if source_text contains "water resources research" or source_text contains "2025wr" or source_text contains "2023wr" %}
+      {% assign source_label = "WRR" %}
+      {% assign source_name = "Water Resources Research" %}
+      {% assign source_class = "wrr" %}
+    {% elsif source_text contains "journal of hydrologic engineering" or source_text contains "jhyeff" %}
+      {% assign source_label = "JHE" %}
+      {% assign source_name = "Journal of Hydrologic Engineering" %}
+      {% assign source_class = "jhe" %}
+    {% elsif source_text contains "journal of hydrology" or source_text contains "jhydrol" %}
+      {% assign source_label = "JHyd" %}
+      {% assign source_name = "Journal of Hydrology" %}
+      {% assign source_class = "jhyd" %}
+    {% elsif source_text contains "environmental modelling" or source_text contains "envsoft" %}
+      {% assign source_label = "EMS" %}
+      {% assign source_name = "Environmental Modelling & Software" %}
+      {% assign source_class = "ems" %}
+    {% elsif source_text contains "brazilian journal of water resources" or source_text contains "2318-0331" %}
+      {% assign source_label = "RBRH" %}
+      {% assign source_name = "Brazilian Journal of Water Resources" %}
+      {% assign source_class = "rbrh" %}
+    {% elsif source_text contains "natural hazards" %}
+      {% assign source_label = "NH" %}
+      {% assign source_name = "Natural Hazards" %}
+      {% assign source_class = "nh" %}
+    {% elsif source_text contains "international journal of disaster risk reduction" or source_text contains "ijdrr" %}
+      {% assign source_label = "IJDRR" %}
+      {% assign source_name = "International Journal of Disaster Risk Reduction" %}
+      {% assign source_class = "ijdrr" %}
+    {% elsif source_text contains "hydrological sciences journal" %}
+      {% assign source_label = "HSJ" %}
+      {% assign source_name = "Hydrological Sciences Journal" %}
+      {% assign source_class = "hsj" %}
+    {% elsif source_text contains "journal of environmental management" or source_text contains "jenvman" %}
+      {% assign source_label = "JEM" %}
+      {% assign source_name = "Journal of Environmental Management" %}
+      {% assign source_class = "jem" %}
+    {% elsif source_text contains "sustainability" %}
+      {% assign source_label = "Sust" %}
+      {% assign source_name = "Sustainability" %}
+      {% assign source_class = "sustainability" %}
+    {% elsif source_text contains "water" or source_text contains "mdpi" %}
+      {% assign source_label = "Water" %}
+      {% assign source_name = "Water" %}
+      {% assign source_class = "water" %}
+    {% elsif source_text contains "stanford" %}
+      {% assign source_label = "S" %}
+      {% assign source_name = "Stanford University" %}
+      {% assign source_class = "stanford" %}
+    {% elsif source_text contains "university of arizona" or source_text contains "landscape evolution observatory" or source_text contains "leo" %}
+      {% assign source_label = "UA" %}
+      {% if source_text contains "landscape evolution observatory" or source_text contains "leo" %}
+        {% assign source_name = "University of Arizona / LEO" %}
+      {% else %}
+        {% assign source_name = "University of Arizona" %}
+      {% endif %}
+      {% assign source_class = "uarizona" %}
+    {% elsif source_text contains "university of texas at san antonio" or source_text contains "utsa" %}
+      {% assign source_label = "UTSA" %}
+      {% assign source_name = "University of Texas at San Antonio" %}
+      {% assign source_class = "utsa" %}
+    {% elsif source_text contains "university of sao paulo" or source_text contains "usp" or source_text contains "sao carlos" %}
+      {% assign source_label = "USP" %}
+      {% assign source_name = "University of Sao Paulo" %}
+      {% assign source_class = "usp" %}
+    {% elsif source_text contains "vanderbilt" %}
+      {% assign source_label = "VU" %}
+      {% assign source_name = "Vanderbilt University" %}
+      {% assign source_class = "vanderbilt" %}
+    {% elsif source_text contains "american geophysical union" or source_text contains "agu" %}
+      {% assign source_label = "AGU" %}
+      {% assign source_name = "American Geophysical Union" %}
+      {% assign source_class = "agu" %}
+    {% elsif source_text contains "computational methods on water resources" or source_text contains "cmwr" %}
+      {% assign source_label = "CMWR" %}
+      {% assign source_name = "Computational Methods in Water Resources" %}
+      {% assign source_class = "cmwr" %}
+    {% elsif source_text contains "world environmental and water resources congress" or source_text contains "ewri" or source_text contains "asce" %}
+      {% assign source_label = "ASCE" %}
+      {% assign source_name = "ASCE / EWRI" %}
+      {% assign source_class = "asce" %}
+    {% elsif source_text contains "brazilian symposium" or source_text contains "abrh" or source_text contains "enau" %}
+      {% assign source_label = "ABRH" %}
+      {% assign source_name = "ABRHidro" %}
+      {% assign source_class = "abrh" %}
+    {% elsif source_text contains "unesco" %}
+      {% assign source_label = "UNESCO" %}
+      {% assign source_name = "UNESCO" %}
+      {% assign source_class = "unesco" %}
+    {% endif %}
+
+    {% if type_class == "talk" or type_class == "course" or type_class == "position" %}
+      {% if source_text contains "stanford" %}
+        {% assign source_label = "S" %}
+        {% assign source_name = "Stanford University" %}
+        {% assign source_class = "stanford" %}
+      {% elsif source_text contains "university of arizona" or source_text contains "landscape evolution observatory" or source_text contains "leo" %}
+        {% assign source_label = "UA" %}
+        {% if source_text contains "landscape evolution observatory" or source_text contains "leo" %}
+          {% assign source_name = "University of Arizona / LEO" %}
+        {% else %}
+          {% assign source_name = "University of Arizona" %}
+        {% endif %}
+        {% assign source_class = "uarizona" %}
+      {% elsif source_text contains "university of texas at san antonio" or source_text contains "utsa" %}
+        {% assign source_label = "UTSA" %}
+        {% assign source_name = "University of Texas at San Antonio" %}
+        {% assign source_class = "utsa" %}
+      {% elsif source_text contains "university of sao paulo" or source_text contains "usp" or source_text contains "sao carlos" %}
+        {% assign source_label = "USP" %}
+        {% assign source_name = "University of Sao Paulo" %}
+        {% assign source_class = "usp" %}
+      {% elsif source_text contains "vanderbilt" %}
+        {% assign source_label = "VU" %}
+        {% assign source_name = "Vanderbilt University" %}
+        {% assign source_class = "vanderbilt" %}
+      {% elsif source_text contains "american geophysical union" or source_text contains "agu" %}
+        {% assign source_label = "AGU" %}
+        {% assign source_name = "American Geophysical Union" %}
+        {% assign source_class = "agu" %}
+      {% elsif source_text contains "computational methods on water resources" or source_text contains "cmwr" %}
+        {% assign source_label = "CMWR" %}
+        {% assign source_name = "Computational Methods in Water Resources" %}
+        {% assign source_class = "cmwr" %}
+      {% elsif source_text contains "world environmental and water resources congress" or source_text contains "ewri" or source_text contains "asce" %}
+        {% assign source_label = "ASCE" %}
+        {% assign source_name = "ASCE / EWRI" %}
+        {% assign source_class = "asce" %}
+      {% elsif source_text contains "brazilian symposium" or source_text contains "abrh" or source_text contains "enau" %}
+        {% assign source_label = "ABRH" %}
+        {% assign source_name = "ABRHidro" %}
+        {% assign source_class = "abrh" %}
+      {% elsif source_text contains "unesco" %}
+        {% assign source_label = "UNESCO" %}
+        {% assign source_name = "UNESCO" %}
+        {% assign source_class = "unesco" %}
+      {% endif %}
+    {% elsif type_class == "paper" %}
+      {% if source_text contains "journal of irrigation and drainage engineering" or source_text contains "jidedh" %}
+        {% assign source_label = "JIDE" %}
+        {% assign source_name = "Journal of Irrigation and Drainage Engineering" %}
+        {% assign source_class = "asce" %}
+      {% endif %}
+    {% endif %}
+
+    <article class="news-item news-item--{{ type_class }} news-source--{{ source_class }}{% if item_hidden %} is-hidden{% endif %}">
       <div class="news-date">
         <span class="news-icon" aria-hidden="true"></span>
         <span class="news-month-day">{{ item.date | date: "%b %d" }}</span>
       </div>
       <div class="news-body">
-        {% if item.type %}
-          <span class="news-type news-type--{{ type_class }}">{{ item.type }}</span>
-        {% endif %}
+        <div class="news-head">
+          <span class="news-source-mark" aria-hidden="true">{{ source_label }}</span>
+          <div class="news-head__text">
+            {% if item.type %}
+              <span class="news-type news-type--{{ type_class }}">{{ item.type }}</span>
+            {% endif %}
+            <span class="news-source-name">{{ source_name }}</span>
+          </div>
+        </div>
         <div class="news-copy">
           {{ item.content | markdownify }}
         </div>

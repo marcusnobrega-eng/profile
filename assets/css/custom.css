@@ -428,9 +428,56 @@ input, select, textarea, label { font-family: var(--font-body) !important; }
   min-width: 0;
 }
 
+.news-head {
+  display: flex;
+  gap: 0.62rem;
+  align-items: center;
+  margin: 0 0 0.38rem;
+}
+
+.news-source-mark {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 2.65rem;
+  min-width: 2.65rem;
+  height: 2.15rem;
+  align-items: center;
+  justify-items: center;
+  padding: 0 0.18rem;
+  border: 1px solid color-mix(in srgb, var(--source-accent, var(--news-accent)), #fff 56%);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--source-accent, var(--news-accent)), #fff 84%), #fff);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.7), 0 6px 14px rgba(15, 23, 42, 0.06);
+  color: var(--source-accent, var(--news-accent));
+  font-size: 0.68rem;
+  font-weight: 1000;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.news-head__text {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.42rem;
+  align-items: center;
+}
+
+.news-source-name {
+  color: #687586;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .news-type {
   display: inline-block;
-  margin: 0 0 0.22rem;
+  margin: 0;
   padding: 0.1rem 0.42rem;
   border-radius: 999px;
   color: #444;
@@ -528,6 +575,87 @@ input, select, textarea, label { font-family: var(--font-body) !important; }
 .news-type--award {
   background: var(--news-award-bg);
   color: var(--news-award-fg);
+}
+
+.news-source--wrr {
+  --source-accent: #0b5f8f;
+}
+
+.news-source--jhe,
+.news-source--asce {
+  --source-accent: #244b7a;
+}
+
+.news-source--jhyd {
+  --source-accent: #13706f;
+}
+
+.news-source--ems {
+  --source-accent: #6e4a9e;
+}
+
+.news-source--rbrh {
+  --source-accent: #0f766e;
+}
+
+.news-source--nh {
+  --source-accent: #8a5200;
+}
+
+.news-source--ijdrr {
+  --source-accent: #8f3f46;
+}
+
+.news-source--hsj {
+  --source-accent: #315f8d;
+}
+
+.news-source--jem {
+  --source-accent: #22693f;
+}
+
+.news-source--sustainability {
+  --source-accent: #367a3d;
+}
+
+.news-source--water {
+  --source-accent: #1677b7;
+}
+
+.news-source--stanford {
+  --source-accent: #8c1515;
+}
+
+.news-source--uarizona {
+  --source-accent: #0c234b;
+}
+
+.news-source--utsa {
+  --source-accent: #0c4b8e;
+}
+
+.news-source--usp {
+  --source-accent: #0b4ea2;
+}
+
+.news-source--vanderbilt {
+  --source-accent: #866d4b;
+}
+
+.news-source--agu {
+  --source-accent: #1d5f3d;
+}
+
+.news-source--cmwr {
+  --source-accent: #5140a1;
+}
+
+.news-source--abrh {
+  --source-accent: #1f6f9e;
+}
+
+.news-source--unesco {
+  --source-accent: #0072bc;
 }
 
 .news-copy p {
