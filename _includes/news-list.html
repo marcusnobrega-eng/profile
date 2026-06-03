@@ -30,55 +30,68 @@
     {% assign source_label = item.type | default: "N" | slice: 0, 1 %}
     {% assign source_name = item.type | default: "News" %}
     {% assign source_class = "generic" %}
+    {% assign source_logo = "" %}
 
     {% if source_text contains "water resources research" or source_text contains "2025wr" or source_text contains "2023wr" %}
       {% assign source_label = "WRR" %}
       {% assign source_name = "Water Resources Research" %}
       {% assign source_class = "wrr" %}
+      {% assign source_logo = "/assets/img/news-logos/wrr.ico" | relative_url %}
     {% elsif source_text contains "journal of hydrologic engineering" or source_text contains "jhyeff" %}
       {% assign source_label = "JHE" %}
       {% assign source_name = "Journal of Hydrologic Engineering" %}
       {% assign source_class = "jhe" %}
+      {% assign source_logo = "/assets/img/news-logos/ascelibrary.ico" | relative_url %}
     {% elsif source_text contains "journal of hydrology" or source_text contains "jhydrol" %}
       {% assign source_label = "JHyd" %}
       {% assign source_name = "Journal of Hydrology" %}
       {% assign source_class = "jhyd" %}
+      {% assign source_logo = "/assets/img/news-logos/sciencedirect.png" | relative_url %}
     {% elsif source_text contains "environmental modelling" or source_text contains "envsoft" %}
       {% assign source_label = "EMS" %}
       {% assign source_name = "Environmental Modelling & Software" %}
       {% assign source_class = "ems" %}
+      {% assign source_logo = "/assets/img/news-logos/sciencedirect.png" | relative_url %}
     {% elsif source_text contains "brazilian journal of water resources" or source_text contains "2318-0331" %}
       {% assign source_label = "RBRH" %}
       {% assign source_name = "Brazilian Journal of Water Resources" %}
       {% assign source_class = "rbrh" %}
+      {% assign source_logo = "/assets/img/news-logos/abrhidro.png" | relative_url %}
     {% elsif source_text contains "natural hazards" %}
       {% assign source_label = "NH" %}
       {% assign source_name = "Natural Hazards" %}
       {% assign source_class = "nh" %}
+      {% assign source_logo = "/assets/img/news-logos/springer.png" | relative_url %}
     {% elsif source_text contains "international journal of disaster risk reduction" or source_text contains "ijdrr" %}
       {% assign source_label = "IJDRR" %}
       {% assign source_name = "International Journal of Disaster Risk Reduction" %}
       {% assign source_class = "ijdrr" %}
+      {% assign source_logo = "/assets/img/news-logos/sciencedirect.png" | relative_url %}
     {% elsif source_text contains "hydrological sciences journal" %}
       {% assign source_label = "HSJ" %}
       {% assign source_name = "Hydrological Sciences Journal" %}
       {% assign source_class = "hsj" %}
+      {% assign source_logo = "/assets/img/news-logos/tandfonline.png" | relative_url %}
     {% elsif source_text contains "journal of environmental management" or source_text contains "jenvman" %}
       {% assign source_label = "JEM" %}
       {% assign source_name = "Journal of Environmental Management" %}
       {% assign source_class = "jem" %}
+      {% assign source_logo = "/assets/img/news-logos/sciencedirect.png" | relative_url %}
     {% elsif source_text contains "sustainability" %}
       {% assign source_label = "Sust" %}
       {% assign source_name = "Sustainability" %}
       {% assign source_class = "sustainability" %}
+      {% assign source_logo = "/assets/img/news-logos/mdpi.png" | relative_url %}
     {% elsif source_text contains "water" or source_text contains "mdpi" %}
       {% assign source_label = "Water" %}
       {% assign source_name = "Water" %}
       {% assign source_class = "water" %}
+      {% assign source_logo = "/assets/img/news-logos/mdpi.png" | relative_url %}
     {% elsif source_text contains "stanford" %}
       {% assign source_label = "S" %}
       {% assign source_name = "Stanford University" %}
       {% assign source_class = "stanford" %}
+      {% assign source_logo = "/assets/img/news-logos/stanford.png" | relative_url %}
     {% elsif source_text contains "university of arizona" or source_text contains "landscape evolution observatory" or source_text contains "leo" %}
       {% assign source_label = "UA" %}
       {% if source_text contains "landscape evolution observatory" or source_text contains "leo" %}
@@ -87,38 +100,47 @@
         {% assign source_name = "University of Arizona" %}
       {% endif %}
       {% assign source_class = "uarizona" %}
+      {% assign source_logo = "/assets/img/news-logos/arizona.png" | relative_url %}
     {% elsif source_text contains "university of texas at san antonio" or source_text contains "utsa" %}
       {% assign source_label = "UTSA" %}
       {% assign source_name = "University of Texas at San Antonio" %}
       {% assign source_class = "utsa" %}
+      {% assign source_logo = "/assets/img/news-logos/utsa.png" | relative_url %}
     {% elsif source_text contains "university of sao paulo" or source_text contains "usp" or source_text contains "sao carlos" %}
       {% assign source_label = "USP" %}
       {% assign source_name = "University of Sao Paulo" %}
       {% assign source_class = "usp" %}
+      {% assign source_logo = "/assets/img/news-logos/usp.png" | relative_url %}
     {% elsif source_text contains "vanderbilt" %}
       {% assign source_label = "VU" %}
       {% assign source_name = "Vanderbilt University" %}
       {% assign source_class = "vanderbilt" %}
+      {% assign source_logo = "/assets/img/news-logos/vanderbilt.png" | relative_url %}
     {% elsif source_text contains "american geophysical union" or source_text contains "agu" %}
       {% assign source_label = "AGU" %}
       {% assign source_name = "American Geophysical Union" %}
       {% assign source_class = "agu" %}
+      {% assign source_logo = "/assets/img/news-logos/agu.png" | relative_url %}
     {% elsif source_text contains "computational methods on water resources" or source_text contains "cmwr" %}
       {% assign source_label = "CMWR" %}
       {% assign source_name = "Computational Methods in Water Resources" %}
       {% assign source_class = "cmwr" %}
+      {% assign source_logo = "/assets/img/news-logos/cmwr.png" | relative_url %}
     {% elsif source_text contains "world environmental and water resources congress" or source_text contains "ewri" or source_text contains "asce" %}
       {% assign source_label = "ASCE" %}
       {% assign source_name = "ASCE / EWRI" %}
       {% assign source_class = "asce" %}
+      {% assign source_logo = "/assets/img/news-logos/asce.png" | relative_url %}
     {% elsif source_text contains "brazilian symposium" or source_text contains "abrh" or source_text contains "enau" %}
       {% assign source_label = "ABRH" %}
       {% assign source_name = "ABRHidro" %}
       {% assign source_class = "abrh" %}
+      {% assign source_logo = "/assets/img/news-logos/abrhidro.png" | relative_url %}
     {% elsif source_text contains "unesco" %}
       {% assign source_label = "UNESCO" %}
       {% assign source_name = "UNESCO" %}
       {% assign source_class = "unesco" %}
+      {% assign source_logo = "/assets/img/news-logos/unesco.ico" | relative_url %}
     {% endif %}
 
     {% if type_class == "talk" or type_class == "course" or type_class == "position" %}
@@ -126,6 +148,7 @@
         {% assign source_label = "S" %}
         {% assign source_name = "Stanford University" %}
         {% assign source_class = "stanford" %}
+        {% assign source_logo = "/assets/img/news-logos/stanford.png" | relative_url %}
       {% elsif source_text contains "university of arizona" or source_text contains "landscape evolution observatory" or source_text contains "leo" %}
         {% assign source_label = "UA" %}
         {% if source_text contains "landscape evolution observatory" or source_text contains "leo" %}
@@ -134,44 +157,54 @@
           {% assign source_name = "University of Arizona" %}
         {% endif %}
         {% assign source_class = "uarizona" %}
+        {% assign source_logo = "/assets/img/news-logos/arizona.png" | relative_url %}
       {% elsif source_text contains "university of texas at san antonio" or source_text contains "utsa" %}
         {% assign source_label = "UTSA" %}
         {% assign source_name = "University of Texas at San Antonio" %}
         {% assign source_class = "utsa" %}
+        {% assign source_logo = "/assets/img/news-logos/utsa.png" | relative_url %}
       {% elsif source_text contains "university of sao paulo" or source_text contains "usp" or source_text contains "sao carlos" %}
         {% assign source_label = "USP" %}
         {% assign source_name = "University of Sao Paulo" %}
         {% assign source_class = "usp" %}
+        {% assign source_logo = "/assets/img/news-logos/usp.png" | relative_url %}
       {% elsif source_text contains "vanderbilt" %}
         {% assign source_label = "VU" %}
         {% assign source_name = "Vanderbilt University" %}
         {% assign source_class = "vanderbilt" %}
+        {% assign source_logo = "/assets/img/news-logos/vanderbilt.png" | relative_url %}
       {% elsif source_text contains "american geophysical union" or source_text contains "agu" %}
         {% assign source_label = "AGU" %}
         {% assign source_name = "American Geophysical Union" %}
         {% assign source_class = "agu" %}
+        {% assign source_logo = "/assets/img/news-logos/agu.png" | relative_url %}
       {% elsif source_text contains "computational methods on water resources" or source_text contains "cmwr" %}
         {% assign source_label = "CMWR" %}
         {% assign source_name = "Computational Methods in Water Resources" %}
         {% assign source_class = "cmwr" %}
+        {% assign source_logo = "/assets/img/news-logos/cmwr.png" | relative_url %}
       {% elsif source_text contains "world environmental and water resources congress" or source_text contains "ewri" or source_text contains "asce" %}
         {% assign source_label = "ASCE" %}
         {% assign source_name = "ASCE / EWRI" %}
         {% assign source_class = "asce" %}
+        {% assign source_logo = "/assets/img/news-logos/asce.png" | relative_url %}
       {% elsif source_text contains "brazilian symposium" or source_text contains "abrh" or source_text contains "enau" %}
         {% assign source_label = "ABRH" %}
         {% assign source_name = "ABRHidro" %}
         {% assign source_class = "abrh" %}
+        {% assign source_logo = "/assets/img/news-logos/abrhidro.png" | relative_url %}
       {% elsif source_text contains "unesco" %}
         {% assign source_label = "UNESCO" %}
         {% assign source_name = "UNESCO" %}
         {% assign source_class = "unesco" %}
+        {% assign source_logo = "/assets/img/news-logos/unesco.ico" | relative_url %}
       {% endif %}
     {% elsif type_class == "paper" %}
       {% if source_text contains "journal of irrigation and drainage engineering" or source_text contains "jidedh" %}
         {% assign source_label = "JIDE" %}
         {% assign source_name = "Journal of Irrigation and Drainage Engineering" %}
         {% assign source_class = "asce" %}
+        {% assign source_logo = "/assets/img/news-logos/ascelibrary.ico" | relative_url %}
       {% endif %}
     {% endif %}
 
@@ -182,7 +215,13 @@
       </div>
       <div class="news-body">
         <div class="news-head">
-          <span class="news-source-mark" aria-hidden="true">{{ source_label }}</span>
+          {% if source_logo != "" %}
+            <span class="news-source-mark news-source-mark--image" aria-hidden="true">
+              <img class="news-source-logo" src="{{ source_logo }}" alt="" loading="lazy" decoding="async">
+            </span>
+          {% else %}
+            <span class="news-source-mark" aria-hidden="true">{{ source_label }}</span>
+          {% endif %}
           <div class="news-head__text">
             {% if item.type %}
               <span class="news-type news-type--{{ type_class }}">{{ item.type }}</span>

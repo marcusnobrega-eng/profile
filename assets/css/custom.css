@@ -458,6 +458,23 @@ input, select, textarea, label { font-family: var(--font-body) !important; }
   text-transform: uppercase;
 }
 
+.news-source-mark--image {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--source-accent, var(--news-accent)), #fff 92%), #fff);
+}
+
+.news-source-logo {
+  display: block;
+  max-width: 1.8rem;
+  max-height: 1.55rem;
+  object-fit: contain;
+}
+
+.news-source--rbrh .news-source-mark--image,
+.news-source--abrh .news-source-mark--image {
+  background: var(--source-accent);
+}
+
 .news-head__text {
   display: flex;
   min-width: 0;
