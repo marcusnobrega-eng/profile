@@ -1,4 +1,18 @@
 {% include base_path %}
+{% assign current_lang = page.lang | default: "en" %}
+{% assign talk_type = post.type %}
+{% if current_lang == "pt" and post.type %}
+  {% assign talk_type_key = post.type | downcase %}
+  {% if talk_type_key contains "research talk" %}
+    {% assign talk_type = "Palestra de pesquisa" %}
+  {% elsif talk_type_key contains "invited" %}
+    {% assign talk_type = "Palestra convidada" %}
+  {% elsif talk_type_key contains "course" %}
+    {% assign talk_type = "Curso" %}
+  {% elsif talk_type_key contains "conference" %}
+    {% assign talk_type = "Conferência" %}
+  {% endif %}
+{% endif %}
 
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
@@ -36,7 +50,7 @@
     </div>
     <div class="talk-card__body">
       <div class="talk-card__meta">
-        {% if post.type %}<span class="talk-card__type">{{ post.type }}</span>{% endif %}
+        {% if post.type %}<span class="talk-card__type">{{ talk_type }}</span>{% endif %}
         {% if post.location %}<span>{{ post.location }}</span>{% endif %}
       </div>
       <h2 class="archive__item-title talk-card__title" itemprop="headline">

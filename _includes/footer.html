@@ -1,31 +1,70 @@
+{% assign current_lang = page.lang | default: "en" %}
+{% if current_lang == "pt" %}
+  {% assign footer_tagline = "Hidrologia, inundações urbanas, sistemas de drenagem e modelagem open-source em recursos hídricos." %}
+  {% assign footer_contact = "Contato" %}
+  {% assign footer_explore = "Explorar" %}
+  {% assign footer_academic = "Acadêmico" %}
+  {% assign footer_projects = "Projetos" %}
+  {% assign footer_home = "Início" %}
+  {% assign footer_publications = "Publicações" %}
+  {% assign footer_news = "Notícias" %}
+  {% assign footer_talks = "Palestras" %}
+  {% assign footer_models = "Modelos Desenvolvidos" %}
+  {% assign footer_built = "Construído com Jekyll e AcademicPages" %}
+  {% assign footer_updated = "Última atualização" %}
+  {% assign footer_home_url = "/pt/" %}
+  {% assign footer_publications_url = "/pt/publications/" %}
+  {% assign footer_news_url = "/pt/news/" %}
+  {% assign footer_talks_url = "/pt/talks/" %}
+  {% assign footer_models_url = "/pt/Developed_Models/" %}
+{% else %}
+  {% assign footer_tagline = "Hydrology, urban flooding, stormwater systems, and open-source water resources modeling." %}
+  {% assign footer_contact = "Contact" %}
+  {% assign footer_explore = "Explore" %}
+  {% assign footer_academic = "Academic" %}
+  {% assign footer_projects = "Projects" %}
+  {% assign footer_home = "Home" %}
+  {% assign footer_publications = "Publications" %}
+  {% assign footer_news = "News" %}
+  {% assign footer_talks = "Talks" %}
+  {% assign footer_models = "Developed Models" %}
+  {% assign footer_built = "Built with Jekyll and AcademicPages" %}
+  {% assign footer_updated = "Last updated" %}
+  {% assign footer_home_url = "/" %}
+  {% assign footer_publications_url = "/publications/" %}
+  {% assign footer_news_url = "/news/" %}
+  {% assign footer_talks_url = "/talks/" %}
+  {% assign footer_models_url = "/Developed_Models/" %}
+{% endif %}
+
 <div class="site-footer">
   <div class="site-footer__top">
     <div class="site-footer__brand">
       <p class="site-footer__eyebrow">Marcus N. Gomes Jr.</p>
       <p class="site-footer__name">{{ site.author.name | default: site.name }}</p>
       <p class="site-footer__tagline">
-        Hydrology, urban flooding, stormwater systems, and open-source water resources modeling.
+        {{ footer_tagline }}
       </p>
     </div>
 
     <a class="site-footer__cta" href="mailto:{{ site.author.email | default: 'mngomes@stanford.edu' }}">
       <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
-      Contact
+      {{ footer_contact }}
     </a>
   </div>
 
   <div class="site-footer__grid">
     <nav class="site-footer__group" aria-label="Footer site navigation">
-      <p class="site-footer__heading">Explore</p>
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/publications/' | relative_url }}">Publications</a>
-      <a href="{{ '/news/' | relative_url }}">News</a>
-      <a href="{{ '/talks/' | relative_url }}">Talks</a>
-      <a href="{{ '/Developed_Models/' | relative_url }}">Developed Models</a>
+      <p class="site-footer__heading">{{ footer_explore }}</p>
+      <a href="{{ footer_home_url | relative_url }}">{{ footer_home }}</a>
+      <a href="{{ footer_publications_url | relative_url }}">{{ footer_publications }}</a>
+      <a href="{{ footer_news_url | relative_url }}">{{ footer_news }}</a>
+      <a href="{{ footer_talks_url | relative_url }}">{{ footer_talks }}</a>
+      <a href="{{ footer_models_url | relative_url }}">{{ footer_models }}</a>
     </nav>
 
     <nav class="site-footer__group" aria-label="Footer academic links">
-      <p class="site-footer__heading">Academic</p>
+      <p class="site-footer__heading">{{ footer_academic }}</p>
       {% if site.author.googlescholar %}
         <a href="{{ site.author.googlescholar }}"><i class="ai ai-google-scholar ai-fw" aria-hidden="true"></i>Google Scholar</a>
       {% endif %}
@@ -39,7 +78,7 @@
     </nav>
 
     <nav class="site-footer__group" aria-label="Footer project links">
-      <p class="site-footer__heading">Projects</p>
+      <p class="site-footer__heading">{{ footer_projects }}</p>
       {% if site.author.github %}
         <a href="https://github.com/{{ site.author.github }}"><i class="fab fa-fw fa-github" aria-hidden="true"></i>GitHub</a>
       {% endif %}
@@ -51,7 +90,7 @@
 
   <div class="site-footer__meta">
     <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</span>
-    <span>Built with Jekyll and AcademicPages</span>
-    <span>Last updated {{ "now" | date: '%Y-%m-%d' }}</span>
+    <span>{{ footer_built }}</span>
+    <span>{{ footer_updated }} {{ "now" | date: '%Y-%m-%d' }}</span>
   </div>
 </div>

@@ -1,4 +1,18 @@
 {% include base_path %}
+{% assign current_lang = page.lang | default: "en" %}
+{% if current_lang == "pt" %}
+  {% assign nav_links = site.data.navigation.main_pt %}
+  {% assign home_url = "/pt/" %}
+  {% assign menu_label = "Menu" %}
+  {% assign english_url = page.translation_url | default: "/" %}
+  {% assign portuguese_url = page.url %}
+{% else %}
+  {% assign nav_links = site.data.navigation.main %}
+  {% assign home_url = "/" %}
+  {% assign menu_label = "Menu" %}
+  {% assign english_url = page.url | default: "/" %}
+  {% assign portuguese_url = page.translation_url | default: "/pt/" %}
+{% endif %}
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -6,11 +20,11 @@
       <nav id="site-nav" class="greedy-nav">
         <button class="greedy-nav__toggle" type="button" aria-label="Toggle navigation menu">
           <span class="navicon" aria-hidden="true"></span>
-          <span class="greedy-nav__label">Menu</span>
+          <span class="greedy-nav__label">{{ menu_label }}</span>
         </button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></li>
-          {% for link in site.data.navigation.main %}
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ home_url | relative_url }}">{{ site.title }}</a></li>
+          {% for link in nav_links %}
             {% if link.url contains 'http' %}
               {% assign nav_url = link.url %}
               {% else %}
@@ -19,6 +33,16 @@
             <li class="masthead__menu-item"><a href="{{ nav_url }}">{{ link.title }}</a></li>
           {% endfor %}
         </ul>
+        <div class="masthead__language" aria-label="Language selector">
+          <a class="{% if current_lang == 'en' %}is-active{% endif %}" href="{{ english_url | relative_url }}" lang="en" aria-label="English version" title="English">
+            <span aria-hidden="true">🇺🇸</span>
+            <span class="sr-only">English</span>
+          </a>
+          <a class="{% if current_lang == 'pt' %}is-active{% endif %}" href="{{ portuguese_url | relative_url }}" lang="pt-BR" aria-label="Versão em português" title="Português">
+            <span aria-hidden="true">🇧🇷</span>
+            <span class="sr-only">Português</span>
+          </a>
+        </div>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>

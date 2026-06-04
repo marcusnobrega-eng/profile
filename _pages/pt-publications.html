@@ -1,0 +1,43 @@
+---
+layout: archive
+title: "Publicações"
+permalink: /pt/publications/
+author_profile: true
+lang: pt
+translation_url: /publications/
+---
+
+{% if site.author.googlescholar %}
+  <div class="wordwrap">Para a lista completa de artigos em periódicos e publicações em conferências, baixe meu CV. <br>
+    Você também pode consultar meu <a href="{{site.author.googlescholar}}">perfil no Google Scholar</a>.</div>
+{% endif %}
+
+{% include base_path %}
+
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        {% if category[0] == "books" %}
+          <h2>Livros</h2><hr />
+        {% elsif category[0] == "manuscripts" %}
+          <h2>Artigos em periódicos</h2><hr />
+        {% elsif category[0] == "conferences" %}
+          <h2>Publicações em conferências</h2><hr />
+        {% else %}
+          <h2>{{ category[1].title }}</h2><hr />
+        {% endif %}
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}

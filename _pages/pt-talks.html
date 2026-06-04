@@ -1,0 +1,28 @@
+---
+layout: archive
+title: "Palestras e apresentações"
+permalink: /pt/talks/
+author_profile: true
+lang: pt
+translation_url: /talks/
+---
+
+<section class="talks-page">
+  <div class="talks-hero">
+    <p class="talks-eyebrow">Aulas convidadas, cursos e apresentações em conferências</p>
+    <h2>Palestras de pesquisa e apresentações de ensino</h2>
+    <p>Apresentações selecionadas sobre modelagem hidrológica e hidráulica, simulação de inundações e qualidade da água, desenvolvimento de baixo impacto, análise de ruptura de barragens e desenvolvimento de modelos open-source.</p>
+  </div>
+
+{% if site.talkmap_link == true %}
+
+<p style="text-decoration:underline;"><a href="{{ '/talkmap.html' | relative_url }}">Veja um mapa dos lugares onde apresentei palestras.</a></p>
+
+{% endif %}
+
+  <div class="talks-list">
+  {% for post in site.talks reversed %}
+    {% include archive-single-talk.html %}
+  {% endfor %}
+  </div>
+</section>

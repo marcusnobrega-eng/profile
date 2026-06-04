@@ -2,6 +2,8 @@
 permalink: /
 title: "About Me"
 author_profile: true
+lang: en
+translation_url: /pt/
 redirect_from: 
   - /about/
   - /about.html
@@ -16,7 +18,7 @@ News
 
 {% include news-list.html limit=8 %}
 
-[All news](/news/)
+[All news]({{ '/news/' | relative_url }})
 
 I was born in 1995 and spent my early years up to college in my hometown in the state of Paraná, Brazil. Growing up in such a small city allowed me to explore my curiosity for nature to a wonderful level. I always remind myself, as a kid playing in the storm (still do to this day sometimes), building small earth dams - perhaps that was my first memory related to civil/environmental or water resources engineering.
 

@@ -2,6 +2,8 @@
 permalink: /Developed_Models/
 title: "Developed Models"
 author_profile: true
+lang: en
+translation_url: /pt/Developed_Models/
 redirect_from:
   - /md/
   - /Developed_Models.html

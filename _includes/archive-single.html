@@ -1,4 +1,26 @@
 {% include base_path %}
+{% assign current_lang = page.lang | default: "en" %}
+{% if current_lang == "pt" %}
+  {% assign label_conference_paper = "Artigo de conferência" %}
+  {% assign label_journal_article = "Artigo em periódico" %}
+  {% assign label_presented_in = "Apresentado em" %}
+  {% assign label_published_in = "Publicado em" %}
+  {% assign label_recommended_citation = "Citação recomendada" %}
+  {% assign label_paper_doi = "Artigo / DOI" %}
+  {% assign label_slides = "Slides" %}
+  {% assign label_download_slides = "Baixar slides" %}
+  {% assign label_download_paper = "Baixar artigo" %}
+{% else %}
+  {% assign label_conference_paper = "Conference Paper" %}
+  {% assign label_journal_article = "Journal Article" %}
+  {% assign label_presented_in = "Presented in" %}
+  {% assign label_published_in = "Published in" %}
+  {% assign label_recommended_citation = "Recommended citation" %}
+  {% assign label_paper_doi = "Paper / DOI" %}
+  {% assign label_slides = "Slides" %}
+  {% assign label_download_slides = "Download Slides" %}
+  {% assign label_download_paper = "Download Paper" %}
+{% endif %}
 
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
@@ -30,9 +52,9 @@
     <div class="publication-card__top">
       <div class="publication-card__meta">
         {% if post.category == 'conferences' %}
-          <span class="publication-card__type publication-card__type--conference">Conference Paper</span>
+          <span class="publication-card__type publication-card__type--conference">{{ label_conference_paper }}</span>
         {% else %}
-          <span class="publication-card__type">Journal Article</span>
+          <span class="publication-card__type">{{ label_journal_article }}</span>
         {% endif %}
         {% if post.date %}
           <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%Y" }}</time>
@@ -48,9 +70,9 @@
       </h2>
 
       {% if post.category == 'conferences' and post.venue %}
-        <p class="publication-card__venue">Presented in <i>{{ post.venue }}</i></p>
+        <p class="publication-card__venue">{{ label_presented_in }} <i>{{ post.venue }}</i></p>
       {% elsif post.venue %}
-        <p class="publication-card__venue">Published in <i>{{ post.venue }}</i></p>
+        <p class="publication-card__venue">{{ label_published_in }} <i>{{ post.venue }}</i></p>
       {% endif %}
     </div>
 
@@ -62,15 +84,15 @@
 
     {% if post.citation %}
       <div class="publication-citation">
-        <p class="publication-citation__label">Recommended citation</p>
+        <p class="publication-citation__label">{{ label_recommended_citation }}</p>
         <p>{{ post.citation }}</p>
       </div>
     {% endif %}
 
     {% if post.paperurl or post.slidesurl %}
       <div class="publication-card__actions">
-        {% if post.paperurl %}<a class="publication-action" href="{{ post.paperurl }}">Paper / DOI</a>{% endif %}
-        {% if post.slidesurl %}<a class="publication-action publication-action--secondary" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+        {% if post.paperurl %}<a class="publication-action" href="{{ post.paperurl }}">{{ label_paper_doi }}</a>{% endif %}
+        {% if post.slidesurl %}<a class="publication-action publication-action--secondary" href="{{ post.slidesurl }}">{{ label_slides }}</a>{% endif %}
       </div>
     {% endif %}
     {% else %}
@@ -90,9 +112,9 @@
         {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' and post.category == 'conferences' %}
-          <p>Presented in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>{{ label_presented_in }} <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' %}
-          <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>{{ label_published_in }} <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.date %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
@@ -106,17 +128,17 @@
     {% endif %}
     
     {% if post.citation and post.paperurl and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Paper / DOI</a> | <a href="{{ post.slidesurl }}">Download Slides</a></p>
+      <p>{{ label_recommended_citation }}: {{ post.citation }}<br /><a href="{{ post.paperurl }}">{{ label_paper_doi }}</a> | <a href="{{ post.slidesurl }}">{{ label_download_slides }}</a></p>
     {% elsif post.citation and post.paperurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">Paper / DOI</a></p>
+      <p>{{ label_recommended_citation }}: {{ post.citation }}<br /><a href="{{ post.paperurl }}">{{ label_paper_doi }}</a></p>
     {% elsif post.citation and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a></p>
+      <p>{{ label_recommended_citation }}: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">{{ label_download_slides }}</a></p>
     {% elsif post.citation %}
-      <p>Recommended citation: {{ post.citation }}</p>
+      <p>{{ label_recommended_citation }}: {{ post.citation }}</p>
     {% elsif post.paperurl %}
-      <p><a href=" {{ post.paperurl }} ">Download Paper</a></p>
+      <p><a href=" {{ post.paperurl }} ">{{ label_download_paper }}</a></p>
     {% elsif post.slidesurl %}
-      <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
+      <p><a href="{{ post.slidesurl }}">{{ label_download_slides }}</a></p>
     {% endif %}
     {% endif %}
 
