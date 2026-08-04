@@ -1,26 +1,17 @@
 ---
 layout: archive
-title: "CV"
+title: "Currículo"
 permalink: /pt/cv/
-author_profile: true
+excerpt: "Baixe o currículo acadêmico atual de Marcus N. Gomes Jr."
+author_profile: false
+hide_title: true
 lang: pt
 translation_url: /cv/
 ---
 
-{% include base_path %}
-
-Esta página resume meu currículo acadêmico. Para a versão mais atualizada e completa, baixe o arquivo em PDF.
-
-<p><a class="btn btn--primary" href="{{ '/files/CV___Marcus_N__Gomes_Jr.pdf' | relative_url }}">Baixar CV em PDF</a></p>
-
-Publicações
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-
-Palestras
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
+<section class="page-lead page-lead--compact">
+  <p class="item-kicker">Trajetória acadêmica</p>
+  <h1>Currículo</h1>
+  <p>O PDF apresenta minha formação, vínculos profissionais, publicações, produtos de pesquisa, experiência com financiamento e propostas, ensino, orientação, serviço e prêmios.</p>
+  <p><a class="button-link" href="{{ '/files/CV___Marcus_N__Gomes_Jr.pdf' | relative_url }}">Baixar o CV atual (PDF)</a></p>
+</section>

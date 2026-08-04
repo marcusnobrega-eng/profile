@@ -1,108 +1,72 @@
 ---
 permalink: /
-title: "About Me"
-author_profile: true
+title: "Dynamic water risk in a changing Earth system"
+excerpt: "Earth-system water scientist studying dynamic water risk through open physical models, Earth observations, and exposure analysis."
+author_profile: false
+hide_title: true
 lang: en
 translation_url: /pt/
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-Welcome to my GitHub page.
+<section class="profile-intro">
+  <div class="profile-intro__copy">
+    <p class="profile-intro__role">Postdoctoral Researcher · Stanford University · Earth System Science</p>
+    <h1>Marcus N. Gomes Jr.</h1>
+    <p class="profile-intro__thesis">Dynamic water risk in a changing Earth system</p>
+    <p class="profile-intro__summary">I study how climate forcing and landscape conditions become water-related hazards, and how those hazards affect people and infrastructure. I combine open physical models, field and satellite observations, and exposure data. Floods are the main process in this work, with broader applications to water security and multi-hazard risk.</p>
+    {% include profile-links.html %}
+  </div>
+  <img class="profile-intro__portrait" src="{{ '/images/Picture1.png' | relative_url }}" alt="Portrait of Marcus N. Gomes Jr.">
+</section>
 
-Hi, I am Marcus, a researcher originally from Brazil who enjoys barbecuing, watching soccer games, trying new recipes in my free time, and is passionate about understanding how water behaves.
+<figure class="research-banner">
+  <img src="{{ '/files/Rain_on_the_grid.gif' | relative_url }}" alt="HydroPol2D simulation of rainfall and flood movement in an urban catchment">
+  <figcaption>Open physical models help test how rainfall, land surfaces, and infrastructure shape flood behavior.</figcaption>
+</figure>
 
-News
-======
+<section class="content-band">
+  <div class="section-heading">
+    <p class="item-kicker">Research</p>
+    <h2>From forcing to consequence</h2>
+  </div>
+  <div class="thrust-grid">
+    <article><span>01</span><h3>Forcing and landscape state</h3><p>How do rainfall timing, prior wetness, terrain, land cover, and infrastructure control the transition from storage to rapid runoff and inundation?</p></article>
+    <article><span>02</span><h3>Observation and prediction</h3><p>What combination of satellite, field, and river observations is sufficient to reconstruct a flood and predict its evolution?</p></article>
+    <article><span>03</span><h3>Consequence and adaptation</h3><p>How do physical hazard, exposure, and adaptive capacity combine to produce unequal risk, and which responses can change the outcome?</p></article>
+  </div>
+  <p class="section-action"><a href="{{ '/research/' | relative_url }}">Read about the research program <span aria-hidden="true">→</span></a></p>
+</section>
 
-{% include news-list.html limit=8 %}
+<section class="evidence-band">
+  <div><strong>34</strong><span>peer-reviewed journal articles</span></div>
+  <div><strong>7</strong><span>selected open research products</span></div>
+  <div><strong>2023</strong><span>best engineering Ph.D. thesis at USP São Carlos</span></div>
+  <div><strong>90,000+</strong><span>downloads of public engineering tools</span></div>
+</section>
 
-[All news]({{ '/news/' | relative_url }})
+<section class="content-band">
+  <div class="section-heading">
+    <p class="item-kicker">Current work</p>
+    <h2>Research across scales</h2>
+  </div>
+  <div class="current-work-grid">
+    <article><h3>Flood reconstruction</h3><p>Combining physical models, river information, terrain, and Earth observations to build evidence about past floods in Brazil, India, and California.</p></article>
+    <article><h3>Rainfall and hydrologic state</h3><p>Testing how storm timing and the condition of a landscape before an event change runoff, inundation, and design assumptions.</p></article>
+    <article><h3>Exposure and health</h3><p>Linking reconstructed flood exposure with health and socioeconomic outcomes in collaboration with specialists in California and India.</p></article>
+  </div>
+</section>
 
-I was born in 1995 and spent my early years up to college in my hometown in the state of Paraná, Brazil. Growing up in such a small city allowed me to explore my curiosity for nature to a wonderful level. I always remind myself, as a kid playing in the storm (still do to this day sometimes), building small earth dams - perhaps that was my first memory related to civil/environmental or water resources engineering.
+<section class="content-band">
+  <div class="section-heading section-heading--split">
+    <div><p class="item-kicker">Recent updates</p><h2>News</h2></div>
+    <a href="{{ '/news/' | relative_url }}">All news</a>
+  </div>
+  {% include news-list.html limit=5 %}
+</section>
 
-Life was simple; we had no cellphones, no internet, and it was just our free time and curiosity to play with my friends, fail, learn, grow, have fun, and that inspired me so much to develop the intimate desire to not only see work as a responsibility, but also to find joy in doing it. 
-
-I honestly think this is essential if one wants to do great work.
-
-My father worked in the water resources council of our state, and my mother was a teacher. Both inspired me to follow a path in academia and to work with water resources.
-
-Bruce Lee once said: 
-
-"<i>If you put water into a cup, it becomes the cup. You put water into a bottle, and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend</i>". 
-
-This has always been on my mind. The movement of water shapes the way life works, in some way.
-
-Studying how water can change its shape, force, velocity, and physical properties, and how it can rapidly or sometimes take years to move under a specific medium, is just one of the few amazing phenomena I am interested in understanding and learning from. This is beautiful.
-
-I would describe myself as a simple, passionate researcher in the field of water resources, continually striving to learn something new every day about this fascinating area. 
-
-<img src="https://marcusnobrega-eng.github.io/profile//files/water_gif.gif">
-
-My formal education includes a background in <i>Civil and Environmental Engineering, Hydrology and Atmospheric Sciences, and Hydraulic Engineering and Sanitation</i>.
-
-I was a postdoctoral researcher at the [University of Arizona - Hydrology and Atmospheric Sciences](https://has.arizona.edu/) studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
-
-Currently, I am a postdoctoral researcher at Stanford University at the Department of Earth System Science in the Doerr School of Sustainability. My current work is at the interface between floods and medical records. We want to evaluate whether a causal relationship between flood exposure and disease illness exists and to what extent it relates to more than 100 million medical records we have for the state of California. In addition, a similar analysis is being proposed for India. To that end, we are developing a historical flood map using my model, HydroPol2D, to map all recorded floods from past decades, which will later be used in machine learning algorithms to investigate causal effects on diseases.
-
-I hold a bachelor's degree in Civil Engineering (2013-2018), a Master's degree (2018-2020) and Ph.D. (2020-2023) in Hydraulics and Sanitation Engineering at the [University of Sao Paulo](https://www.riotimesonline.com/brazil-news/brazil/university-of-sao-paulo-in-the-list-of-the-100-best-universities-in-the-world-for-the-first-time/#:~:text=The%20University%20of%20S%C3%A3o%20Paulo%20%28USP%29%20has%20achieved,USP%20at%20the%2085th%20position%20among%201%2C499%20institutions.). My PhD thesis was awarded the [best in the field of Engineering by the University of Sao Paulo](https://eesc.usp.br/noticias/posts_s.php?guid=46600&termid=not_gerais).
-
-In addition, I also have another ongoing Ph.D., which I started in 2020, in [Civil and Environmental Engineering from the University of Texas at San Antonio](https://klesse.utsa.edu/civil-environmental-construction-management/), from which I still have one last credit to graduate, with plans to graduate after my postdoctoral studies.
-
-I also have a YouTube channel and a website where I share a variety of spreadsheets (over 80) and articles across multiple fields, including hydrology, hydraulics, structural engineering, geotechnics, and general comments. This website, which to this date has provided more than 100,000 spreadsheets downloaded by people in around 10 countries, has allowed me to develop an interesting connection between the academic world and practical solutions, sharpening my thinking for both levels. More information about this can be found in my CV.
-
-Research
-======
-My research focuses on understanding and predicting components of the water cycle in relevant spatiotemporal scales using physics-based numerical modeling and data assimilation techniques via multi-source information. 
-
-More specifically, my research goal is to develop state-of-the-art efficient tools to accurately represent flood and water quality transport and fate dynamics, especially in high spatiotemporal resolution, although not limited to.
-
-In addition to this primary focus, I also have an interest in:
-
-- Hydrologic Modeling
-- Hydrodynamic Modeling
-- GPU Processing
-- Geographical Information Systems
-- Remote Sensing
-- Hazard Mapping
-- Green Infrastructure
-- Low Impact Development
-- Sustainable Drainage Systems
-- Land Surface Modeling
-- Natural Hazards
-- Early Warning Systems
-- Disaster Risk Reduction
-- Serious Games
-- Education in Science
-
-
-Fields and Keywords of Interest
-=======
-<i>Civil and Environmental Engineering</i>
-- Flood Control,
-- Water Quality Transport and Fate
-- Water Availability 
-- Water Resources Planning and Management
-
-<i>System Analysis</i>
-- Linear Systems and Control
-- Control of Non-Linear Systems
-- Feedback Control
-- Model Predictive Control
-- Linear Quadratic Regulators
-
-<i>Mathematics</i>
-- Numerical Modeling
-- Explicit/Implicit Methods
-- Finite-Volume Methods
-- Finite-Difference Methods
-- Convex Optimization
-- Non-Linear Non-Convex Optimization
-- Data Assimilation
-- Reinforcement Learning
-- Particle Filter
-
-Please feel free to reach out to me at marcusnobrega.engcivil@gmail.com or through any other social media links available on this page.
-
-I will be pleased to help and collaborate :)
+<section class="personal-note">
+  <div><p class="item-kicker">A personal note</p><h2>Curiosity, teaching, and public work</h2><p>I grew up in Paraná, Brazil, where early curiosity about storms and rivers led me toward civil engineering and hydrology. My mother was a teacher, and my father worked with water-resources policy. Their influence continues in how I approach research, mentoring, and public engineering education. Through Engenheiro Planilheiro and YouTube, I share open tools and lessons with students and practitioners in Portuguese.</p></div>
+</section>

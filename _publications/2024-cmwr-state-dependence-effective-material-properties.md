@@ -3,6 +3,7 @@ title: Identifying the state dependence of effective material properties in a si
   hydrologic hillslope model
 collection: publications
 category: conferences
+conference_type: abstract
 permalink: publication/2024-cmwr-state-dependence-effective-material-properties
 date: 2024-09-30
 venue: The Conference on Computational Methods on Water Resources (CMWR), Tucson

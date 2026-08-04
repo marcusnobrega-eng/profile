@@ -342,10 +342,16 @@
       {% endif %}
     {% endif %}
 
+    {% assign display_summary = item.summary_en %}
+    {% assign display_link_label = item.link_label %}
+    {% if current_lang == "pt" %}
+      {% if item.summary_pt %}{% assign display_summary = item.summary_pt %}{% endif %}
+      {% if item.link_label_pt %}{% assign display_link_label = item.link_label_pt %}{% endif %}
+    {% endif %}
     <article class="news-item news-item--{{ type_class }} news-source--{{ source_class }}{% if item_hidden %} is-hidden{% endif %}">
       <div class="news-date">
         <span class="news-icon" aria-hidden="true"></span>
-        <span class="news-month-day">{{ item.date | date: "%b %d" }}</span>
+        <span class="news-month-day">{% if item.date_precision == "year" %}{{ item.date | date: "%Y" }}{% elsif item.date_precision == "month" %}{{ item.date | date: "%b %Y" }}{% else %}{{ item.date | date: "%b %d" }}{% endif %}</span>
       </div>
       <div class="news-body">
         <div class="news-head">
@@ -366,10 +372,10 @@
           </div>
           <div class="news-content__text">
             <div class="news-copy">
-              {{ item.content | markdownify }}
+              {% if display_summary %}{{ display_summary | markdownify }}{% else %}{{ item.content | markdownify }}{% endif %}
             </div>
             {% if item.link %}
-              <a class="news-link" href="{{ item.link }}">{{ item.link_label | default: default_news_link_label }}</a>
+              <a class="news-link" href="{{ item.link }}">{{ display_link_label | default: default_news_link_label }}</a>
             {% endif %}
           </div>
         </div>

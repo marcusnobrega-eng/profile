@@ -2,6 +2,7 @@
 title: Application of Artificial Neural Networks to Predict Water Surface Elevation
 collection: publications
 category: conferences
+conference_type: abstract
 permalink: publication/2021-agu-ann-water-surface-elevation
 date: 2021-12-13
 venue: AGU Fall Meeting, New Orleans

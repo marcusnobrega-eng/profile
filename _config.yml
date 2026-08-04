@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Marcus - Homepage"
+title                    : "Marcus N. Gomes Jr."
 title_separator          : "-"
 name                     : &name "Marcus N. Gomes Jr."
-description              : &description "personal description"
+description              : &description "Earth-system water scientist studying dynamic water risk through open physical models, Earth observations, and exposure analysis."
 url                      : https://marcusnobrega-eng.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/profile" # the subpath of your site, e.g. "/blog"
 repository               : "marcusnobrega-eng/profile"
@@ -24,8 +24,8 @@ author:
   avatar           : "Picture1.png"
   name             : "Marcus N. Gomes Jr., Ph.D."
   pronouns         : # example: "he/him"  
-  bio              : "Postdoctoral Researcher"
-  location         : "Stanford - CA"
+  bio              : "Earth-system water scientist"
+  location         : "Stanford, California"
   employer         : "Stanford University"
   uri              : # URL
   email            : "mngomes@stanford.edu" 
@@ -138,9 +138,13 @@ og_image                 :  # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : Person
+  name                   : "Marcus N. Gomes Jr."
+  links:
+    - https://scholar.google.com/citations?user=Ls-Nj0YAAAAJ
+    - https://orcid.org/0000-0002-8250-8195
+    - https://github.com/marcusnobrega-eng
+    - https://www.linkedin.com/in/marcus-n%C3%B3brega-744b61138/
 
 
 # Analytics
@@ -182,6 +186,18 @@ exclude:
   - README
   - tmp
   - vendor
+  - _posts
+  - _portfolio
+  - _pages/archive-layout-with-content.md
+  - _pages/category-archive.html
+  - _pages/collection-archive.html
+  - _pages/markdown.md
+  - _pages/non-menu-page.md
+  - _pages/page-archive.html
+  - _pages/portfolio.html
+  - _pages/tag-archive.html
+  - _pages/talkmap.html
+  - _pages/year-archive.html
 keep_files:
   - .git
   - .svn
@@ -220,9 +236,6 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
   talks:
     output: true
     permalink: /:collection/:path/
@@ -247,14 +260,14 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
   # _teaching
   - scope:
       path: ""
       type: teaching
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comments: true
   # _news
@@ -263,7 +276,7 @@ defaults:
       type: news
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: false
       comments: false
   # _publications
@@ -272,7 +285,7 @@ defaults:
       type: publications
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comments: true
   # _portfolio
@@ -281,7 +294,7 @@ defaults:
       type: portfolio
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comment: true
   # _talks
@@ -290,7 +303,7 @@ defaults:
       type: talks
     values:
       layout: talk
-      author_profile: true
+      author_profile: false
       share: true
 
 
@@ -312,6 +325,7 @@ plugins:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-redirect-from
   - jekyll-sitemap
   - jemoji
 
@@ -320,6 +334,7 @@ whitelist:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-redirect-from
   - jekyll-sitemap
   - jemoji
 

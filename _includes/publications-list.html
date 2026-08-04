@@ -1,0 +1,65 @@
+{% assign current_lang = page.lang | default: "en" %}
+{% assign journals = site.publications | where: "category", "manuscripts" | sort: "date" | reverse %}
+{% assign conferences = site.publications | where: "category", "conferences" | sort: "date" | reverse %}
+{% if current_lang == "pt" %}
+  {% assign journal_label = "Artigos em periódicos com revisão por pares" %}
+  {% assign active_label = "Artigos em revisão ou preparação" %}
+  {% assign conference_label = "Trabalhos em anais de conferências" %}
+  {% assign full_label = "Artigos completos" %}
+  {% assign extended_label = "Resumos expandidos" %}
+  {% assign abstract_label = "Resumos" %}
+  {% assign doi_label = "DOI" %}
+{% else %}
+  {% assign journal_label = "Peer-reviewed journal publications" %}
+  {% assign active_label = "Publications under review or in preparation" %}
+  {% assign conference_label = "Conference proceedings" %}
+  {% assign full_label = "Full articles" %}
+  {% assign extended_label = "Extended abstracts" %}
+  {% assign abstract_label = "Abstracts" %}
+  {% assign doi_label = "DOI" %}
+{% endif %}
+
+<section class="publication-section">
+  <h2>{{ journal_label }}</h2>
+  {% assign journal_groups = journals | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% assign journal_number = journals.size %}
+  {% for year in journal_groups %}
+    <h3 class="publication-year">{{ year.name }}</h3>
+    <ol class="citation-list citation-list--reverse" reversed start="{{ journal_number }}">
+    {% for post in year.items %}
+        <li>
+          {% if post.citation %}{{ post.citation | markdownify | remove: '<p>' | remove: '</p>' }}{% else %}{{ post.title }}. <strong>{{ post.venue }}</strong>.{% endif %}
+          {% if post.paperurl %}<a class="doi-link" href="{{ post.paperurl }}">{{ post.link_label | default: doi_label }}</a>{% elsif post.doi %}<a class="doi-link" href="https://doi.org/{{ post.doi }}">{{ doi_label }}</a>{% endif %}
+          {% if post.status and post.status != "Published" %}
+            {% assign status_text = post.status %}
+            {% if current_lang == "pt" and post.status == "Accepted" %}{% assign status_text = "Aceito" %}{% elsif current_lang == "pt" and post.status == "In press" %}{% assign status_text = "No prelo" %}{% endif %}
+            <span class="status-label">{{ status_text }}</span>
+          {% endif %}
+        </li>
+        {% assign journal_number = journal_number | minus: 1 %}
+    {% endfor %}
+    </ol>
+  {% endfor %}
+</section>
+
+<section class="publication-section">
+  <h2>{{ active_label }}</h2>
+  {% include manuscripts-list.html %}
+</section>
+
+<section class="publication-section">
+  <h2>{{ conference_label }}</h2>
+  {% assign conference_groups = "full,extended,abstract" | split: "," %}
+  {% for group in conference_groups %}
+    {% if group == "full" %}{% assign group_label = full_label %}{% elsif group == "extended" %}{% assign group_label = extended_label %}{% else %}{% assign group_label = abstract_label %}{% endif %}
+    <h3 class="subsection-title">{{ group_label }}</h3>
+    <ol class="citation-list">
+      {% for post in conferences %}
+        {% assign post_group = post.conference_type | default: "full" %}
+        {% if post_group == group %}
+          <li>{% if post.citation %}{{ post.citation | markdownify | remove: '<p>' | remove: '</p>' }}{% else %}<em>{{ post.title }}</em>. {{ post.venue }}, {{ post.date | date: "%Y" }}.{% endif %}{% if post.paperurl %} <a href="{{ post.paperurl }}">{% if current_lang == 'pt' %}Artigo{% else %}Paper{% endif %}</a>.{% endif %}{% if post.award %} <strong>{{ post.award }}</strong>{% endif %}</li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  {% endfor %}
+</section>

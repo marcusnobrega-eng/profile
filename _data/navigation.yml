@@ -1,48 +1,31 @@
-# The following is the order of the links in the header of the website.
-#
-# Changing the order here will adjust the order and you can also add additional
-# links. Removing a link prevents it from showing in the header, but does not
-# prevent it from being included in the site.
-
 main:
-
-  - title: "CV"
-    url: /files/CV___Marcus_N__Gomes_Jr.pdf      
-    
+  - title: "Research"
+    url: /research/
   - title: "Publications"
     url: /publications/
-
+  - title: "Software & Data"
+    url: /software/
+  - title: "Teaching & Mentoring"
+    url: /teaching/
+  - title: "Talks"
+    url: /talks/
   - title: "News"
     url: /news/
-
-  - title: "Talks"
-    url: /talks/    
-
- # - title: "Teaching"
- #   url: /teaching/    
-    
- # - title: "Portfolio"
- #   url: /portfolio/
-        
-# - title: "Blog Posts"
-#   url: /year-archive/
-
-  - title: "Developed Models"
-    url: /Developed_Models/
-
-main_pt:
-
   - title: "CV"
     url: /files/CV___Marcus_N__Gomes_Jr.pdf
 
-  - title: "Publicações"
+main_pt:
+  - title: "Pesquisa"
+    url: /pt/research/
+  - title: "Publicacoes"
     url: /pt/publications/
-
-  - title: "Notícias"
-    url: /pt/news/
-
+  - title: "Software e Dados"
+    url: /pt/software/
+  - title: "Ensino e Orientacao"
+    url: /pt/teaching/
   - title: "Palestras"
     url: /pt/talks/
-
-  - title: "Modelos Desenvolvidos"
-    url: /pt/Developed_Models/
+  - title: "Noticias"
+    url: /pt/news/
+  - title: "CV"
+    url: /files/CV___Marcus_N__Gomes_Jr.pdf

@@ -1,0 +1,21 @@
+{% assign current_lang = page.lang | default: "en" %}
+<div class="product-grid">
+  {% for product in site.data.products %}
+    <article class="product-card">
+      <a class="product-card__media" href="{{ product.primary_url }}">
+        <img src="{% if product.image contains '://' %}{{ product.image }}{% else %}{{ product.image | relative_url }}{% endif %}" alt="{% if current_lang == 'pt' %}{{ product.image_alt_pt }}{% else %}{{ product.image_alt_en }}{% endif %}" loading="lazy">
+      </a>
+      <div class="product-card__body">
+        <p class="item-kicker">{% if current_lang == 'pt' %}{{ product.category_pt }}{% else %}{{ product.category_en }}{% endif %}</p>
+        <h2><a href="{{ product.primary_url }}">{{ product.name }}</a></h2>
+        <p>{% if current_lang == 'pt' %}{{ product.summary_pt }}{% else %}{{ product.summary_en }}{% endif %}</p>
+        <div class="text-links">
+          <a href="{{ product.primary_url }}">{% if current_lang == 'pt' %}Abrir{% else %}Open{% endif %}</a>
+          {% if product.repository %}<a href="{{ product.repository }}">GitHub</a>{% endif %}
+          {% if product.documentation and product.documentation != product.primary_url %}<a href="{{ product.documentation }}">{% if current_lang == 'pt' %}Documentação{% else %}Documentation{% endif %}</a>{% endif %}
+          {% if product.publication %}<a href="{{ product.publication }}">{% if current_lang == 'pt' %}Artigo{% else %}Paper{% endif %}</a>{% endif %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>

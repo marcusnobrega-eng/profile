@@ -25,6 +25,7 @@
 {% else %}
   {% assign title = post.title %}
 {% endif %}
+{% if current_lang == "pt" and post.title_pt %}{% assign title = post.title_pt %}{% endif %}
 
 <div class="{{ include.type | default: "list" }}__item talk-list__item">
   <article class="archive__item talk-card" itemscope itemtype="http://schema.org/CreativeWork">
@@ -42,9 +43,13 @@
     <div class="talk-card__date">
       {% if post.date %}
         <time datetime="{{ post.date | date_to_xmlschema }}">
-          <span>{{ post.date | date: '%b' }}</span>
-          <strong>{{ post.date | date: '%d' }}</strong>
-          <em>{{ post.date | date: '%Y' }}</em>
+          {% if post.date_precision == "year" %}
+            <strong>{{ post.date | date: '%Y' }}</strong>
+          {% else %}
+            <span>{{ post.date | date: '%b' }}</span>
+            <strong>{{ post.date | date: '%d' }}</strong>
+            <em>{{ post.date | date: '%Y' }}</em>
+          {% endif %}
         </time>
       {% endif %}
     </div>
@@ -64,7 +69,7 @@
     {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    {% if post.excerpt %}<div class="talk-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>{% endif %}
+    {% if current_lang == "pt" and post.excerpt_pt %}<div class="talk-card__excerpt" itemprop="description">{{ post.excerpt_pt | markdownify }}</div>{% elsif post.excerpt %}<div class="talk-card__excerpt" itemprop="description">{{ post.excerpt | markdownify }}</div>{% endif %}
     </div>
   </article>
 </div>
