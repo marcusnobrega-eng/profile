@@ -1,18 +1,37 @@
 ---
 layout: archive
 title: "Publications"
-permalink: /publications/
-excerpt: "Peer-reviewed articles, active manuscripts, and conference proceedings in hydrology, flood risk, rainfall, and water systems."
-author_profile: false
-hide_title: true
+permalink: publications/
+author_profile: true
 lang: en
 translation_url: /pt/publications/
 ---
 
-<section class="page-lead page-lead--compact">
-  <p class="item-kicker">Research record</p>
-  <h1>Publications</h1>
-  <p>The list below separates peer-reviewed work from active manuscripts and conference proceedings. For citation metrics and updates, see <a href="{{ site.author.googlescholar }}">Google Scholar</a> or the <a href="{{ '/files/CV___Marcus_N__Gomes_Jr.pdf' | relative_url }}">current CV</a>.</p>
-</section>
+{% if site.author.googlescholar %}
+  <div class="wordwrap">For a full list of journal and conference publications, please download my CV. <br>
+    You can also check it on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+{% endif %}
 
-{% include publications-list.html %}
+{% include base_path %}
+
+<!-- New style rendering if publication categories are defined -->
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h2>{{ category[1].title }}</h2><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
+

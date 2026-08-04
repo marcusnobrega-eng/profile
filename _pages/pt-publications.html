@@ -2,17 +2,42 @@
 layout: archive
 title: "Publicações"
 permalink: /pt/publications/
-excerpt: "Artigos com revisão por pares, manuscritos ativos e trabalhos em conferências sobre hidrologia, risco de inundação, chuva e sistemas hídricos."
-author_profile: false
-hide_title: true
+author_profile: true
 lang: pt
 translation_url: /publications/
 ---
 
-<section class="page-lead page-lead--compact">
-  <p class="item-kicker">Produção científica</p>
-  <h1>Publicações</h1>
-  <p>A lista separa trabalhos com revisão por pares, manuscritos ativos e trabalhos em anais de conferências. Para métricas de citação e atualizações, consulte o <a href="{{ site.author.googlescholar }}">Google Scholar</a> ou o <a href="{{ '/files/CV___Marcus_N__Gomes_Jr.pdf' | relative_url }}">CV atual</a>.</p>
-</section>
+{% if site.author.googlescholar %}
+  <div class="wordwrap">Para a lista completa de artigos em periódicos e publicações em conferências, baixe meu CV. <br>
+    Você também pode consultar meu <a href="{{site.author.googlescholar}}">perfil no Google Scholar</a>.</div>
+{% endif %}
 
-{% include publications-list.html %}
+{% include base_path %}
+
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        {% if category[0] == "books" %}
+          <h2>Livros</h2><hr />
+        {% elsif category[0] == "manuscripts" %}
+          <h2>Artigos em periódicos</h2><hr />
+        {% elsif category[0] == "conferences" %}
+          <h2>Publicações em conferências</h2><hr />
+        {% else %}
+          <h2>{{ category[1].title }}</h2><hr />
+        {% endif %}
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}

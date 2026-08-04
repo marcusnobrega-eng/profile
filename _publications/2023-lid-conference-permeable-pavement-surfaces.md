@@ -3,7 +3,6 @@ title: Hydrologic and Water Quality Treatment Performance of Four Permeable Pave
   Surfaces
 collection: publications
 category: conferences
-award: Best Paper Award
 permalink: publication/2023-lid-conference-permeable-pavement-surfaces
 date: 2023-08-03
 venue: International Low Impact Development Conference

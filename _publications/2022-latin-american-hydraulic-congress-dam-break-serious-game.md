@@ -3,7 +3,6 @@ title: A Serious Game for societal risk perception of dam-break flood assessment
   a hydrodynamic model
 collection: publications
 category: conferences
-award: Best Paper in category
 permalink: publication/2022-latin-american-hydraulic-congress-dam-break-serious-game
 date: 2022-11-07
 venue: Latin American Hydraulic Congress

@@ -2,7 +2,6 @@
 title: Real-Time Control of Stormwater Reservoirs for Flood Risk Mitigation
 collection: publications
 category: conferences
-conference_type: extended
 permalink: publication/2021-iswso-realtime-control-stormwater-reservoirs
 date: 2021-09-01
 venue: The 2nd International Symposium on Water System Operations

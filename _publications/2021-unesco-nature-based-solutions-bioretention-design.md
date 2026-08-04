@@ -3,7 +3,6 @@ title: 'Nature-based solutions for sustainable stormwater: a model approach and 
   analysis for bioretention design using Green and Ampt and reservoir flood routing'
 collection: publications
 category: conferences
-conference_type: extended
 permalink: publication/2021-unesco-nature-based-solutions-bioretention-design
 date: 2021-12-01
 venue: Second International Conference of Water, Megacities, and Global Change, UNESCO
