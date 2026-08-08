@@ -3,8 +3,12 @@
 {% if current_lang == "pt" %}
   {% assign label_conference_paper = "Artigo de conferência" %}
   {% assign label_journal_article = "Artigo em periódico" %}
+  {% assign label_accepted_manuscript = "Manuscrito aceito" %}
+  {% assign label_in_press_article = "Artigo no prelo" %}
   {% assign label_presented_in = "Apresentado em" %}
   {% assign label_published_in = "Publicado em" %}
+  {% assign label_accepted_in = "Aceito em" %}
+  {% assign label_in_press_in = "No prelo em" %}
   {% assign label_recommended_citation = "Citação recomendada" %}
   {% assign label_paper_doi = "Artigo / DOI" %}
   {% assign label_slides = "Slides" %}
@@ -13,14 +17,20 @@
 {% else %}
   {% assign label_conference_paper = "Conference Paper" %}
   {% assign label_journal_article = "Journal Article" %}
+  {% assign label_accepted_manuscript = "Accepted Manuscript" %}
+  {% assign label_in_press_article = "In-Press Article" %}
   {% assign label_presented_in = "Presented in" %}
   {% assign label_published_in = "Published in" %}
+  {% assign label_accepted_in = "Accepted in" %}
+  {% assign label_in_press_in = "In press in" %}
   {% assign label_recommended_citation = "Recommended citation" %}
   {% assign label_paper_doi = "Paper / DOI" %}
   {% assign label_slides = "Slides" %}
   {% assign label_download_slides = "Download Slides" %}
   {% assign label_download_paper = "Download Paper" %}
 {% endif %}
+{% assign publication_status = post.status | downcase %}
+{% assign publication_link_label = post.link_label | default: label_paper_doi %}
 
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
@@ -53,6 +63,10 @@
       <div class="publication-card__meta">
         {% if post.category == 'conferences' %}
           <span class="publication-card__type publication-card__type--conference">{{ label_conference_paper }}</span>
+        {% elsif publication_status == 'accepted' %}
+          <span class="publication-card__type">{{ label_accepted_manuscript }}</span>
+        {% elsif publication_status == 'in press' %}
+          <span class="publication-card__type">{{ label_in_press_article }}</span>
         {% else %}
           <span class="publication-card__type">{{ label_journal_article }}</span>
         {% endif %}
@@ -71,6 +85,10 @@
 
       {% if post.category == 'conferences' and post.venue %}
         <p class="publication-card__venue">{{ label_presented_in }} <i>{{ post.venue }}</i></p>
+      {% elsif publication_status == 'accepted' and post.venue %}
+        <p class="publication-card__venue">{{ label_accepted_in }} <i>{{ post.venue }}</i></p>
+      {% elsif publication_status == 'in press' and post.venue %}
+        <p class="publication-card__venue">{{ label_in_press_in }} <i>{{ post.venue }}</i></p>
       {% elsif post.venue %}
         <p class="publication-card__venue">{{ label_published_in }} <i>{{ post.venue }}</i></p>
       {% endif %}
@@ -91,7 +109,7 @@
 
     {% if post.paperurl or post.slidesurl %}
       <div class="publication-card__actions">
-        {% if post.paperurl %}<a class="publication-action" href="{{ post.paperurl }}">{{ label_paper_doi }}</a>{% endif %}
+        {% if post.paperurl %}<a class="publication-action" href="{{ post.paperurl }}">{{ publication_link_label }}</a>{% endif %}
         {% if post.slidesurl %}<a class="publication-action publication-action--secondary" href="{{ post.slidesurl }}">{{ label_slides }}</a>{% endif %}
       </div>
     {% endif %}

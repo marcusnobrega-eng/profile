@@ -44,7 +44,7 @@ My formal education includes a background in <i>Civil and Environmental Engineer
 
 I was a postdoctoral researcher at the [University of Arizona - Hydrology and Atmospheric Sciences](https://has.arizona.edu/) studying hillslope hydrology merged with data assimilation techniques applied to one of the world's most extensive field experiments in hillslope hydrology - [The Landscape Evolution Observatory Hillslope](https://www.youtube.com/watch?v=qTN89IriGCI&t=21s&ab_channel=Biosphere2).
 
-Currently, I am a postdoctoral researcher at Stanford University at the Department of Earth System Science in the Doerr School of Sustainability. My current work is at the interface between floods and medical records. We want to evaluate whether a causal relationship between flood exposure and disease illness exists and to what extent it relates to more than 100 million medical records we have for the state of California. In addition, a similar analysis is being proposed for India. To that end, we are developing a historical flood map using my model, HydroPol2D, to map all recorded floods from past decades, which will later be used in machine learning algorithms to investigate causal effects on diseases.
+Currently, I am a postdoctoral researcher in the Department of Earth System Science at the Stanford Doerr School of Sustainability. I reconstruct historical flood exposure in California and India and study how those exposure patterns may relate to health outcomes.
 
 I hold a bachelor's degree in Civil Engineering (2013-2018), a Master's degree (2018-2020) and Ph.D. (2020-2023) in Hydraulics and Sanitation Engineering at the [University of Sao Paulo](https://www.riotimesonline.com/brazil-news/brazil/university-of-sao-paulo-in-the-list-of-the-100-best-universities-in-the-world-for-the-first-time/#:~:text=The%20University%20of%20S%C3%A3o%20Paulo%20%28USP%29%20has%20achieved,USP%20at%20the%2085th%20position%20among%201%2C499%20institutions.). My PhD thesis was awarded the [best in the field of Engineering by the University of Sao Paulo](https://eesc.usp.br/noticias/posts_s.php?guid=46600&termid=not_gerais).
 
@@ -54,55 +54,45 @@ I also have a YouTube channel and a website where I share a variety of spreadshe
 
 Research
 ======
-My research focuses on understanding and predicting components of the water cycle in relevant spatiotemporal scales using physics-based numerical modeling and data assimilation techniques via multi-source information. 
 
-More specifically, my research goal is to develop state-of-the-art efficient tools to accurately represent flood and water quality transport and fate dynamics, especially in high spatiotemporal resolution, although not limited to.
+<div class="research-program" markdown="1">
 
-In addition to this primary focus, I also have an interest in:
+<p class="research-program__eyebrow">Dynamic water risk in a changing Earth system</p>
 
-- Hydrologic Modeling
-- Hydrodynamic Modeling
-- GPU Processing
-- Geographical Information Systems
-- Remote Sensing
-- Hazard Mapping
-- Green Infrastructure
-- Low Impact Development
-- Sustainable Drainage Systems
-- Land Surface Modeling
-- Natural Hazards
-- Early Warning Systems
-- Disaster Risk Reduction
-- Serious Games
-- Education in Science
+<p class="research-program__lead">Water hazards emerge from interactions among climate, rainfall, landscapes, infrastructure, and human exposure. My research asks how these connections change across places and over time. I combine physical models, satellite observations, field measurements, and open data to reconstruct past events, anticipate emerging risks, and evaluate possible responses. Floods are the main physical anchor of this work because they make these links visible. The larger goal is to understand how environmental change becomes unequal risk for people, infrastructure, and ecosystems.</p>
 
+<div class="research-directions">
+  <section class="research-direction">
+    <span class="research-direction__number">01</span>
+    <div>
+      <h3>How changing environments generate water extremes</h3>
+      <p>I study how the spatial and temporal organization of rainfall, antecedent wetness, changes in land cover and land use, and aging infrastructure shape the nonlinear generation of runoff. I examine how these controls alter floods, droughts, and the hazards that follow.</p>
+    </div>
+  </section>
 
-Fields and Keywords of Interest
-=======
-<i>Civil and Environmental Engineering</i>
-- Flood Control,
-- Water Quality Transport and Fate
-- Water Availability 
-- Water Resources Planning and Management
+  <section class="research-direction">
+    <span class="research-direction__number">02</span>
+    <div>
+      <h3>How we observe and reconstruct floods</h3>
+      <p>I couple remote sensing, topographic and bathymetric data, and scarce field observations with physics-based models to estimate flood characteristics such as extent and depth, especially where ground observations are limited.</p>
+    </div>
+  </section>
 
-<i>System Analysis</i>
-- Linear Systems and Control
-- Control of Non-Linear Systems
-- Feedback Control
-- Model Predictive Control
-- Linear Quadratic Regulators
+  <section class="research-direction">
+    <span class="research-direction__number">03</span>
+    <div>
+      <h3>How interacting hazards create global inequalities</h3>
+      <p>I examine how floods interact with droughts, wildfires, hail, and cyclones, and how these hazards intersect with human exposure and the capacity to adapt. My goal is to map global gradients in vulnerability and show where natural hazards and socioeconomic conditions combine to produce unequal risk.</p>
+    </div>
+  </section>
+</div>
 
-<i>Mathematics</i>
-- Numerical Modeling
-- Explicit/Implicit Methods
-- Finite-Volume Methods
-- Finite-Difference Methods
-- Convex Optimization
-- Non-Linear Non-Convex Optimization
-- Data Assimilation
-- Reinforcement Learning
-- Particle Filter
+### Current research
 
-Please feel free to reach out to me at marcusnobrega.engcivil@gmail.com or through any other social media links available on this page.
+At Stanford, I am developing historical flood reconstructions for California and India and examining how flood exposure may relate to health outcomes. This work extends my research from the physics of hazards to their human consequences while carefully separating association from causation.
 
-I will be pleased to help and collaborate :)
+<p class="research-program__links"><a href="{{ '/publications/' | relative_url }}">Explore my publications</a><span aria-hidden="true">&middot;</span><a href="{{ '/Developed_Models/' | relative_url }}">View my open research tools</a></p>
+
+</div>
+
+Please feel free to contact me at [marcusnobrega.engcivil@gmail.com](mailto:marcusnobrega.engcivil@gmail.com) or through the academic and social links on this page.
