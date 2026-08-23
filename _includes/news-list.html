@@ -139,6 +139,11 @@
       {% assign source_name = "Critical Reviews in Environmental Science and Technology" %}
       {% assign source_class = "crest" %}
       {% assign source_logo = "/assets/img/news-logos/critical-reviews-est.jpg" | relative_url %}
+    {% elsif source_text contains "sustainable cities and society" %}
+      {% assign source_label = "SCS" %}
+      {% assign source_name = "Sustainable Cities and Society" %}
+      {% assign source_class = "scs" %}
+      {% assign source_logo = "/assets/img/news-logos/sciencedirect.png" | relative_url %}
     {% elsif source_text contains "sustainability" %}
       {% assign source_label = "Sust" %}
       {% assign source_name = "Sustainability" %}
