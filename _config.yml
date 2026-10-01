@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Marcus - Homepage"
+title                    : "Marcus N. Gomes Jr."
 title_separator          : "-"
 name                     : &name "Marcus N. Gomes Jr."
-description              : &description "personal description"
+description              : &description "Flood scientist studying what models must retain across scales to produce locally relevant predictions of depth, timing, exposure, and risk."
 url                      : https://marcusnobrega-eng.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/profile" # the subpath of your site, e.g. "/blog"
 repository               : "marcusnobrega-eng/profile"
@@ -57,7 +57,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         :  https://www.linkedin.com/in/marcus-n%C3%B3brega-744b61138/?locale=en_US
+  linkedin         : "https://www.linkedin.com/in/marcus-n%C3%B3brega-744b61138/?locale=en_US"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -70,7 +70,7 @@ author:
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
-  youtube          : https://www.youtube.com/channel/UCapibqwEuv8TRR5Hgt7zx4w
+  youtube          : "https://www.youtube.com/channel/UCapibqwEuv8TRR5Hgt7zx4w"
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings

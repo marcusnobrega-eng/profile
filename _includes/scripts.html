@@ -1,3 +1,7 @@
-<script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+{% if page.home_water %}
+  <script src="{{ '/assets/js/home-water.js' | relative_url }}?v=20261001-3" defer></script>
+{% else %}
+  <script src="{{ '/assets/js/main.min.js' | relative_url }}" defer></script>
+{% endif %}
 
 {% include analytics.html %}
