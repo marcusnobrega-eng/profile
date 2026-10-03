@@ -55,7 +55,13 @@
       </div>
       <h2 class="archive__item-title talk-card__title" itemprop="headline">
         {% if post.link %}
-          <a href="{{ post.link }}">{{ title }}</a> <a class="talk-card__permalink" href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+          {% assign post_link_first_character = post.link | slice: 0, 1 %}
+          {% if post_link_first_character == "/" %}
+            <a href="{{ post.link | relative_url }}">{{ title }}</a>
+          {% else %}
+            <a href="{{ post.link }}">{{ title }}</a>
+          {% endif %}
+          <a class="talk-card__permalink" href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
         {% else %}
           <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
         {% endif %}

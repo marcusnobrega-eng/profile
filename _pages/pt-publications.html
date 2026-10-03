@@ -5,36 +5,51 @@ permalink: /pt/publications/
 author_profile: true
 lang: pt
 translation_url: /publications/
+body_class: publications-page
+publications_layout: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">Para a lista completa de artigos em periódicos e publicações em conferências, baixe meu CV. <br>
-    Você também pode consultar meu <a href="{{site.author.googlescholar}}">perfil no Google Scholar</a>.</div>
-{% endif %}
-
 {% include base_path %}
+{% assign journal_publications = site.publications | where: "category", "manuscripts" %}
+{% assign conference_publications = site.publications | where: "category", "conferences" %}
+
+<div class="publications-intro publication-reveal">
+  <div class="publications-intro__copy">
+    <p class="publications-intro__eyebrow">Arquivo de pesquisa</p>
+    <p class="publications-intro__lead">Artigos científicos e contribuições em conferências sobre processos de inundação, modelagem hidrológica, infraestrutura hídrica e risco climático.</p>
+  </div>
+  <div class="publications-intro__counts" aria-label="Contagem de publicações">
+    <a href="#journal-articles"><strong>{{ journal_publications.size }}</strong><span>Artigos científicos</span></a>
+    <a href="#conference-papers"><strong>{{ conference_publications.size }}</strong><span>Artigos de conferência</span></a>
+  </div>
+  <div class="publications-intro__links">
+    <a href="{{ '/files/CV___Marcus_N__Gomes_Jr.pdf' | relative_url }}"><i class="far fa-file-pdf" aria-hidden="true"></i> Curriculum vitae</a>
+    {% if site.author.googlescholar %}<a href="{{ site.author.googlescholar }}"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a>{% endif %}
+  </div>
+</div>
 
 {% if site.publication_category %}
   {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
+    {% assign category_posts = site.publications | where: "category", category[0] | sort: "date" | reverse %}
+    {% if category_posts.size > 0 %}
+      <section class="publication-group publication-reveal" id="{% if category[0] == 'manuscripts' %}journal-articles{% elsif category[0] == 'conferences' %}conference-papers{% else %}{{ category[0] }}{% endif %}">
+        <header class="publication-group__header">
+          <p>{{ category_posts.size }} trabalhos</p>
         {% if category[0] == "books" %}
-          <h2>Livros</h2><hr />
+          <h2>Livros</h2>
         {% elsif category[0] == "manuscripts" %}
-          <h2>Artigos em periódicos</h2><hr />
+          <h2>Artigos em periódicos</h2>
         {% elsif category[0] == "conferences" %}
-          <h2>Publicações em conferências</h2><hr />
+          <h2>Publicações em conferências</h2>
         {% else %}
-          <h2>{{ category[1].title }}</h2><hr />
+          <h2>{{ category[1].title }}</h2>
         {% endif %}
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
+        </header>
+        {% for post in category_posts %}
+          {% include archive-single.html %}
+        {% endfor %}
+      </section>
+    {% endif %}
   {% endfor %}
 {% else %}
   {% for post in site.publications reversed %}

@@ -1,247 +1,105 @@
 ---
+layout: archive
 permalink: /pt/Developed_Models/
 title: "Modelos Desenvolvidos"
 author_profile: true
 lang: pt
 translation_url: /Developed_Models/
+body_class: models-archive-page
+models_layout: true
+description: "Software open-source de hidrologia, hidráulica e drenagem urbana desenvolvido por Marcus N. Gomes Jr."
 ---
 
 <section class="models-page">
-  <div class="models-hero">
-    <p class="models-eyebrow">Ferramentas open-source de hidrologia, hidráulica e drenagem urbana</p>
-    <h2>Modelos e códigos selecionados do meu fluxo de pesquisa</h2>
-    <p>Estas ferramentas conectam modelagem numérica, projeto de infraestrutura verde, propagação de cheias, gêmeos digitais e apoio à decisão. Muitas são códigos de pesquisa desenvolvidos em torno de estudos publicados, materiais de ensino ou colaborações em andamento.</p>
-  </div>
+  <header class="models-intro models-reveal">
+    <div class="models-intro__copy">
+      <p class="models-eyebrow">Software científico · ciência aberta</p>
+      <p class="models-intro__lead">Desenvolvo ferramentas computacionais para entender como a água se move, onde as inundações surgem e como a infraestrutura pode responder.</p>
+      <p class="models-intro__text">A coleção abrange simulação física de inundações, hidrologia de encostas, extremos de chuva, infraestrutura verde e controle em tempo real.</p>
+    </div>
+    <nav class="models-intro__links" aria-label="Recursos de software">
+      <a href="https://github.com/marcusnobrega-eng"><i class="fab fa-github" aria-hidden="true"></i> Perfil completo no GitHub</a>
+      <a href="https://marcusnobrega-eng.github.io/HydroPol2D-docs/"><i class="fas fa-book-open" aria-hidden="true"></i> Documentação do HydroPol2D</a>
+      <a href="{{ '/pt/publications/' | relative_url }}"><i class="fas fa-file-alt" aria-hidden="true"></i> Publicações associadas</a>
+    </nav>
+    <ol class="models-process" aria-label="Fluxo de desenvolvimento do software científico">
+      <li><span>01</span><strong>Observar</strong><small>Chuva, terreno, solos, vazão</small></li>
+      <li><span>02</span><strong>Representar</strong><small>Processos e trocas</small></li>
+      <li><span>03</span><strong>Simular</strong><small>Perigos entre escalas</small></li>
+      <li><span>04</span><strong>Decidir</strong><small>Projeto e adaptação</small></li>
+    </ol>
+  </header>
 
-  <div class="models-grid">
-    <article class="model-card model-card--featured">
-      <div class="model-card__content">
-        <div class="model-card__header">
-          <p class="model-card__kicker">Hidrologia e hidráulica distribuídas</p>
-          <h3>HydroPol2D</h3>
-        </div>
-        <p>HydroPol2D é um modelo hidrológico-hidrodinâmico totalmente distribuído para simulações relacionadas a inundações, roteamento de qualidade da água, cenários de ruptura de barragens, eventos de chuva sobre grade e aplicações de drenagem urbana.</p>
-        <ul class="model-card__features">
-          <li>Entradas raster de terreno, uso do solo e solos</li>
-          <li>Chuva sobre grade, hidrogramas, níveis, ruptura de barragens e condições de contorno de controle</li>
-          <li>Infiltração de Green-Ampt, evapotranspiração de Penman-Monteith, troca com água subterrânea, calibração e análise de sensibilidade</li>
+  <section class="models-flagship models-reveal" aria-labelledby="hydropol-title">
+    <header class="models-section-heading models-section-heading--flagship">
+      <p>01 / Modelo principal</p>
+      <div><h2 id="hydropol-title">HydroPol2D</h2><p>Um modelo distribuído do ciclo hidrológico desenvolvido para estudar inundações em diferentes escalas espaciais e temporais.</p></div>
+    </header>
+    <div class="models-flagship__grid">
+      <div class="models-flagship__copy">
+        <p>O HydroPol2D acopla chuva, infiltração, troca com águas subterrâneas, escoamento, drenagem urbana, canais, reservatórios, transporte de poluentes, neve, balanço de energia da superfície e inundação em uma estrutura baseada em rasters.</p>
+        <ul class="models-capabilities" aria-label="Capacidades do HydroPol2D">
+          <li><span>Superfície e subsuperfície</span><strong>Hidrologia acoplada</strong></li>
+          <li><span>Escala local a regional</span><strong>Espacialmente distribuído</strong></li>
+          <li><span>Água e poluentes</span><strong>Propagação hidrodinâmica</strong></li>
         </ul>
         <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/HydroPol2D">Repositório</a>
+          <a class="model-button" href="https://github.com/marcusnobrega-eng/HydroPol2D"><i class="fab fa-github" aria-hidden="true"></i> Repositório</a>
+          <a class="model-button model-button--secondary" href="https://marcusnobrega-eng.github.io/HydroPol2D-docs/"><i class="fas fa-book-open" aria-hidden="true"></i> Documentação</a>
+          <a class="model-button model-button--secondary" href="https://doi.org/10.1016/j.jhydrol.2023.129982"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Artigo</a>
         </div>
       </div>
-      <div class="model-card__media model-card__media--stack">
-        <figure>
-          <img src="https://marcusnobrega-eng.github.io/profile//files/Rain_on_the_grid.gif" alt="Simulação de chuva sobre grade com influência da drenagem urbana em São Paulo, Brasil">
-          <figcaption>Simulação de chuva sobre grade em uma bacia urbana.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://marcusnobrega-eng.github.io/profile//files/dam_break.gif" alt="Cenário de ruptura de barragem em uma cidade de Pernambuco, Brasil">
-          <figcaption>Cenário de ruptura de barragem no Nordeste do Brasil.</figcaption>
-        </figure>
-      </div>
-    </article>
+      <figure class="models-flagship__media">
+        <video autoplay muted loop playsinline controls preload="metadata" poster="{{ '/files/stanford-campus-coupled-states-poster.png' | relative_url }}" aria-label="Oito saídas sincronizadas do HydroPol2D para uma simulação acoplada do campus de Stanford"><source src="{{ '/files/stanford-campus-coupled-states.mp4' | relative_url }}" type="video/mp4"></video>
+        <figcaption><strong>Campus de Stanford · simulação acoplada em 10 m</strong><span>Profundidade · velocidade · chuva · infiltração · água subterrânea · recarga</span></figcaption>
+      </figure>
+    </div>
+  </section>
 
-    <article class="model-card">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Hidráulica 1D com momento completo</p>
-        <h3>HydroHP-1D</h3>
-        <p>HydroHP-1D resolve as equações unidimensionais completas de Saint-Venant para diferentes geometrias de canal e combinações de condições de contorno.</p>
-        <ul class="model-card__features">
-          <li>Seções retangulares, triangulares, trapezoidais, parabólicas, circulares, irregulares e compostas</li>
-          <li>Conceitualizações flexíveis de rugosidade de Manning</li>
-          <li>Vazão de entrada, Nash, saída por maré, hidrogramas de nível e condições de contorno combinadas</li>
-        </ul>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/HydroHP">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://marcusnobrega-eng.github.io/profile//files/HydroHP_1.gif" alt="Simulação em regime transiente com HydroHP-1D">
-          <figcaption>Evolução de estados em uma simulação transiente.</figcaption>
-        </figure>
-      </div>
-    </article>
+  <section class="models-portfolio" aria-labelledby="portfolio-title">
+    <header class="models-section-heading models-reveal">
+      <p>02 / Portfólio de software</p>
+      <div><h2 id="portfolio-title">Ferramentas em todo o fluxo de pesquisa</h2><p>Modelos direcionados à hidráulica fluvial, infraestrutura verde, extremos de chuva, controle e projeto.</p></div>
+    </header>
+    <div class="models-grid">
+      <article class="model-card models-reveal">
+        <div class="model-card__content"><div class="model-card__top"><span>02</span><i class="fas fa-water" aria-hidden="true"></i></div><p class="model-card__kicker">Hidráulica 1D com momento completo</p><h3>HydroHP-1D</h3><p>Resolve as equações completas de Saint-Venant em uma dimensão para diferentes geometrias de canal e combinações de condições de contorno.</p><p class="model-card__scope">Canais · marés · escoamento transiente</p><div class="model-card__actions"><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/HydroHP"><i class="fab fa-github" aria-hidden="true"></i> Repositório</a></div></div>
+        <figure class="model-card__media"><img src="{{ '/files/HydroHP_1.gif' | relative_url }}" alt="Simulação de escoamento transiente com o HydroHP-1D" loading="eager"><figcaption>Evolução dos estados em uma simulação transiente.</figcaption></figure>
+      </article>
+      <article class="model-card models-reveal">
+        <div class="model-card__content"><div class="model-card__top"><span>03</span><i class="fas fa-seedling" aria-hidden="true"></i></div><p class="model-card__kicker">Modelagem de LID baseada em infiltração</p><h3>DRAIN-LID</h3><p>Um solucionador da equação de Richards em forma mista para simulação contínua e de alta resolução do fluxo saturado e não saturado em sistemas de baixo impacto.</p><p class="model-card__scope">Água no solo · infiltração · adaptação climática</p><div class="model-card__actions"><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/DRAIN-LID"><i class="fab fa-github" aria-hidden="true"></i> Repositório</a></div></div>
+        <figure class="model-card__media"><img src="https://github.com/user-attachments/assets/cf5fca6c-4d27-4e32-af86-5f17bf0261f6" alt="Estrutura conceitual do DRAIN-LID para sistemas baseados em infiltração" loading="eager"><figcaption>Processos de superfície e subsuperfície representados pelo DRAIN-LID.</figcaption></figure>
+      </article>
+      <article class="model-card models-reveal">
+        <div class="model-card__content"><div class="model-card__top"><span>04</span><i class="fas fa-cloud-rain" aria-hidden="true"></i></div><p class="model-card__kicker">Extremos de chuva e curvas IDF</p><h3>GRIDF-BR</h3><p>Processa chuva em rasters, extrai extremos, corrige o viés de satélites e estima curvas intensidade-duração-frequência de forma consistente em todo o Brasil.</p><p class="model-card__scope">Observação da Terra · extremos · escala nacional</p><div class="model-card__actions"><a class="model-button" href="https://gridf-470516.projects.earthengine.app/view/gridf-br"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Aplicativo</a><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/GRIDF"><i class="fab fa-github" aria-hidden="true"></i> Código</a></div></div>
+        <figure class="model-card__media"><img src="https://github.com/user-attachments/assets/1090dd66-fa1f-47b7-9207-df39a5387208" alt="Interface e resultados de extremos de chuva do GRIDF-BR" loading="eager"><figcaption>Estimativas nacionalmente consistentes de frequência de chuva.</figcaption></figure>
+      </article>
+      <article class="model-card models-reveal">
+        <div class="model-card__content"><div class="model-card__top"><span>05</span><i class="fas fa-sliders-h" aria-hidden="true"></i></div><p class="model-card__kicker">Drenagem orientada a controle</p><h3>RTC-Stormwater</h3><p>Representa bacias, canais e reservatórios em espaço de estados para testar o controle reativo e preditivo da quantidade e da qualidade da água.</p><p class="model-card__scope">Previsões · reservatórios · controle em tempo real</p><div class="model-card__actions"><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/RTC---Flood-and-Water-Quality"><i class="fab fa-github" aria-hidden="true"></i> Repositório</a></div></div>
+        <figure class="model-card__media"><img src="{{ '/files/Graphical_Abstract_MPC-1.png' | relative_url }}" alt="Estrutura de controle preditivo do RTC-Stormwater" loading="eager"><figcaption>Controle de armazenamento distribuído informado por previsões.</figcaption></figure>
+      </article>
+      <article class="model-card models-reveal">
+        <div class="model-card__content"><div class="model-card__top"><span>06</span><i class="fas fa-project-diagram" aria-hidden="true"></i></div><p class="model-card__kicker">Análise e projeto de biorretenção</p><h3>TC-Hydro</h3><p>Apoia propagação, análise de sensibilidade, calibração, simulação de Monte Carlo e otimização de biorretenção considerando custos.</p><p class="model-card__scope">Infraestrutura verde · incerteza · custo</p><div class="model-card__actions"><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/TC-Hydro"><i class="fab fa-github" aria-hidden="true"></i> Repositório</a></div></div>
+        <figure class="model-card__media"><img src="{{ '/files/Conceptual_Model-1.png' | relative_url }}" alt="Representação conceitual de um sistema de biorretenção no TC-Hydro" loading="eager"><figcaption>Processos hidrológicos em um sistema de biorretenção.</figcaption></figure>
+      </article>
+    </div>
+  </section>
 
-    <article class="model-card">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Modelagem de LID baseada em infiltração</p>
-        <h3>DRAIN-LID</h3>
-        <p>DRAIN-LID é um solucionador da equação de Richards em forma mista para fluxo unidimensional saturado e não saturado em sistemas de desenvolvimento de baixo impacto, projetado para simulações contínuas de alta resolução em longos períodos.</p>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/DRAIN-LID">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://github.com/user-attachments/assets/cf5fca6c-4d27-4e32-af86-5f17bf0261f6" alt="Estrutura conceitual do DRAIN-LID">
-          <figcaption>Estrutura conceitual do DRAIN-LID.</figcaption>
-        </figure>
-      </div>
-    </article>
+  <section class="models-registry" aria-labelledby="registry-title">
+    <header class="models-section-heading models-reveal"><p>03 / Códigos de pesquisa</p><div><h2 id="registry-title">Outros modelos e experimentos numéricos</h2><p>Ferramentas compactas para questões específicas de preparação do terreno, projeto de infraestrutura, águas rasas e hidrologia de encostas.</p></div></header>
+    <div class="models-registry__list">
+      <a class="model-registry-item models-reveal" href="https://github.com/marcusnobrega-eng/HydroBathyDEM"><span class="model-registry-item__index">07</span><span><small>Preparação do terreno</small><strong>HydroBathyDEM</strong><em>Condicionamento hidrológico e batimetria para dados de elevação prontos para modelagem.</em></span><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a class="model-registry-item models-reveal" href="https://github.com/marcusnobrega-eng/LotScaleReservoir"><span class="model-registry-item__index">08</span><span><small>Armazenamento distribuído</small><strong>LotScaleReservoir</strong><em>Dimensionamento de LID em lotes com contribuições espacialmente variáveis.</em></span><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a class="model-registry-item models-reveal" href="https://github.com/marcusnobrega-eng/MoDOBR"><span class="model-registry-item__index">09</span><span><small>Projeto de reservatórios</small><strong>MODOBR</strong><em>Propagação hidrológica e armazenamento sob condições de saída obstruída.</em></span><i class="fab fa-github" aria-hidden="true"></i></a>
+      <div class="model-registry-item models-reveal"><span class="model-registry-item__index">10</span><span><small>Redes hidráulicas</small><strong>X-WHAT</strong><em>Escoamento em redes e otimização de reservatórios usando custos de infraestrutura.</em></span><i class="fas fa-code" aria-hidden="true"></i></div>
+      <a class="model-registry-item models-reveal" href="https://github.com/marcusnobrega-eng/SWE_Solver"><span class="model-registry-item__index">11</span><span><small>Hidráulica bidimensional</small><strong>SWE-Solver</strong><em>Solucionador conservativo e bem balanceado das equações de águas rasas.</em></span><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a class="model-registry-item models-reveal" href="https://github.com/marcusnobrega-eng/1D_hsB?tab=readme-ov-file"><span class="model-registry-item__index">12</span><span><small>Hidrologia de encostas</small><strong>Modelo hsB 1D</strong><em>Simulação Hillslope-Storage-Boussinesq por volumes finitos.</em></span><i class="fab fa-github" aria-hidden="true"></i></a>
+      <div class="model-registry-item models-reveal"><span class="model-registry-item__index">13</span><span><small>Processos acoplados em encostas</small><strong>Modelo hsB-SM acoplado</strong><em>Atmosfera, água no solo, água subterrânea, baseflow e escoamento superficial em desenvolvimento.</em></span><i class="fas fa-code" aria-hidden="true"></i></div>
+    </div>
+  </section>
 
-    <article class="model-card">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Extremos de chuva e curvas IDF</p>
-        <h3>GRIDF-BR</h3>
-        <p>GRIDF-BR é um conjunto de ferramentas em Python e MATLAB para processar produtos rasterizados de chuva, extrair extremos, corrigir viés de bases de satélite e calcular curvas intensidade-duração-frequência para o Brasil.</p>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://gridf-470516.projects.earthengine.app/view/gridf-br">Aplicativo web</a>
-          <a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/GRIDF">Código</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://github.com/user-attachments/assets/1090dd66-fa1f-47b7-9207-df39a5387208" alt="Ferramentas GRIDF-BR">
-          <figcaption>Interface e saídas do GRIDF-BR.</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card model-card--text">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Condicionamento de MDE e preparação de batimetria</p>
-        <h3>HydroBathyDEM</h3>
-        <p>HydroBathyDEM é uma caixa de ferramentas em Python para adaptar modelos digitais de elevação existentes em MDEs condicionados para modelagem hidrológica-hidrodinâmica. Ela apoia fluxos de trabalho em que dados de terreno precisam ser preparados para aplicações de inundação, rios e escoamento superficial.</p>
-        <ul class="model-card__features">
-          <li>Fluxo de condicionamento hidrológico-hidrodinâmico de MDE</li>
-          <li>Preparação de terreno e batimetria com atenção à rede fluvial</li>
-          <li>Ferramentas em Python para pré-processamento de elevação pronta para modelagem</li>
-        </ul>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/HydroBathyDEM">Repositório</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="model-card">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Modelagem de drenagem orientada a controle</p>
-        <h3>RTC-Stormwater</h3>
-        <p>RTC-Stormwater lineariza equações hidrológicas e hidrodinâmicas para bacias, reservatórios e canais, oferecendo uma estrutura em espaço de estados para algoritmos de controle reativo e preditivo.</p>
-        <ul class="model-card__features">
-          <li>Componentes de propagação por onda cinemática e difusiva</li>
-          <li>Controle preditivo baseado em modelo, reguladores quadráticos lineares e integradores quadráticos lineares</li>
-          <li>Equações de conservação de massa e energia em reservatórios</li>
-        </ul>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/RTC---Flood-and-Water-Quality">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://marcusnobrega-eng.github.io/profile//files/Graphical_Abstract_MPC-1.png" alt="Estrutura conceitual do RTC-Stormwater">
-          <figcaption>Estrutura de controle do RTC-Stormwater.</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Análise e projeto de biorretenção</p>
-        <h3>TC-Hydro</h3>
-        <p>TC-Hydro apoia projeto de biorretenção, roteamento, análise de sensibilidade, calibração, simulação de Monte Carlo e otimização de projeto com custos, usando implementações em Excel-VBA e MATLAB.</p>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/TC-Hydro">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://marcusnobrega-eng.github.io/profile//files/Conceptual_Model-1.png" alt="Modelo conceitual do TC-Hydro">
-          <figcaption>Modelo conceitual do TC-Hydro.</figcaption>
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card model-card--text">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Projeto de reservatórios em escala de lote</p>
-        <h3>LotScaleReservoir</h3>
-        <p>LotScaleReservoir contém o software desenvolvido para o estudo sobre variabilidade espacial do escoamento no projeto de LID em bacias urbanas. A ferramenta apoia o dimensionamento de reservatórios em escala de lote e soluções de baixo impacto quando a contribuição de escoamento varia entre parcelas urbanas.</p>
-        <ul class="model-card__features">
-          <li>Dimensionamento de reservatórios em escala de lote considerando a bacia</li>
-          <li>Software associado ao artigo sobre variabilidade espacial do escoamento em projeto de LID</li>
-          <li>Fluxo de projeto para estudos de mitigação e adaptação em bacias urbanas</li>
-        </ul>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/LotScaleReservoir">Repositório</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="model-card model-card--compact">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Projeto de reservatórios de detenção</p>
-        <h3>MODOBR</h3>
-        <p>MODOBR é um algoritmo em Excel-VBA para projeto de reservatórios de detenção, com foco em roteamento hidrológico, profundidade máxima de armazenamento e condições de projeto com dispositivos obstruídos.</p>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/MoDOBR">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://github.com/user-attachments/assets/03e8fba3-7ac8-4494-91c6-bc36c4ab8526" alt="Fluxo do modelo MODOBR">
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card model-card--compact">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Redes hidráulicas e dimensionamento estrutural</p>
-        <h3>X-WHAT</h3>
-        <p>X-WHAT resolve escoamento em redes hidráulicas enquanto otimiza reservatórios, usando custos de tubulações, reservatórios e fundações com hipóteses de esforços laterais de vento.</p>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://marcusnobrega-eng.github.io/profile//files/General_user_algorithm-1.png" alt="Algoritmo do X-WHAT">
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card model-card--compact">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Equações rasas da água</p>
-        <h3>SWE-Solver</h3>
-        <p>Um solucionador simples, bem balanceado e conservativo das equações rasas da água para visualizar problemas bidimensionais de dinâmica dos fluidos usando um esquema numérico explícito de quatro pontos.</p>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/SWE_Solver">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://github.com/user-attachments/assets/a2b137cc-7131-4c10-b446-600bc91911e5" alt="Propagação instantânea de ruptura de barragem com SWE-Solver">
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card model-card--compact">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Modelagem Boussinesq de armazenamento em encostas</p>
-        <h3>1D hsB Model</h3>
-        <p>Uma implementação em volumes finitos de um modelo Hillslope-Storage-Boussinesq unidimensional para fluxo saturado em meios porosos sob controles de largura de encosta.</p>
-        <div class="model-card__actions">
-          <a class="model-button" href="https://github.com/marcusnobrega-eng/1D_hsB?tab=readme-ov-file">Repositório</a>
-        </div>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://github.com/user-attachments/assets/f6457b81-f280-4e35-8201-2ca5856dfc3e" alt="Modelo 1D Hillslope-Storage-Boussinesq">
-        </figure>
-      </div>
-    </article>
-
-    <article class="model-card model-card--compact">
-      <div class="model-card__content">
-        <p class="model-card__kicker">Modelagem acoplada superfície-subsuperfície em encostas</p>
-        <h3>Coupled hsB-SM Model</h3>
-        <p>O modelo hsB-SM conecta atmosfera, água no solo, água subterrânea, escoamento lateral de base e escoamento superficial roteado em uma estrutura parcimoniosa de encosta. Esta ferramenta está atualmente em desenvolvimento.</p>
-      </div>
-      <div class="model-card__media">
-        <figure>
-          <img src="https://github.com/user-attachments/assets/fee4ac8e-3dab-4f4a-82c4-7a2d6b58173c" alt="Estrutura do modelo acoplado hsB-SM">
-        </figure>
-      </div>
-    </article>
-  </div>
+  <footer class="models-closing models-reveal">
+    <p>Vamos conversar!</p>
+    <div><span>Métodos, exemplos e repositórios ativos estão disponíveis no GitHub.</span><a href="https://github.com/marcusnobrega-eng">Ver todos os repositórios <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
+  </footer>
 </section>

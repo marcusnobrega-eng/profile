@@ -5,13 +5,28 @@ permalink: /pt/talks/
 author_profile: true
 lang: pt
 translation_url: /talks/
+body_class: talks-archive-page
+talks_layout: true
 ---
 
 <section class="talks-page">
-  <div class="talks-hero">
-    <p class="talks-eyebrow">Aulas convidadas, cursos e apresentações em conferências</p>
-    <h2>Palestras de pesquisa e apresentações de ensino</h2>
-    <p>Apresentações selecionadas sobre modelagem hidrológica e hidráulica, simulação de inundações e qualidade da água, desenvolvimento de baixo impacto, análise de ruptura de barragens e desenvolvimento de modelos open-source.</p>
+  {% assign sorted_talks = site.talks | sort: "date" | reverse %}
+  {% assign talks_count = sorted_talks | size %}
+
+  <div class="talks-hero talks-intro">
+    <div class="talks-intro__copy">
+      <p class="talks-eyebrow">Pesquisa e ensino</p>
+      <p class="talks-intro__lead">Aulas convidadas, cursos e apresentações em conferências sobre ciência de inundações, modelagem hidrológica, infraestrutura hídrica e ferramentas abertas de pesquisa.</p>
+    </div>
+    <div class="talks-intro__counts" aria-label="Resumo do arquivo de palestras">
+      <a href="#talks-archive"><strong>{{ talks_count }}</strong><span>palestras e cursos</span></a>
+      <a href="#talks-archive"><strong>4</strong><span>países</span></a>
+      <a href="#talks-archive"><strong>2019–2026</strong><span>arquivo</span></a>
+    </div>
+    <nav class="talks-intro__links" aria-label="Páginas relacionadas">
+      <a href="{{ '/pt/publications/' | relative_url }}"><i class="fas fa-book-open" aria-hidden="true"></i> Publicações</a>
+      <a href="{{ '/pt/news/' | relative_url }}"><i class="fas fa-newspaper" aria-hidden="true"></i> Notícias</a>
+    </nav>
   </div>
 
 {% if site.talkmap_link == true %}
@@ -20,9 +35,15 @@ translation_url: /talks/
 
 {% endif %}
 
-  <div class="talks-list">
-  {% for post in site.talks reversed %}
-    {% include archive-single-talk.html %}
-  {% endfor %}
+  <div class="talks-list" id="talks-archive">
+    {% assign current_year = "" %}
+    {% for post in sorted_talks %}
+      {% assign talk_year = post.date | date: "%Y" %}
+      {% if talk_year != current_year %}
+        {% assign current_year = talk_year %}
+        <h2 class="talk-year">{{ current_year }}</h2>
+      {% endif %}
+      {% include archive-single-talk.html %}
+    {% endfor %}
   </div>
 </section>

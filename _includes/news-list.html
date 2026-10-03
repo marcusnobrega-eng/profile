@@ -374,7 +374,12 @@
               {{ item.content | markdownify }}
             </div>
             {% if item.link %}
-              <a class="news-link" href="{{ item.link }}">{{ item.link_label | default: default_news_link_label }}</a>
+              {% assign item_link_first_character = item.link | slice: 0, 1 %}
+              {% if item_link_first_character == "/" %}
+                <a class="news-link" href="{{ item.link | relative_url }}">{{ item.link_label | default: default_news_link_label }}</a>
+              {% else %}
+                <a class="news-link" href="{{ item.link }}">{{ item.link_label | default: default_news_link_label }}</a>
+              {% endif %}
             {% endif %}
           </div>
         </div>

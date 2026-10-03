@@ -101,16 +101,16 @@
     {% endif %}
 
     {% if post.citation %}
-      <div class="publication-citation">
-        <p class="publication-citation__label">{{ label_recommended_citation }}</p>
+      <details class="publication-citation">
+        <summary><i class="fas fa-quote-left" aria-hidden="true"></i> {{ label_recommended_citation }}</summary>
         <p>{{ post.citation }}</p>
-      </div>
+      </details>
     {% endif %}
 
     {% if post.paperurl or post.slidesurl %}
       <div class="publication-card__actions">
-        {% if post.paperurl %}<a class="publication-action" href="{{ post.paperurl }}">{{ publication_link_label }}</a>{% endif %}
-        {% if post.slidesurl %}<a class="publication-action publication-action--secondary" href="{{ post.slidesurl }}">{{ label_slides }}</a>{% endif %}
+        {% if post.paperurl %}<a class="publication-action" href="{{ post.paperurl }}"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> {{ publication_link_label }}</a>{% endif %}
+        {% if post.slidesurl %}<a class="publication-action publication-action--secondary" href="{{ post.slidesurl }}"><i class="fas fa-file-arrow-down" aria-hidden="true"></i> {{ label_slides }}</a>{% endif %}
       </div>
     {% endif %}
     {% else %}

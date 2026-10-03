@@ -1,7 +1,10 @@
-{% if page.home_water %}
+{% if page.home_water or page.publications_layout or page.news_layout or page.talks_layout or page.models_layout %}
   <script src="{{ '/assets/js/home-water.js' | relative_url }}?v=20261001-3" defer></script>
 {% else %}
   <script src="{{ '/assets/js/main.min.js' | relative_url }}" defer></script>
+{% endif %}
+{% if page.publications_layout or page.news_layout or page.talks_layout or page.models_layout %}
+  <script src="{{ '/assets/js/archive-motion.js' | relative_url }}?v=20261003-1" defer></script>
 {% endif %}
 
 {% include analytics.html %}
