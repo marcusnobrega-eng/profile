@@ -3,6 +3,8 @@ title: Generalizing rapid flood predictions to unseen urban catchments with cond
   generative adversarial networks
 collection: publications
 category: manuscripts
+keywords: [flood mapping, deep learning, model transferability]
+short_citation: do Lago et al. (2023)
 permalink: publication/2023-rapid-flood-predictions-cgans
 date: 2023-03-01
 venue: Journal of Hydrology

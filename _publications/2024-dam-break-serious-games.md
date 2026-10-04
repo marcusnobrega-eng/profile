@@ -2,6 +2,8 @@
 title: Increasing flood awareness through dam-break serious games
 collection: publications
 category: manuscripts
+keywords: [dam-break floods, serious games, risk communication]
+short_citation: Gomes Jr. et al. (2024)
 permalink: publication/2024-dam-break-serious-games
 date: 2024-06-01
 venue: International Journal of Disaster Risk Reduction

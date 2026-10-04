@@ -3,6 +3,8 @@ title: Assessing the Socioeconomic Benefits of the Agreste Water Supply System i
   Pernambuco, Brazil
 collection: publications
 category: manuscripts
+keywords: [water supply, socioeconomic benefits, water security]
+short_citation: Castro et al. (2026)
 permalink: publication/2026-agreste-water-supply-benefits
 date: 2026-01-31
 venue: Brazilian Journal of Water Resources

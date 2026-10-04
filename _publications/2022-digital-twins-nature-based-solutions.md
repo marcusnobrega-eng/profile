@@ -3,6 +3,8 @@ title: Can we scale digital twins of nature-based solutions for stormwater and t
   water security projects?
 collection: publications
 category: manuscripts
+keywords: [digital twins, nature-based solutions, water security]
+short_citation: Brasil et al. (2022)
 permalink: publication/2022-digital-twins-nature-based-solutions
 date: 2022-04-27
 venue: Journal of Hydroinformatics

@@ -2,6 +2,8 @@
 title: 'Nature-based solutions and real-time control: Challenges and opportunities'
 collection: publications
 category: manuscripts
+keywords: [nature-based solutions, real-time control, stormwater management]
+short_citation: Brasil et al. (2021)
 permalink: publication/2021-nature-based-solutions-real-time-control
 date: 2021-02-28
 venue: Water

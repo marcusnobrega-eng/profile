@@ -3,6 +3,8 @@ title: 'Developing an open-source flood forecasting system adapted to data-scarc
   regions: A digital twin coupled with hydrologic-hydrodynamic simulations'
 collection: publications
 category: manuscripts
+keywords: [flood forecasting, digital twins, data-scarce regions]
+short_citation: Rapalo et al. (2024)
 permalink: publication/2024-open-source-flood-forecasting-digital-twin
 date: 2024-11-01
 venue: Journal of Hydrology

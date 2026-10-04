@@ -3,6 +3,8 @@ title: 'HydroPol2D - Distributed Hydrodynamic and Water Quality Model: Challenge
   and Opportunities in Poorly-Gauged Catchments'
 collection: publications
 category: manuscripts
+keywords: [HydroPol2D, hydrodynamics, water quality]
+short_citation: Gomes Jr. et al. (2023)
 permalink: publication/2023-hydropol2d-distributed-hydrodynamic-water-quality
 date: 2023-10-01
 venue: Journal of Hydrology

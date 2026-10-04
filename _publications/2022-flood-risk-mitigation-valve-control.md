@@ -3,6 +3,8 @@ title: 'Flood risk mitigation and valve control in stormwater systems: State-spa
   modeling, control algorithms, and case studies'
 collection: publications
 category: manuscripts
+keywords: [valve control, flood mitigation, state-space modeling]
+short_citation: Gomes Jr. et al. (2022)
 permalink: publication/2022-flood-risk-mitigation-valve-control
 date: 2022-12-01
 venue: Journal of Water Resources Planning and Management

@@ -3,6 +3,8 @@ title: 'Risk management framework for urban catchments under non-stationary anal
   Mitigation and adaptation scenarios in a Brazilian case study'
 collection: publications
 category: manuscripts
+keywords: [flood risk management, nonstationarity, urban adaptation]
+short_citation: Richmond Navarro et al. (2026)
 permalink: publication/2026-navarro-risk-management-framework
 date: 2026-06-06
 venue: Urban Water Journal

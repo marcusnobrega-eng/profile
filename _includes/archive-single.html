@@ -14,6 +14,7 @@
   {% assign label_slides = "Slides" %}
   {% assign label_download_slides = "Baixar slides" %}
   {% assign label_download_paper = "Baixar artigo" %}
+  {% assign label_keywords = "Palavras-chave" %}
 {% else %}
   {% assign label_conference_paper = "Conference Paper" %}
   {% assign label_journal_article = "Journal Article" %}
@@ -28,9 +29,19 @@
   {% assign label_slides = "Slides" %}
   {% assign label_download_slides = "Download Slides" %}
   {% assign label_download_paper = "Download Paper" %}
+  {% assign label_keywords = "Keywords" %}
 {% endif %}
 {% assign publication_status = post.status | downcase %}
 {% assign publication_link_label = post.link_label | default: label_paper_doi %}
+{% assign has_publication_figure = false %}
+{% if post.collection == 'publications' and post.category == 'manuscripts' %}
+  {% assign publication_figure = post.figure %}
+  {% unless publication_figure %}
+    {% assign publication_filename = post.path | split: '/' | last | replace: '.md', '' %}
+    {% capture publication_figure %}/assets/img/publications/{{ publication_filename }}.webp{% endcapture %}
+  {% endunless %}
+  {% assign has_publication_figure = true %}
+{% endif %}
 
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
@@ -45,7 +56,7 @@
 {% endif %}
 
 <div class="{{ include.type | default: "list" }}__item{% if post.collection == 'publications' %} publication-list__item{% endif %}">
-  <article class="archive__item{% if post.collection == 'publications' %} publication-card{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="archive__item{% if post.collection == 'publications' %} publication-card{% endif %}{% if has_publication_figure %} publication-card--visual{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}
       <div class="archive__item-teaser">
         <img src=
@@ -59,6 +70,27 @@
     {% endif %}
 
     {% if post.collection == 'publications' %}
+    {% if has_publication_figure %}
+      <figure class="publication-card__figure publication-card__figure--{{ post.figure_fit | default: 'contain' }}">
+        <a class="publication-card__figure-link" href="{{ base_path }}{{ post.url }}" aria-label="View publication details for {{ post.title | strip_html | escape }}">
+          {% if post.figure_alt %}
+            <img src="{{ publication_figure | relative_url }}" alt="{{ post.figure_alt | escape }}" loading="lazy" decoding="async">
+          {% else %}
+            <img src="{{ publication_figure | relative_url }}" alt="Representative figure from {{ post.title | strip_html | escape }}" loading="lazy" decoding="async">
+          {% endif %}
+        </a>
+        <figcaption>
+          {% if post.figure_caption %}
+            <span>{{ post.figure_caption }}</span>
+          {% elsif post.short_citation %}
+            <span>{{ post.short_citation }}</span>
+          {% else %}
+            <span>{{ post.date | date: "%Y" }}</span>
+          {% endif %}
+          <span>{{ post.venue }} · {{ post.date | date: "%Y" }}</span>
+        </figcaption>
+      </figure>
+    {% endif %}
     <div class="publication-card__top">
       <div class="publication-card__meta">
         {% if post.category == 'conferences' %}
@@ -98,6 +130,15 @@
     <div class="publication-description" itemprop="description">{{ post.description | markdownify }}</div>
     {% elsif post.excerpt %}
     <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
+    {% endif %}
+
+    {% if post.keywords %}
+      <div class="publication-card__keywords">
+        <span class="publication-card__keywords-label">{{ label_keywords }}</span>
+        <ul aria-label="{{ label_keywords }}">
+          {% for keyword in post.keywords %}<li>{{ keyword }}</li>{% endfor %}
+        </ul>
+      </div>
     {% endif %}
 
     {% if post.citation %}

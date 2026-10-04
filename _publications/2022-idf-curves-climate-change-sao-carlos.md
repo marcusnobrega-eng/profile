@@ -3,6 +3,8 @@ title: Construction of Intensity-Duration-Frequency curves with future climate c
   scenarios for the city of Sao Carlos - SP aiming at the design of compensatory techniques
 collection: publications
 category: manuscripts
+keywords: [IDF curves, climate change, drainage design]
+short_citation: Jochelavicius et al. (2022)
 permalink: publication/2022-idf-curves-climate-change-sao-carlos
 date: 2022-10-04
 venue: Revista DAE

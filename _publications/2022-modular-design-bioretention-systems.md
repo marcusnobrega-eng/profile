@@ -3,6 +3,8 @@ title: Modular design of bioretention systems for sustainable stormwater managem
   under drivers of urbanization and climate change
 collection: publications
 category: manuscripts
+keywords: [bioretention, modular design, nonstationarity]
+short_citation: Batalini de Macedo et al. (2022)
 permalink: publication/2022-modular-design-bioretention-systems
 date: 2022-06-01
 venue: Sustainability

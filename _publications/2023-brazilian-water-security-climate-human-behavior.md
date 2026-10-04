@@ -2,6 +2,8 @@
 title: Brazilian water security threatened by climate change and human behavior
 collection: publications
 category: manuscripts
+keywords: [water security, climate change, human behavior]
+short_citation: Ballarin et al. (2023)
 permalink: publication/2023-brazilian-water-security-climate-human-behavior
 date: 2023-07-06
 venue: Water Resources Research

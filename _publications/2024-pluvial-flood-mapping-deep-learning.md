@@ -3,6 +3,8 @@ title: Improving pluvial flood mapping resolution of large coarse models with de
   learning
 collection: publications
 category: manuscripts
+keywords: [pluvial flooding, super-resolution, deep learning]
+short_citation: do Lago et al. (2024)
 permalink: publication/2024-pluvial-flood-mapping-deep-learning
 date: 2024-04-10
 venue: Hydrological Sciences Journal

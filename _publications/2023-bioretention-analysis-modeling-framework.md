@@ -3,6 +3,8 @@ title: 'A modeling framework for bioretention analysis: Assessing the hydrologic
   under system uncertainty'
 collection: publications
 category: manuscripts
+keywords: [bioretention, uncertainty analysis, hydrologic modeling]
+short_citation: Gomes Jr. et al. (2023)
 permalink: publication/2023-bioretention-analysis-modeling-framework
 date: 2023-09-01
 venue: Journal of Hydrologic Engineering

@@ -3,6 +3,8 @@ title: A Simple Method for Designing Infiltration Low Impact Development Techniq
   Considering Effects of Urbanization and Climate Change
 collection: publications
 category: manuscripts
+keywords: [low-impact development, climate change, infiltration design]
+short_citation: Gomes Jr. et al. (2025)
 permalink: publication/2025-simple-method-infiltration-lid-design
 date: 2025-01-01
 venue: Brazilian Journal of Water Resources

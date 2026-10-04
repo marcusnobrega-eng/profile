@@ -3,6 +3,8 @@ title: A Coupled Darcy-Richards Framework for Hydrological Modeling of Permeable
   Green Roofs, and Bioretention Systems
 collection: publications
 category: manuscripts
+keywords: [Darcy-Richards model, low-impact development, porous media]
+short_citation: Gomes Jr. et al. (2025)
 permalink: publication/2025-coupled-darcy-richards-lid-framework
 date: 2025-07-01
 venue: Environmental Modelling & Software

@@ -3,6 +3,8 @@ title: 'Low impact development practices in the context of United Nations Sustai
   Development Goals: A new concept, lessons learned and challenges'
 collection: publications
 category: manuscripts
+keywords: [low-impact development, Sustainable Development Goals, stormwater management]
+short_citation: Batalini de Macedo et al. (2021)
 permalink: publication/2022-lid-practices-sdgs
 date: 2021-03-08
 venue: Critical Reviews in Environmental Science and Technology

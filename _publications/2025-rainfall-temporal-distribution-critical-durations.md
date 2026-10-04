@@ -3,6 +3,8 @@ title: Exploring the impact of rainfall temporal distribution and critical durat
   on flood hazard modeling
 collection: publications
 category: manuscripts
+keywords: [rainfall temporal distribution, design storms, flood mapping]
+short_citation: Gomes Jr. et al. (2025)
 permalink: publication/2025-rainfall-temporal-distribution-critical-durations
 date: 2025-04-03
 venue: Natural Hazards

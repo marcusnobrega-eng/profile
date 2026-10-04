@@ -3,6 +3,8 @@ title: Identifying the State Dependence of Effective Material Properties in a Si
   Hydrologic Hillslope Model
 collection: publications
 category: manuscripts
+keywords: [hydrologic scaling, effective properties, state dependence]
+short_citation: Gomes Jr. et al. (2026)
 permalink: publication/2026-state-dependence-effective-material-properties
 date: 2026-05-29
 venue: Water Resources Research

@@ -2,6 +2,8 @@
 title: A digital twin framework for real-time probabilistic forecasting of permeable pavement performance
 collection: publications
 category: manuscripts
+keywords: [digital twins, permeable pavements, probabilistic forecasting]
+short_citation: Brasil et al. (2026)
 permalink: publication/2026-digital-twin-permeable-pavement
 date: 2026-09-01
 venue: Journal of Hydrology

@@ -3,6 +3,8 @@ title: 'Multiple Degrees of Human Instability Due to Urban Overland Flow Within 
   21st Century: An Urban Watershed Case Study in Brazil'
 collection: publications
 category: manuscripts
+keywords: [human instability, urban flooding, flood hazard]
+short_citation: Rapalo et al. (2025)
 permalink: publication/2025-human-instability-urban-overland-flow
 date: 2025-08-01
 venue: International Journal of Disaster Risk Reduction

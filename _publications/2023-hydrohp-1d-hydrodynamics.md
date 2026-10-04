@@ -3,6 +3,8 @@ title: 'Modeling unsteady and steady 1-D hydrodynamics under different hydraulic
   Model/software development and case studies'
 collection: publications
 category: manuscripts
+keywords: [1D hydrodynamics, HydroHP, open-source modeling]
+short_citation: Gomes Jr. et al. (2023)
 permalink: publication/2023-hydrohp-1d-hydrodynamics
 date: 2023-09-01
 venue: Environmental Modelling & Software

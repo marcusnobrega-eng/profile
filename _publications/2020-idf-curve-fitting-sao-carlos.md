@@ -4,6 +4,8 @@ title: 'Statistical, visual and non-parametric analyses for the optimization of 
   Sao Carlos - SP'
 collection: publications
 category: manuscripts
+keywords: [IDF curves, extreme rainfall, hydraulic design]
+short_citation: Gomes Jr. et al. (2020)
 permalink: publication/2020-idf-curve-fitting-sao-carlos
 date: 2020-12-08
 venue: Revista DAE

@@ -3,6 +3,8 @@ title: Flood Event Escalation and Urban Drainage Design Implications Under Nonst
   Rainfall in Sao Paulo State, Brazil
 collection: publications
 category: manuscripts
+keywords: [nonstationary rainfall, urban drainage, design storms]
+short_citation: Brandao et al. (2026)
 permalink: publication/2026-brandao-flood-event-escalation
 date: 2026-02-27
 venue: Water

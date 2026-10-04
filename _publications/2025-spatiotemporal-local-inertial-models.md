@@ -3,6 +3,8 @@ title: Spatio-temporal performance of 2D local inertial hydrodynamic models for 
   drainage and dam-break applications
 collection: publications
 category: manuscripts
+keywords: [local inertial models, urban drainage, dam-break floods]
+short_citation: Gomes Jr. et al. (2025)
 permalink: publication/2025-spatiotemporal-local-inertial-models
 date: 2025-09-01
 venue: Journal of Hydrology

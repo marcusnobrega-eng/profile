@@ -38,6 +38,8 @@
       {% case type_class %}
         {% when "paper" %}
           {% assign display_type = "Artigo" %}
+        {% when "preprint" %}
+          {% assign display_type = "Preprint" %}
         {% when "conference" %}
           {% assign display_type = "Conferência" %}
         {% when "talk" %}
@@ -59,7 +61,12 @@
     {% assign source_class = "generic" %}
     {% assign source_logo = "" %}
 
-    {% if source_text contains "water resources research" or source_text contains "2025wr" or source_text contains "2023wr" %}
+    {% if source_text contains "arxiv" %}
+      {% assign source_label = "arXiv" %}
+      {% assign source_name = "arXiv" %}
+      {% assign source_class = "arxiv" %}
+      {% assign source_logo = "/assets/img/news-logos/arxiv.svg" | relative_url %}
+    {% elsif source_text contains "water resources research" or source_text contains "2025wr" or source_text contains "2023wr" %}
       {% assign source_label = "WRR" %}
       {% assign source_name = "Water Resources Research" %}
       {% assign source_class = "wrr" %}

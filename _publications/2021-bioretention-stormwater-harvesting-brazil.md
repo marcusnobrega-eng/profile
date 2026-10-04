@@ -3,6 +3,8 @@ title: Different configurations of a bioretention system focused on stormwater h
   in Brazil
 collection: publications
 category: manuscripts
+keywords: [bioretention, stormwater harvesting, nature-based solutions]
+short_citation: de Oliveira et al. (2021)
 permalink: publication/2021-bioretention-stormwater-harvesting-brazil
 date: 2021-12-01
 venue: Journal of Environmental Engineering

@@ -3,6 +3,8 @@ title: 'Hydrological-Hydrodynamic Modeling of Climate-Induced Urban Flooding of 
   Storms Using HydroPol2D: A Case Study in Sao Carlos, Brazil'
 collection: publications
 category: manuscripts
+keywords: [HydroPol2D, climate change, urban flooding]
+short_citation: Sousa et al. (2026)
 permalink: publication/2026-hydropol2d-sao-carlos-climate-flooding
 date: 2026-01-01
 venue: Brazilian Journal of Water Resources

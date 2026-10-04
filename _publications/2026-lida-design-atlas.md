@@ -3,6 +3,8 @@ title: 'LID-Design Atlas: Mapping Hydrologic Performance and Cost Trade-Offs
   in Infiltration-Based LID Design'
 collection: publications
 category: manuscripts
+keywords: [low-impact development, cost-performance trade-offs, design atlas]
+short_citation: Gomes Jr. et al. (2026)
 permalink: publication/2026-lida-design-atlas
 date: 2026-05-10
 venue: Journal of Hydrologic Engineering

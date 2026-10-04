@@ -2,6 +2,8 @@
 title: Reformulating the Rational Method Considering Dissimilar Land Use Types
 collection: publications
 category: manuscripts
+keywords: [Rational Method, land-use heterogeneity, peak discharge]
+short_citation: Vasconcelos et al. (2025)
 permalink: publication/2025-reformulating-rational-method-dissimilar-land-use
 date: 2025-08-01
 venue: Journal of Irrigation and Drainage Engineering

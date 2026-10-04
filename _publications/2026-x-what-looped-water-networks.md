@@ -2,6 +2,8 @@
 title: 'Modeling and Design Optimization of Looped Water Distribution Networks using MS Excel: Developing the Open-Source X-WHAT Model'
 collection: publications
 category: manuscripts
+keywords: [water distribution networks, design optimization, X-WHAT]
+short_citation: Gomes Jr. et al. (2026)
 permalink: publication/2026-x-what-looped-water-networks
 date: 2026-08-29
 venue: Water Resources Management

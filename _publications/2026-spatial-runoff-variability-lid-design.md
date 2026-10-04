@@ -3,6 +3,8 @@ title: 'Accounting for spatial runoff variability in LID design for urban catchm
   model and software development'
 collection: publications
 category: manuscripts
+keywords: [low-impact development, spatial runoff variability, design optimization]
+short_citation: Gomes Jr. et al. (2026)
 permalink: publication/2026-spatial-runoff-variability-lid-design
 date: 2026-01-01
 venue: Brazilian Journal of Water Resources

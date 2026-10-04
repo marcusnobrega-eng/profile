@@ -3,6 +3,8 @@ title: 'Real-time regulation of detention ponds via feedback control: Balancing 
   mitigation and water quality'
 collection: publications
 category: manuscripts
+keywords: [detention ponds, feedback control, water quality]
+short_citation: Gomes Jr. et al. (2024)
 permalink: publication/2024-realtime-regulation-detention-ponds
 date: 2024-11-01
 venue: Journal of Hydrology

@@ -3,6 +3,8 @@ title: Field Scale Test Bed for Assessment of the Surface Runoff and Water Quali
   Performance of Permeable Pavements
 collection: publications
 category: manuscripts
+keywords: [permeable pavements, water quality, field monitoring]
+short_citation: Brasil et al. (2026)
 permalink: publication/2026-permeable-pavement-testbed
 date: 2026-05-17
 venue: Journal of Hydrologic Engineering

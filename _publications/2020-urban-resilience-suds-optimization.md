@@ -3,6 +3,8 @@ title: 'Towards urban resilience through sustainable drainage systems: A multi-o
   optimisation problem'
 collection: publications
 category: manuscripts
+keywords: [sustainable drainage, multi-objective optimization, urban resilience]
+short_citation: McClymont et al. (2020)
 permalink: publication/2020-urban-resilience-suds-optimization
 date: 2020-12-01
 venue: Journal of Environmental Management

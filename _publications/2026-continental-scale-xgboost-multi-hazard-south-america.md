@@ -2,6 +2,8 @@
 title: A Continental-scale XGBoost Framework for Multi-Hazard Susceptibility and Socioeconomic Exposure in South America
 collection: publications
 category: manuscripts
+keywords: [multi-hazard susceptibility, XGBoost, socioeconomic exposure]
+short_citation: Gomes Jr. et al. (2026)
 permalink: publication/2026-continental-scale-xgboost-multi-hazard-south-america
 date: 2026-08-22
 venue: Sustainable Cities and Society
