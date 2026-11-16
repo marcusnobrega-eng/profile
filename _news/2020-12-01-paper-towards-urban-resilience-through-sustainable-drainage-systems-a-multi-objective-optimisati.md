@@ -8,4 +8,4 @@ link: https://doi.org/10.1016/j.jenvman.2020.111173
 link_label: DOI
 ---
 
-"Towards urban resilience through sustainable drainage systems: A multi-objective optimisation problem" was published in *Journal of Environmental Management*.
+This study formulates sustainable drainage planning as a multi-objective optimization problem. It examines how the location and design of stormwater measures affect competing objectives, including flood mitigation and implementation costs. The results help clarify the trade-offs that planners face when selecting drainage strategies for more resilient urban catchments.

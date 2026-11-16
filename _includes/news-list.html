@@ -61,7 +61,12 @@
     {% assign source_class = "generic" %}
     {% assign source_logo = "" %}
 
-    {% if source_text contains "arxiv" %}
+    {% if source_text contains "ssrn" or source_text contains "10.2139/ssrn" %}
+      {% assign source_label = "SSRN" %}
+      {% assign source_name = "SSRN" %}
+      {% assign source_class = "ssrn" %}
+      {% assign source_logo = "" %}
+    {% elsif source_text contains "arxiv" %}
       {% assign source_label = "arXiv" %}
       {% assign source_name = "arXiv" %}
       {% assign source_class = "arxiv" %}
@@ -370,7 +375,9 @@
         </div>
         <div class="news-content">
           <div class="news-source-visual" aria-hidden="true">
-            {% if source_logo != "" %}
+            {% if source_class == "ssrn" %}
+              <i class="ai ai-ssrn news-source-logo-icon"></i>
+            {% elsif source_logo != "" %}
               <img class="news-source-logo-large" src="{{ source_logo }}" alt="" loading="lazy" decoding="async">
             {% else %}
               <span class="news-source-fallback">{{ source_label }}</span>

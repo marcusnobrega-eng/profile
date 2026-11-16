@@ -8,4 +8,4 @@ link: https://doi.org/10.1029/2025WR041468
 link_label: DOI
 ---
 
-"Identifying the State Dependence of Effective Material Properties in a Simplified Hydrologic Hillslope Model" was published in *Water Resources Research*.
+This study investigates whether effective material properties in a simplified hillslope model remain constant as hydrologic conditions change. It combines model experiments and data assimilation to examine how inferred parameters depend on the state of the system. The results inform when fixed coarse-scale parameters can represent fine-scale processes and when they must vary with wetness or flow conditions.
