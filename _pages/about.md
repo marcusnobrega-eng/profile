@@ -79,7 +79,7 @@ redirect_from:
         <p class="academic-timeline__date">2018–2023</p>
         <h3>University of São Paulo</h3>
         <p class="academic-timeline__role">M.Sc. and Ph.D., Hydrology &amp; Water Resources</p>
-        <p>Open-source flood modeling, design rainfall, and nature-based drainage. Best 2023 engineering thesis at EESC-USP.</p>
+        <p>Open-source flood modeling, design rainfall, and nature-based drainage. Best 2023 Ph.D. thesis in engineering at the University of São Paulo.</p>
       </div>
     </li>
     <li>
@@ -330,7 +330,7 @@ redirect_from:
     </article>
   </div>
 
-  <p class="home-section__more"><a href="{{ '/publications/' | relative_url }}">View all 36 journal articles <span aria-hidden="true">→</span></a></p>
+  <p class="home-section__more"><a href="{{ '/publications/' | relative_url }}">View all 40 journal articles <span aria-hidden="true">→</span></a></p>
 </section>
 
 <section class="home-section home-reveal" id="models" aria-labelledby="models-title">
@@ -345,6 +345,7 @@ redirect_from:
   </article>
 
   <div class="research-products">
+    <a href="https://github.com/marcusnobrega-eng/DamBreakNet-releases"><span class="research-products__icon"><i class="fas fa-network-wired" aria-hidden="true"></i></span><span><small>Dam-break flood mapping</small><strong>DamBreakNet</strong><em>QGIS plugin</em></span><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
     <a href="https://riskframeworksa.github.io/data_viewer"><span class="research-products__icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span><small>Multi-hazard intelligence</small><strong>MIRA</strong><em>South America at 1 km</em></span><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
     <a href="https://marcusnobrega-eng.github.io/LIMIAR"><span class="research-products__icon"><i class="fas fa-water" aria-hidden="true"></i></span><span><small>Flood reconstruction</small><strong>LIMIAR</strong><em>Brazilian monitored rivers</em></span><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
     <a href="https://gridf-470516.projects.earthengine.app/view/gridf-br"><span class="research-products__icon"><i class="fas fa-cloud-rain" aria-hidden="true"></i></span><span><small>Rainfall extremes</small><strong>GRIDF-BR</strong><em>National IDF estimation</em></span><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>

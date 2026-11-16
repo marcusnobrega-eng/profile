@@ -76,7 +76,19 @@ redirect_from:
     <div class="models-grid">
       <article class="model-card models-reveal">
         <div class="model-card__content">
-          <div class="model-card__top"><span>02</span><i class="fas fa-water" aria-hidden="true"></i></div>
+          <div class="model-card__top"><span>02</span><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+          <p class="model-card__kicker">Rapid dam-break flood mapping</p>
+          <h3>DamBreakNet</h3>
+          <p>A QGIS plugin that maps the maximum flood depth, velocity, and hazard after a dam break in seconds, using a convolutional neural network trained on HydroPol2D simulations of dams in Brazil, next to the LNEC/ANA and HAND methods.</p>
+          <p class="model-card__scope">Dam safety · emergency planning · QGIS</p>
+          <div class="model-card__actions"><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/DamBreakNet-releases"><i class="fab fa-github" aria-hidden="true"></i> Repository</a> <a class="model-button model-button--secondary" href="https://doi.org/10.5281/zenodo.24128809"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Zenodo release</a></div>
+        </div>
+        <figure class="model-card__media"><img src="{{ '/files/dambreaknet_nilo_coelho.jpg' | relative_url }}" alt="Maximum flood depth, velocity, and hazard below Nilo Coelho dam, Pernambuco, Brazil, predicted by DamBreakNet in QGIS" loading="eager"><figcaption>DamBreakNet maps below Nilo Coelho dam, Pernambuco, Brazil.</figcaption></figure>
+      </article>
+
+      <article class="model-card models-reveal">
+        <div class="model-card__content">
+          <div class="model-card__top"><span>03</span><i class="fas fa-water" aria-hidden="true"></i></div>
           <p class="model-card__kicker">Full-momentum 1D hydraulics</p>
           <h3>HydroHP-1D</h3>
           <p>Solves the complete one-dimensional Saint-Venant equations across multiple channel geometries and boundary-condition combinations.</p>
@@ -88,7 +100,7 @@ redirect_from:
 
       <article class="model-card models-reveal">
         <div class="model-card__content">
-          <div class="model-card__top"><span>03</span><i class="fas fa-seedling" aria-hidden="true"></i></div>
+          <div class="model-card__top"><span>04</span><i class="fas fa-seedling" aria-hidden="true"></i></div>
           <p class="model-card__kicker">Infiltration-based LID modeling</p>
           <h3>DRAIN-LID</h3>
           <p>A mixed-form Richards equation solver for continuous, high-resolution simulation of saturated and unsaturated flow in low-impact development systems.</p>
@@ -100,7 +112,7 @@ redirect_from:
 
       <article class="model-card models-reveal">
         <div class="model-card__content">
-          <div class="model-card__top"><span>04</span><i class="fas fa-cloud-rain" aria-hidden="true"></i></div>
+          <div class="model-card__top"><span>05</span><i class="fas fa-cloud-rain" aria-hidden="true"></i></div>
           <p class="model-card__kicker">Rainfall extremes and IDF curves</p>
           <h3>GRIDF-BR</h3>
           <p>Processes raster rainfall, extracts extremes, corrects satellite bias, and estimates intensity-duration-frequency curves consistently across Brazil.</p>
@@ -112,7 +124,7 @@ redirect_from:
 
       <article class="model-card models-reveal">
         <div class="model-card__content">
-          <div class="model-card__top"><span>05</span><i class="fas fa-sliders-h" aria-hidden="true"></i></div>
+          <div class="model-card__top"><span>06</span><i class="fas fa-sliders-h" aria-hidden="true"></i></div>
           <p class="model-card__kicker">Control-oriented stormwater modeling</p>
           <h3>RTC-Stormwater</h3>
           <p>Represents catchments, channels, and reservoirs in state space to test reactive and predictive control of flood quantity and water quality.</p>
@@ -124,7 +136,7 @@ redirect_from:
 
       <article class="model-card models-reveal">
         <div class="model-card__content">
-          <div class="model-card__top"><span>06</span><i class="fas fa-project-diagram" aria-hidden="true"></i></div>
+          <div class="model-card__top"><span>07</span><i class="fas fa-project-diagram" aria-hidden="true"></i></div>
           <p class="model-card__kicker">Bioretention analysis and design</p>
           <h3>TC-Hydro</h3>
           <p>Supports routing, sensitivity analysis, calibration, Monte Carlo simulation, and cost-aware optimization of bioretention systems.</p>
