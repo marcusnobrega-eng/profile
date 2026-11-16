@@ -16,7 +16,7 @@ redirect_from:
 <section class="water-hero" aria-labelledby="home-title">
   <div class="water-hero__copy">
     <h1 id="home-title">Flood science<br><span>across scales.</span></h1>
-    <p class="water-hero__lead">I study floods from streets to river basins, examining flood processes and impacts at local, regional, continental, and global scales.</p>
+    <p class="water-hero__lead">I am a hydrologist and water resources engineer. I study how rainfall, soils, groundwater, rivers, and infrastructure interact to shape floods and water availability, and what models must keep to predict local impacts.</p>
     <p class="water-hero__affiliation"><i class="fas fa-location-dot" aria-hidden="true"></i> Postdoctoral Researcher · Stanford Earth System Science</p>
 
     <nav class="water-social" aria-label="Academic and social profiles">
@@ -41,16 +41,25 @@ redirect_from:
   <div class="home-about__inner">
     <div class="home-about__heading">
       <p class="home-section__index">01 · About</p>
-      <h2 id="about-title">Think globally; act locally: I build large-scale models that preserve local flood characteristics.</h2>
+      <h2 id="about-title">I build large-scale models that keep the local details that decide flood impacts.</h2>
     </div>
     <div class="home-about__portrait">
       <img src="{{ '/images/marcus-award-portrait.webp' | relative_url }}" alt="Portrait of Marcus N. Gomes Jr.">
       <p><span>Marcus N. Gomes Jr., PhD</span> Hydrologist</p>
     </div>
     <div class="home-about__copy">
-      <p>I am interested in floods and extreme events, especially how their physical drivers and impacts change across scales. My work began with urban floods and open-source numerical models in Brazil. It now connects high-resolution hydrologic and hydrodynamic simulation, Earth observation, field measurements, data assimilation, and machine learning across Brazil, India, California, and the continental United States.</p>
+      <p>My work began with urban floods and open-source numerical models in Brazil. It now combines physics-based hydrologic and hydrodynamic models with field and satellite observations, data assimilation, and machine learning, from a controlled hillslope experiment in Arizona to cities and river basins in Texas, California, Brazil, and India.</p>
+      <p>I develop HydroPol2D, an open-source, GPU-enabled model that couples surface and subsurface flow, and I use it to reconstruct past floods, test design rules, and study how floods affect people. At Stanford, I work with Prof. Steven Gorelick to reconstruct floods across India from 2010 to 2025 and link them with health records.</p>
     </div>
   </div>
+  <ul class="home-record" aria-label="Record at a glance">
+    <li><strong>40</strong><span>peer-reviewed journal articles, 17 as first author</span></li>
+    <li><strong>11</strong><span>more submitted or under review, 3 in preparation</span></li>
+    <li><strong>96</strong><span>peer reviews for 28 journals</span></li>
+    <li><strong>10</strong><span>students advised or supervised at six universities</span></li>
+    <li><strong>Best 2023 Ph.D. thesis</strong><span>in engineering, University of São Paulo</span></li>
+    <li><strong>800+</strong><span>citations, h-index 15 (Google Scholar, November 2026)</span></li>
+  </ul>
 </section>
 
 <section class="home-section home-academic home-reveal" aria-labelledby="academic-title">
@@ -119,9 +128,9 @@ redirect_from:
   <div class="home-section__heading home-section__heading--split">
     <div>
       <p class="home-section__index">03 · Research program</p>
-      <h2 id="research-title">How can large-scale flood models remain useful for local decisions?</h2>
+      <h2 id="research-title">What must models keep to predict local floods and water availability?</h2>
     </div>
-    <p>Flood impacts are local, but national and global models cannot represent every street, channel, and drainage system. Coarser models smooth the terrain, hydraulic connectivity, storage, and infrastructure that control where water accumulates. Running meter-scale physically-based models across countries remains computationally prohibitive, and we still do not know which local characteristics coarse models must preserve. I work on this gap so large-scale regional or global models can support local decisions.</p>
+    <p>Flood consequences are local. Whether water floods a street, a home, or a neighborhood depends on how rain falls in space and time, how soils wet and drain, how they exchange water with groundwater, and whether drainage infrastructure works as designed. Regional and global models smooth these connections, and design rules often rely on rainfall statistics that are decades old. My program asks which connections models must keep, and how observations can recover what coarse models lose.</p>
   </div>
 
 {% comment %}
@@ -294,15 +303,15 @@ redirect_from:
 
   <div class="research-instruments">
     <article class="research-instrument">
-      <div class="research-instrument__copy"><p class="research-instrument__index">Question 01 / Reconstruction</p><h3>Where, when, and how deeply did floodwater accumulate?</h3><p>Build multi-decade flood reconstructions by assimilating satellites, gauges, cameras, low-cost sensors, and community observations into physical models.</p><dl><div><dt>Domains</dt><dd>California · United States · Brazil · India</dd></div><div><dt>Resolved variables</dt><dd>Flood hazard · velocity · infiltration · groundwater storage · evapotranspiration · reservoir dynamics · urban drainage dynamics</dd></div></dl></div>
+      <div class="research-instrument__copy"><p class="research-instrument__index">Thrust 01 / Floods across scales</p><h3>Can models constrained by observations recover the local flood skill that coarse models lose?</h3><p>Reconstruct decades of floods and hydrologic states with coupled surface-subsurface models, coarsen them step by step to learn which details matter, and use data assimilation to estimate effective parameters that change over time.</p><dl><div><dt>Places</dt><dd>Texas · California · Brazil · India</dd></div><div><dt>Methods</dt><dd>HydroPol2D · particle filters · satellites and stream gauges</dd></div></dl></div>
     </article>
 
     <article class="research-instrument">
-      <div class="research-instrument__copy"><p class="research-instrument__index">Question 02 / Scaling physics</p><h3>How should flood physics be represented as scale changes?</h3><p>Simplify rainfall, terrain, storage, infrastructure, and surface–subsurface exchange systematically, then measure what changes inside the flooded domain, not only at the outlet.</p><dl><div><dt>Reference</dt><dd>Fine-grid process simulations</dd></div><div><dt>Target</dt><dd>Meter-scale to kilometer-scale resolution</dd></div></dl></div>
+      <div class="research-instrument__copy"><p class="research-instrument__index">Thrust 02 / Surface-subsurface water</p><h3>What do flood maps miss when they ignore groundwater, and how much floodwater recharges aquifers?</h3><p>Simulate groundwater flooding and long-term recharge, and find where green infrastructure such as permeable pavements and bioretention adds recharge at the lowest cost.</p><dl><div><dt>Places</dt><dd>Central Texas · Brazil</dd></div><div><dt>Methods</dt><dd>Coupled groundwater models · DRAIN-LID · field testbeds</dd></div></dl></div>
     </article>
 
     <article class="research-instrument">
-      <div class="research-instrument__copy"><p class="research-instrument__index">Question 03 / Adaptation</p><h3>How do scaling errors change adaptation and prediction?</h3><p>Compare distributed nature-based solutions with conventional infrastructure under changing rainfall, land use, and aging systems, including cost and transferred risk.</p><dl><div><dt>Evaluation</dt><dd>Hazard · vulnerability · exposure</dd></div><div><dt>Decision test</dt><dd>Performance · feasibility · equity</dd></div></dl></div>
+      <div class="research-instrument__copy"><p class="research-instrument__index">Thrust 03 / Design for changing extremes</p><h3>Do outdated rainfall rules leave infrastructure underdesigned, and how should cities adapt?</h3><p>Update sub-daily rainfall extremes and storm timing, recompute design flows for culverts, storm sewers, and detention ponds, and compare upgrades, green infrastructure, and real-time control by performance and cost.</p><dl><div><dt>Places</dt><dd>Brazil · United States · worldwide as data allow</dd></div><div><dt>Methods</dt><dd>IDF and Huff curves · design flows · real-time control</dd></div></dl></div>
     </article>
   </div>
 </section>
