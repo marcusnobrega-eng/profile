@@ -92,7 +92,7 @@ redirect_from:
       </div>
     </li>
     <li>
-      <div class="academic-timeline__logo academic-timeline__logo--utsa"><img src="{{ '/assets/img/institutions/utsa.svg' | relative_url }}" alt="" loading="lazy"></div>
+      <div class="academic-timeline__logo"><img src="{{ '/assets/img/institutions/utsa-navy.svg' | relative_url }}" alt="" loading="lazy"></div>
       <span class="academic-timeline__marker" aria-hidden="true"></span>
       <div class="academic-timeline__body">
         <p class="academic-timeline__date">2020–Present</p>
