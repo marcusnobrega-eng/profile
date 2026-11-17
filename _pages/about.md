@@ -53,12 +53,11 @@ redirect_from:
     </div>
   </div>
   <ul class="home-record" aria-label="Record at a glance">
-    <li><strong>40</strong><span>peer-reviewed journal articles, 17 as first author</span></li>
-    <li><strong>11</strong><span>more submitted or under review, 3 in preparation</span></li>
-    <li><strong>96</strong><span>peer reviews for 28 journals</span></li>
-    <li><strong>10</strong><span>students advised or supervised at six universities</span></li>
-    <li><strong>Best 2023 Ph.D. thesis</strong><span>in engineering, University of São Paulo</span></li>
-    <li><strong>800+</strong><span>citations, h-index 15 (Google Scholar, November 2026)</span></li>
+    <li><strong><span data-count="40">40</span></strong><span>peer-reviewed journal articles, 17 as first author</span></li>
+    <li><strong><span data-count="96">96</span></strong><span>peer reviews for 28 journals</span></li>
+    <li><strong><span data-count="10">10</span></strong><span>students advised or supervised at six universities</span></li>
+    <li class="home-record__award"><strong>Best 2023 Ph.D. thesis</strong><span>in engineering, University of São Paulo</span></li>
+    <li><strong><span data-count="800">800</span>+</strong><span>citations, h-index <span data-count="15">15</span> (Google Scholar, November 2026)</span></li>
   </ul>
 </section>
 

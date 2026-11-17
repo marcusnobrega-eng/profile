@@ -71,9 +71,50 @@
     sections.forEach((section) => observer.observe(section));
   }
 
+  function setupRecordCounters() {
+    const record = document.querySelector(".home-record");
+    if (!record) return;
+    const counters = Array.from(record.querySelectorAll("[data-count]"));
+
+    if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+      record.classList.add("is-live");
+      return;
+    }
+
+    counters.forEach((counter) => { counter.textContent = "0"; });
+
+    function run() {
+      record.classList.add("is-live");
+      counters.forEach((counter, index) => {
+        const target = Number(counter.dataset.count);
+        const duration = 1500 + Math.min(target, 800) * 0.6;
+        const delay = index * 140;
+        let start = null;
+        function step(now) {
+          if (start === null) start = now + delay;
+          const progress = Math.min(Math.max((now - start) / duration, 0), 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = String(Math.round(target * eased));
+          if (progress < 1) window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        run();
+      });
+    }, { threshold: 0.45 });
+    observer.observe(record);
+  }
+
   setupNavigation();
   updateModelVideoMotion();
   revealSections();
+  setupRecordCounters();
   document.documentElement.classList.add("home-motion-ready");
 
   const onMotionPreferenceChange = () => updateModelVideoMotion();
