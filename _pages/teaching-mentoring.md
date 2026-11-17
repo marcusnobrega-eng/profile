@@ -82,9 +82,5 @@ description: "Teaching approach, courses, and mentoring by Marcus N. Gomes Jr."
         <p>I understand mentoring as giving students real intellectual challenges, the resources to address them, a sense of ownership, and honest feedback that moves them toward independence. Although I have not yet held a faculty position, I have advised or supervised ten students from six universities.</p>
       </div>
     </header>
-    <ul class="teaching-list">
-      <li><strong>Current students</strong>Alicia Nguyen (Ph.D., Stanford) · Shikshita Bhandari (Ph.D., Stanford) · Willian Lemos Mascaranhas Silva (Ph.D., UNICAMP, co-advised)</li>
-      <li><strong>Former students</strong>Ricardo Augusto de Farias Freire Filho (B.Sc., UFPE) · Matheus dos Santos (M.Sc., USP) · Jalihal Vijay (B.Sc., Vanderbilt) · Milena Rosa (B.Sc., USP) · Enrico Pavan (B.Sc., USP) · Lucas F. Roysen (B.Sc., USP) · Ivan Cuervo (M.Sc., UTSA)</li>
-    </ul>
   </section>
 </section>

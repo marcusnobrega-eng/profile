@@ -82,9 +82,5 @@ description: "Abordagem de ensino, disciplinas e orientação de estudantes de M
         <p>Para mim, orientar é dar aos estudantes desafios intelectuais reais, os recursos para enfrentá-los, um senso de responsabilidade pelo próprio trabalho e um feedback honesto que os leve à independência. Embora ainda não tenha ocupado um cargo de professor, já orientei ou supervisionei dez estudantes de seis universidades.</p>
       </div>
     </header>
-    <ul class="teaching-list">
-      <li><strong>Estudantes atuais</strong>Alicia Nguyen (doutorado, Stanford) · Shikshita Bhandari (doutorado, Stanford) · Willian Lemos Mascaranhas Silva (doutorado, UNICAMP, coorientação)</li>
-      <li><strong>Ex-orientandos</strong>Ricardo Augusto de Farias Freire Filho (graduação, UFPE) · Matheus dos Santos (mestrado, USP) · Jalihal Vijay (graduação, Vanderbilt) · Milena Rosa (graduação, USP) · Enrico Pavan (graduação, USP) · Lucas F. Roysen (graduação, USP) · Ivan Cuervo (mestrado, UTSA)</li>
-    </ul>
   </section>
 </section>
