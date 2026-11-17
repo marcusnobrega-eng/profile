@@ -9741,3 +9741,99 @@ body {
   .rq-bar { transform: scaleY(var(--b)); fill: var(--stanford-lagunita); }
   .rq-drop { opacity: 0.8; }
 }
+
+/* Homepage: HydroPol2D capabilities with icons */
+.model-feature__details > p {
+  font-size: 1.02rem;
+}
+
+.model-feature__details .model-capabilities {
+  display: grid;
+  gap: 0;
+}
+
+.model-feature__details .model-capabilities li {
+  display: grid;
+  grid-template-columns: 3.6rem minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: center;
+  padding: 1rem 0;
+  color: rgba(46, 45, 41, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.model-feature__details .model-capabilities li::before {
+  content: none;
+}
+
+.model-cap__icon {
+  display: grid;
+  width: 3.6rem;
+  height: 3.6rem;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(0, 124, 146, 0.08);
+  color: var(--stanford-lagunita);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), background 300ms ease;
+}
+
+.model-capabilities li:hover .model-cap__icon {
+  background: rgba(0, 124, 146, 0.14);
+  transform: translateY(-3px);
+}
+
+.model-cap__icon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.1;
+}
+
+.model-cap__icon svg * {
+  transform-box: fill-box;
+}
+
+.model-cap__text {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.model-cap__text strong {
+  color: var(--water-ink);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.cap-ground { stroke: #8a7a62; }
+.cap-layer { stroke: #b5a385; stroke-dasharray: 3 3; }
+.cap-drop { fill: currentColor; stroke: none; animation: cap-drop 2.8s ease-in infinite; }
+.cap-table { animation: cap-wave 2.4s ease-in-out infinite alternate; }
+.cap-sun { stroke: var(--stanford-poppy); transform-origin: center; animation: cap-spin 14s linear infinite; }
+.cap-heat { stroke: var(--stanford-poppy); opacity: 0.6; animation: cap-wave 2.4s ease-in-out infinite alternate; }
+.cap-grid { stroke: rgba(46, 45, 41, 0.28); stroke-width: 1.2; }
+.cap-wave { stroke-width: 2.4; animation: cap-wave 2s ease-in-out infinite alternate; }
+
+@keyframes cap-drop {
+  0% { opacity: 0; transform: translateY(-2px); }
+  20% { opacity: 1; }
+  70% { opacity: 1; transform: translateY(14px); }
+  100% { opacity: 0; transform: translateY(18px); }
+}
+
+@keyframes cap-wave {
+  from { transform: translateX(-4px); }
+  to { transform: translateX(4px); }
+}
+
+@keyframes cap-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .model-cap__icon svg * { animation: none !important; }
+}
