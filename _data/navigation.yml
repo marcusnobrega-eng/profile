@@ -47,5 +47,8 @@ main_pt:
   - title: "Palestras"
     url: /pt/talks/
 
+  - title: "Ensino"
+    url: /pt/teaching-mentoring/
+
   - title: "Modelos Desenvolvidos"
     url: /pt/Developed_Models/

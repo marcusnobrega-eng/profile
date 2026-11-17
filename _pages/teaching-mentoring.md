@@ -4,6 +4,7 @@ permalink: /teaching-mentoring/
 title: "Teaching and Mentoring"
 author_profile: true
 lang: en
+translation_url: /pt/teaching-mentoring/
 body_class: models-archive-page
 models_layout: true
 description: "Teaching approach, courses, and mentoring by Marcus N. Gomes Jr."
