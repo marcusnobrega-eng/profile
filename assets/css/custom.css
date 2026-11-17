@@ -9445,3 +9445,250 @@ body {
   .teaching-grid { grid-template-columns: 1fr; }
   .teaching-list { grid-template-columns: 1fr; }
 }
+
+/* Homepage: research questions with animated diagrams */
+.home-water .home-section__heading > p:last-child {
+  font-size: 1.12rem;
+  line-height: 1.7;
+}
+
+.research-questions {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--water-line);
+}
+
+.research-questions .rq {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) minmax(240px, 340px);
+  gap: clamp(1.25rem, 3vw, 3.5rem);
+  align-items: center;
+  margin: 0;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.research-questions .rq::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--water-line);
+  content: "";
+  transform-origin: left;
+  transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.research-questions .rq:nth-child(2),
+.research-questions .rq:nth-child(2)::before { transition-delay: 140ms; }
+.research-questions .rq:nth-child(3),
+.research-questions .rq:nth-child(3)::before { transition-delay: 280ms; }
+
+.home-motion-ready #research-program:not(.is-visible) .rq {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.home-motion-ready #research-program:not(.is-visible) .rq::before {
+  transform: scaleX(0);
+}
+
+.rq__num {
+  color: var(--stanford-cardinal);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+  transition: color 300ms ease;
+}
+
+.rq:hover .rq__num { color: var(--water-blue); }
+
+.home-water .research-questions .rq__q {
+  max-width: 30ch;
+  margin: 0;
+  color: var(--water-ink);
+  font-family: "Newsreader", Georgia, serif !important;
+  font-size: clamp(1.85rem, 3.1vw, 2.85rem);
+  font-weight: 450;
+  letter-spacing: -0.02em;
+  line-height: 1.16;
+}
+
+.rq__viz {
+  margin: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--water-line);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(46, 45, 41, 0.06);
+}
+
+.rq__viz svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.rq__viz svg * {
+  transform-box: fill-box;
+}
+
+/* 01: fine grid coarsens, then observations bring the detail back */
+.rq-cell {
+  fill: var(--stanford-lagunita);
+  opacity: var(--o);
+  animation: rq-fine 8s ease-in-out infinite;
+}
+
+.rq-coarse {
+  fill: var(--stanford-lagunita);
+  opacity: 0;
+  animation: rq-coarse 8s ease-in-out infinite;
+}
+
+.rq-obs__dot { fill: var(--stanford-cardinal); }
+
+.rq-obs__ring {
+  fill: none;
+  stroke: var(--stanford-cardinal);
+  stroke-width: 1.5;
+  transform-origin: center;
+  animation: rq-ring 2.6s ease-out infinite;
+}
+
+.rq-obs__ring--late { animation-delay: 1.3s; }
+
+@keyframes rq-fine {
+  0%, 30% { opacity: var(--o); }
+  42%, 62% { opacity: 0; }
+  76%, 100% { opacity: var(--o); }
+}
+
+@keyframes rq-coarse {
+  0%, 30% { opacity: 0; }
+  42%, 62% { opacity: var(--o); }
+  76%, 100% { opacity: 0; }
+}
+
+@keyframes rq-ring {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 0; transform: scale(4); }
+}
+
+/* 02: rain soaks into the ground and the water table rises */
+.rq-rain {
+  stroke: var(--water-blue-light);
+  stroke-linecap: round;
+  stroke-width: 1.6;
+  animation: rq-rain 1.4s linear infinite;
+  animation-delay: var(--d);
+}
+
+.rq-ground { fill: #e9e2d5; }
+.rq-soil--2 { fill: #ddd1bd; }
+.rq-soil--3 { fill: #cdbfa6; }
+
+.rq-pond {
+  fill: var(--stanford-lagunita);
+  opacity: 0.75;
+  transform-origin: center;
+  animation: rq-pond 6s ease-in-out infinite;
+}
+
+.rq-drop {
+  fill: var(--stanford-lagunita);
+  opacity: 0;
+  animation: rq-drop 2.4s ease-in infinite;
+  animation-delay: var(--d);
+}
+
+.rq-table { animation: rq-table 6s ease-in-out infinite; }
+.rq-table__water { fill: var(--stanford-lagunita); opacity: 0.3; }
+
+.rq-table__wave {
+  fill: none;
+  stroke: var(--stanford-lagunita);
+  stroke-width: 2;
+  animation: rq-wave 2.4s linear infinite;
+}
+
+@keyframes rq-rain {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(28px); }
+}
+
+@keyframes rq-pond {
+  0%, 100% { transform: scaleX(0.55); }
+  50% { transform: scaleX(1); }
+}
+
+@keyframes rq-drop {
+  0% { opacity: 0; transform: translateY(0); }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(64px); }
+}
+
+@keyframes rq-table {
+  0%, 100% { transform: translateY(10px); }
+  50% { transform: translateY(0); }
+}
+
+@keyframes rq-wave {
+  from { transform: translateX(0); }
+  to { transform: translateX(40px); }
+}
+
+/* 03: storm bars shift earlier, grow taller and cross the design line */
+.rq-axis { stroke: var(--water-line); stroke-width: 1; }
+
+.rq-bar {
+  fill: #9cc9de;
+  transform: scaleY(var(--a));
+  transform-origin: bottom;
+  animation: rq-bar 7s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  animation-delay: var(--d);
+}
+
+.rq-design {
+  stroke: var(--stanford-cardinal);
+  stroke-dasharray: 5 4;
+  stroke-width: 1.6;
+}
+
+@keyframes rq-bar {
+  0%, 22% { fill: #9cc9de; transform: scaleY(var(--a)); }
+  45%, 72% { fill: var(--stanford-lagunita); transform: scaleY(var(--b)); }
+  92%, 100% { fill: #9cc9de; transform: scaleY(var(--a)); }
+}
+
+@media (max-width: 900px) {
+  .research-questions .rq { grid-template-columns: 3.5rem minmax(0, 1fr); }
+  .rq__viz { grid-column: 2; max-width: 22rem; }
+}
+
+@media (max-width: 560px) {
+  .research-questions .rq { grid-template-columns: 1fr; gap: 0.9rem; }
+  .rq__viz { grid-column: 1; max-width: none; }
+  .rq__num { font-size: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rq__viz *,
+  .research-questions .rq,
+  .research-questions .rq::before {
+    animation: none !important;
+    transition: none !important;
+  }
+  .rq-bar { transform: scaleY(var(--b)); fill: var(--stanford-lagunita); }
+  .rq-drop { opacity: 0.8; }
+}
