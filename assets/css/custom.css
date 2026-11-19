@@ -9590,49 +9590,43 @@ body {
   transform-box: fill-box;
 }
 
+/* Research-question diagrams. The markup draws one meaningful still frame (no script or reduced
+   motion). home-water.js runs one 10 s timeline per diagram, only while it is on screen. */
+
 /* 01: fine grid coarsens, then observations bring the detail back */
 .rq-cell {
   fill: var(--stanford-lagunita);
   opacity: var(--o);
-  animation: rq-fine 8s ease-in-out infinite;
 }
 
 .rq-coarse {
   fill: var(--stanford-lagunita);
   opacity: 0;
-  animation: rq-coarse 8s ease-in-out infinite;
 }
 
-.rq-obs__dot { fill: var(--stanford-cardinal); }
-
-.rq-obs__ring {
-  fill: none;
-  stroke: var(--stanford-cardinal);
+.rq-obs__dot {
+  fill: var(--stanford-cardinal);
+  stroke: #ffffff;
   stroke-width: 1.5;
   transform-origin: center;
-  animation: rq-ring 2.6s ease-out infinite;
 }
 
-.rq-obs__ring--late { animation-delay: 1.3s; }
-
-@keyframes rq-fine {
-  0%, 30% { opacity: var(--o); }
-  42%, 62% { opacity: 0; }
-  76%, 100% { opacity: var(--o); }
+.rq-obs__ring,
+.rq-obs__wave {
+  fill: none;
+  stroke: var(--stanford-cardinal);
+  stroke-width: 1.4;
+  opacity: 0;
+  transform-origin: center;
+  vector-effect: non-scaling-stroke;
 }
 
-@keyframes rq-coarse {
-  0%, 30% { opacity: 0; }
-  42%, 62% { opacity: var(--o); }
-  76%, 100% { opacity: 0; }
+.rq-obs__wave {
+  stroke: var(--stanford-lagunita);
+  stroke-width: 2;
 }
 
-@keyframes rq-ring {
-  0% { opacity: 0.8; transform: scale(1); }
-  100% { opacity: 0; transform: scale(4); }
-}
-
-/* 02: rain soaks into the ground and the water table rises */
+/* 02: rain soaks in, the water table rises toward the pond, and part of it stays as recharge */
 .rq-rain {
   stroke: var(--water-blue-light);
   stroke-linecap: round;
@@ -9647,9 +9641,8 @@ body {
 
 .rq-pond {
   fill: var(--stanford-lagunita);
-  opacity: 0.75;
+  opacity: 0.8;
   transform-origin: center;
-  animation: rq-pond 6s ease-in-out infinite;
 }
 
 .rq-drop {
@@ -9659,8 +9652,8 @@ body {
   animation-delay: var(--d);
 }
 
-.rq-table { animation: rq-table 6s ease-in-out infinite; }
-.rq-table__water { fill: var(--stanford-lagunita); opacity: 0.3; }
+.rq-table { transform: translateY(-30px); }
+.rq-table__water { fill: var(--stanford-lagunita); opacity: 0.28; }
 
 .rq-table__wave {
   fill: none;
@@ -9675,11 +9668,6 @@ body {
   100% { opacity: 0; transform: translateY(28px); }
 }
 
-@keyframes rq-pond {
-  0%, 100% { transform: scaleX(0.55); }
-  50% { transform: scaleX(1); }
-}
-
 @keyframes rq-drop {
   0% { opacity: 0; transform: translateY(0); }
   15% { opacity: 0.9; }
@@ -9687,26 +9675,21 @@ body {
   100% { opacity: 0; transform: translateY(64px); }
 }
 
-@keyframes rq-table {
-  0%, 100% { transform: translateY(10px); }
-  50% { transform: translateY(0); }
-}
-
 @keyframes rq-wave {
   from { transform: translateX(0); }
   to { transform: translateX(40px); }
 }
 
-/* 03: storm bars shift earlier, grow taller and cross the design line */
+/* 03: storm bars grow and peak earlier, the part above the design line turns red, then the design line moves up */
 .rq-axis { stroke: var(--water-line); stroke-width: 1; }
 
 .rq-bar {
-  fill: #9cc9de;
-  transform: scaleY(var(--a));
+  fill: var(--stanford-lagunita);
+  transform: scaleY(var(--b));
   transform-origin: bottom;
-  animation: rq-bar 7s cubic-bezier(0.45, 0, 0.2, 1) infinite;
-  animation-delay: var(--d);
 }
+
+.rq-bar--excess { fill: var(--stanford-cardinal); }
 
 .rq-design {
   stroke: var(--stanford-cardinal);
@@ -9714,10 +9697,134 @@ body {
   stroke-width: 1.6;
 }
 
-@keyframes rq-bar {
-  0%, 22% { fill: #9cc9de; transform: scaleY(var(--a)); }
-  45%, 72% { fill: var(--stanford-lagunita); transform: scaleY(var(--b)); }
-  92%, 100% { fill: #9cc9de; transform: scaleY(var(--a)); }
+.rq-design--old { opacity: 0; }
+
+/* phase label and four-step progress under each diagram (the theme makes figures flex rows) */
+.home-water .rq__viz,
+.home-water .research-cycle {
+  display: block;
+}
+
+.home-water .rq__caption {
+  width: 100%;
+  margin-bottom: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.rq__caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.rq__phases {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 1.1rem;
+}
+
+.rq__phase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--stanford-cardinal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  line-height: 1.1rem;
+  opacity: 0;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rq__phase--static { opacity: 1; }
+
+.rq__steps {
+  display: flex;
+  flex: none;
+  gap: 4px;
+}
+
+.rq__steps i {
+  display: block;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--stanford-cardinal);
+  opacity: 0.18;
+}
+
+.rq__steps i.is-static { opacity: 1; }
+
+/* figure: from observations to decisions */
+.research-cycle {
+  margin-top: clamp(2.75rem, 5vw, 4.25rem);
+  margin-bottom: 0;
+}
+
+.home-water .research-cycle__head {
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.research-cycle__head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: end;
+  margin-bottom: 1.25rem;
+}
+
+.home-water .research-cycle__eyebrow {
+  margin: 0;
+  color: var(--stanford-cardinal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.home-water .research-cycle__lead {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--water-ink);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.research-cycle__scroll {
+  overflow-x: auto;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  border: 1px solid var(--water-line);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(46, 45, 41, 0.06);
+}
+
+.research-cycle__scroll:focus-visible {
+  outline: 2px solid var(--stanford-lagunita);
+  outline-offset: 3px;
+}
+
+.research-cycle__scroll img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .research-cycle__head { grid-template-columns: 1fr; }
+  .research-cycle__scroll img { width: 880px; max-width: none; }
 }
 
 @media (max-width: 900px) {
@@ -9738,7 +9845,6 @@ body {
     animation: none !important;
     transition: none !important;
   }
-  .rq-bar { transform: scaleY(var(--b)); fill: var(--stanford-lagunita); }
   .rq-drop { opacity: 0.8; }
 }
 
