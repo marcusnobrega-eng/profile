@@ -211,7 +211,7 @@
 
         const els = {
           line: q(".rq-table__line"), sat: q(".rq-table__water"), fringe: q(".rq-fringe"), wet: q(".rq-wet"),
-          river: q(".rq-river"), well: q(".rq-well__water"), flows: Array.from(fig.querySelectorAll(".rq-flowline")),
+          river: q(".rq-river"), well: q(".rq-well__water"), vadose: q(".rq-vadose-clip"), flows: Array.from(fig.querySelectorAll(".rq-flowline")),
         };
         const smooth = (v) => v * v * (3 - 2 * v);
         const stateAt = (t) => {
@@ -255,6 +255,8 @@
           const bottom = wt.map(([x, y]) => [x, Math.min(sy[x] + wetBottom, y)]).reverse();
           els.wet.setAttribute("d", `M${pts(top)} L${pts(bottom)} Z`);
           els.wet.style.opacity = wetness.toFixed(3);
+          // roots live in the vadose zone only: clip them between the surface and the water table
+          els.vadose.setAttribute("d", `M${pts(xs.map((x) => [x, sy[x] - 3]))} L${pts(wt.slice().reverse())} Z`);
           els.river.setAttribute("y", stage.toFixed(2));
           const wellY = waterTable(70, nk, stage);
           els.well.setAttribute("y", wellY.toFixed(1));

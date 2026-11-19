@@ -9700,12 +9700,15 @@ body {
 .rq-crown { fill: #5f9268; }
 .rq-crown--light { fill: #7fae80; }
 
-.rq-roots {
+.rq-root {
   fill: none;
-  stroke: #8a6f55;
+  stroke: #7d6249;
   stroke-linecap: round;
-  opacity: 0.8;
+  stroke-linejoin: round;
 }
+
+.rq-root--2 { stroke: #937a60; opacity: 0.85; }
+.rq-root--3 { stroke: #a8916f; opacity: 0.7; }
 
 .rq-river {
   fill: var(--stanford-lagunita);
@@ -9726,14 +9729,32 @@ body {
 
 .rq-et { opacity: 0; }
 
-.rq-et-arrow {
-  fill: none;
-  stroke: #79aebf;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-  animation: rq-et 2.4s ease-out infinite;
+.rq-et-plume {
+  opacity: 0;
+  animation: rq-et 3s ease-in-out infinite;
   animation-delay: var(--d);
+}
+
+.rq-et-main {
+  fill: none;
+  stroke: url(#rq-et-grad);
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.rq-et-head { fill: #5f9fb6; }
+
+.rq-et-strand {
+  fill: none;
+  stroke: #94c3d3;
+  stroke-dasharray: 2 2.5;
+  stroke-linecap: round;
+  stroke-width: 0.9;
+  animation: rq-vapor 0.9s linear infinite;
+}
+
+@keyframes rq-vapor {
+  to { stroke-dashoffset: -9; }
 }
 
 @keyframes rq-rain {
@@ -9744,9 +9765,10 @@ body {
 }
 
 @keyframes rq-et {
-  0% { opacity: 0; transform: translateY(3px); }
-  30% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-8px); }
+  0% { opacity: 0; transform: translateY(4px); }
+  25% { opacity: 1; }
+  70% { opacity: 0.95; }
+  100% { opacity: 0; transform: translateY(-7px); }
 }
 
 @keyframes rq-spin {
@@ -9962,7 +9984,7 @@ body {
     transition: none !important;
   }
   .rq-rain { opacity: 0.8; }
-  .rq-et-arrow, .rq-signal { opacity: 0.9; }
+  .rq-et-plume, .rq-signal { opacity: 0.9; }
 }
 
 /* Homepage: HydroPol2D capabilities with icons */
