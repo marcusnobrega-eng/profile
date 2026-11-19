@@ -32,6 +32,16 @@ home_water: true
 
   </div>
 
+  <figure class="hero-flood" data-hero-flood role="img" aria-label="Simulação animada de inundação em duas dimensões em um vale fluvial sintético com dois bairros. Uma tempestade atravessa o vale, o rio transborda para as ruas e a água escoa.">
+    <canvas class="hero-flood__canvas" aria-hidden="true"></canvas>
+    <p class="hero-flood__title">Modelo 2D de inundação · simulado no seu navegador</p>
+    <div class="hero-flood__bar" aria-hidden="true">
+      <span class="hero-flood__chip hero-flood__chip--status"><i></i><span data-flood-status data-labels="Tempestade|Pico da cheia|Drenagem">Tempestade</span></span>
+      <span class="hero-flood__chip" data-flood-scale data-labels="Bacia|Bairro">Bacia</span>
+      <span class="hero-flood__legend">Profundidade da água<b></b></span>
+    </div>
+  </figure>
+
 </section>
 
 <section class="home-section home-about home-reveal" aria-labelledby="about-title">

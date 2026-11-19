@@ -329,11 +329,283 @@
     });
   }
 
+  // Hero: a small local-inertial (Bates et al., 2010) flood model on a synthetic valley, run live in the page
+  function setupHeroFlood() {
+    const figure = document.querySelector("[data-hero-flood]");
+    const canvas = figure && figure.querySelector("canvas");
+    const ctx = canvas && canvas.getContext("2d");
+    if (!ctx) return;
+    const statusEl = figure.querySelector("[data-flood-status]");
+    const scaleEl = figure.querySelector("[data-flood-scale]");
+    const statusLabels = statusEl.dataset.labels.split("|");
+    const scaleLabels = scaleEl.dataset.labels.split("|");
+
+    const NX = 192, NY = 138, N = NX * NY, DX = 10, G = 9.81;
+    const PERIOD = 32;            // seconds of real time per storm cycle
+    const SIM_SPEED = 240;        // simulated seconds per real second
+    const z = new Float32Array(N), h = new Float32Array(N), nMan = new Float32Array(N);
+    const qx = new Float32Array(N), qy = new Float32Array(N);
+    const building = new Uint8Array(N), channel = new Uint8Array(N);
+    const yc = (x) => 69 + 24 * Math.sin(x / 30 + 0.4) + 7 * Math.sin(x / 11 + 1.3);
+    const noise = (x, y) => 0.5 * Math.sin(x * 0.21 + y * 0.13) + 0.35 * Math.sin(x * 0.07 - y * 0.19 + 2)
+      + 0.25 * Math.sin(x * 0.43 + y * 0.37);
+
+    // terrain: a valley sloping downstream, a meandering incised channel and a gently rising floodplain
+    for (let j = 0; j < NY; j += 1) {
+      for (let i = 0; i < NX; i += 1) {
+        const k = j * NX + i;
+        const d = Math.abs(j - yc(i));
+        let e = 0.045 * (NX - i) + 0.022 * Math.pow(d, 1.4) + 0.1 * noise(i, j);
+        if (d < 2.6) { e -= 1.6 * (1 - (d / 2.6) ** 2); channel[k] = 1; h[k] = 1; }
+        z[k] = e;
+        nMan[k] = channel[k] ? 0.03 : 0.045;
+      }
+    }
+    // two neighborhoods: 4 x 3 cell blocks with 2-cell streets
+    const blocks = [];
+    [[124, 168, 64, 88], [52, 84, 44, 62]].forEach(([x0, x1, y0, y1]) => {
+      for (let bx = x0; bx + 4 <= x1; bx += 6) {
+        for (let by = y0; by + 3 <= y1; by += 5) {
+          blocks.push([bx, by]);
+          for (let i = bx; i < bx + 4; i += 1) for (let j = by; j < by + 3; j += 1) {
+            const k = j * NX + i;
+            building[k] = 1; channel[k] = 0; h[k] = 0; z[k] += 4;
+          }
+        }
+      }
+    });
+    const inflowCells = [];
+    for (let j = 0; j < NY; j += 1) if (channel[j * NX]) inflowCells.push(j * NX);
+
+    // shaded relief, computed once
+    const base = new Uint8ClampedArray(N * 3);
+    let zMin = Infinity, zMax = -Infinity;
+    for (let k = 0; k < N; k += 1) if (!building[k]) { zMin = Math.min(zMin, z[k]); zMax = Math.max(zMax, z[k]); }
+    for (let j = 0; j < NY; j += 1) {
+      for (let i = 0; i < NX; i += 1) {
+        const k = j * NX + i;
+        const zx = z[j * NX + Math.min(i + 1, NX - 1)] - z[j * NX + Math.max(i - 1, 0)];
+        const zy = z[Math.min(j + 1, NY - 1) * NX + i] - z[Math.max(j - 1, 0) * NX + i];
+        const shade = Math.min(1.06, Math.max(0.84, 0.98 - 0.06 * zx - 0.08 * zy));
+        const f = Math.min(1, Math.max(0, (z[k] - zMin) / (zMax - zMin)));
+        let r = 241 - 26 * f, g = 238 - 16 * f, b = 230 - 30 * f;
+        if (channel[k]) { r = 214; g = 206; b = 190; }
+        if (building[k]) { r = 206; g = 201; b = 193; }
+        base[k * 3] = r * shade; base[k * 3 + 1] = g * shade; base[k * 3 + 2] = b * shade;
+      }
+    }
+
+    const grid = document.createElement("canvas");
+    grid.width = NX; grid.height = NY;
+    const gctx = grid.getContext("2d");
+    const image = gctx.createImageData(NX, NY);
+    let hMax = 1;
+
+    function step(dt, rain, cx, cy, inflow) {
+      const c = G * dt;
+      for (let j = 0; j < NY; j += 1) {
+        const row = j * NX;
+        for (let i = 0; i < NX - 1; i += 1) {
+          const a = row + i, b = a + 1;
+          const ea = z[a] + h[a], eb = z[b] + h[b];
+          const hf = Math.max(ea, eb) - Math.max(z[a], z[b]);
+          if (hf <= 0.002) { qx[a] = 0; continue; }
+          const n = 0.5 * (nMan[a] + nMan[b]);
+          qx[a] = (qx[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qx[a]) / Math.pow(hf, 7 / 3));
+        }
+      }
+      for (let j = 0; j < NY - 1; j += 1) {
+        const row = j * NX;
+        for (let i = 0; i < NX; i += 1) {
+          const a = row + i, b = a + NX;
+          const ea = z[a] + h[a], eb = z[b] + h[b];
+          const hf = Math.max(ea, eb) - Math.max(z[a], z[b]);
+          if (hf <= 0.002) { qy[a] = 0; continue; }
+          const n = 0.5 * (nMan[a] + nMan[b]);
+          qy[a] = (qy[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qy[a]) / Math.pow(hf, 7 / 3));
+        }
+      }
+      const infiltration = 1.2e-5 * dt;
+      const sigma2 = 2 * 42 * 42;
+      hMax = 0.05;
+      for (let j = 0; j < NY; j += 1) {
+        for (let i = 0; i < NX; i += 1) {
+          const k = j * NX + i;
+          if (building[k]) continue;
+          let dq = 0;
+          if (i > 0) dq += qx[k - 1];
+          if (i < NX - 1) dq -= qx[k];
+          if (j > 0) dq += qy[k - NX];
+          if (j < NY - 1) dq -= qy[k];
+          let v = h[k] + (dt * dq) / DX;
+          if (rain > 0) {
+            const r2 = (i - cx) * (i - cx) + (j - cy) * (j - cy);
+            v += dt * rain * (0.08 + Math.exp(-r2 / sigma2));
+          }
+          if (!channel[k]) v -= infiltration;
+          h[k] = v > 0 ? v : 0;
+          if (h[k] > hMax) hMax = h[k];
+        }
+      }
+      const add = (inflow * dt) / (DX * DX * inflowCells.length);
+      inflowCells.forEach((k) => { h[k] += add; });
+      for (let j = 0; j < NY; j += 1) { h[j * NX + NX - 1] = 0; h[j * NX + NX - 2] *= 0.6; }   // free outlet downstream
+    }
+
+    // particles carried by the computed velocity
+    const particles = Array.from({ length: 260 }, () => ({ x: 0, y: 0, px: 0, py: 0, age: 999 }));
+    function respawn(p) {
+      for (let tries = 0; tries < 30; tries += 1) {
+        const i = Math.floor(Math.random() * NX), j = Math.floor(Math.random() * NY);
+        if (h[j * NX + i] > 0.08) { p.x = p.px = i + Math.random(); p.y = p.py = j + Math.random(); p.age = 0; return; }
+      }
+      p.age = 999;
+    }
+
+    let W = 0, H = 0, dpr = 1;
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.round(canvas.clientWidth * dpr); H = Math.round(canvas.clientHeight * dpr);
+      if (W && H && (canvas.width !== W || canvas.height !== H)) { canvas.width = W; canvas.height = H; }
+    }
+
+    const smooth = (v) => v * v * (3 - 2 * v);
+    const bump = (x, c, w) => Math.exp(-(((x - c) / w) ** 2));
+    let clock = 0, lastStatus = -1, lastScale = -1;
+
+    function render(phase, rainOn, cx, cy) {
+      if (!W || !H) { resize(); if (!W || !H) return; }
+      const data = image.data;
+      for (let k = 0; k < N; k += 1) {
+        let r = base[k * 3], g = base[k * 3 + 1], b = base[k * 3 + 2];
+        const d = h[k];
+        if (d > 0.015 && !building[k]) {
+          const t = Math.pow(Math.min(d / 1.2, 1), 0.6);
+          const a = Math.min(0.92, 0.3 + d * 2.6);
+          r = r * (1 - a) + (168 - 154 * t) * a;
+          g = g * (1 - a) + (219 - 117 * t) * a;
+          b = b * (1 - a) + (232 - 100 * t) * a;
+        }
+        data[k * 4] = r; data[k * 4 + 1] = g; data[k * 4 + 2] = b; data[k * 4 + 3] = 255;
+      }
+      gctx.putImageData(image, 0, 0);
+
+      // view: the whole catchment, then a zoom into the southern neighborhood at the flood peak
+      const zoom = 1 + 0.9 * smooth(Math.min(1, bump(phase, 0.55, 0.17) * 1.15));
+      const f = (zoom - 1) / 0.9;
+      const vx = 96 + (146 - 96) * f, vy = 69 + (74 - 69) * f;
+      const sw = NX / zoom, sh = NY / zoom;
+      const sx = Math.min(Math.max(vx - sw / 2, 0), NX - sw), sy = Math.min(Math.max(vy - sh / 2, 0), NY - sh);
+      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(grid, sx, sy, sw, sh, 0, 0, W, H);
+      const X = (x) => ((x - sx) / sw) * W, Y = (y) => ((y - sy) / sh) * H;
+
+      // buildings as crisp blocks with a soft shadow
+      ctx.fillStyle = "rgba(46, 45, 41, 0.10)";
+      blocks.forEach(([bx, by]) => ctx.fillRect(X(bx + 0.5), Y(by + 0.5), X(bx + 4.5) - X(bx + 0.5), Y(by + 3.5) - Y(by + 0.5)));
+      ctx.fillStyle = "#e9e5de";
+      ctx.strokeStyle = "rgba(46, 45, 41, 0.22)";
+      ctx.lineWidth = dpr * 0.8;
+      blocks.forEach(([bx, by]) => {
+        const x0 = X(bx), y0 = Y(by), w = X(bx + 4) - x0, hh = Y(by + 3) - y0;
+        ctx.fillRect(x0, y0, w, hh); ctx.strokeRect(x0, y0, w, hh);
+      });
+
+      // flow tracers
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.75)";
+      ctx.lineWidth = 1.1 * dpr;
+      ctx.beginPath();
+      particles.forEach((p) => {
+        if (p.age > 140) respawn(p);
+        if (p.age > 140) return;
+        const i = Math.floor(p.x), j = Math.floor(p.y);
+        const k = j * NX + i;
+        if (i < 1 || j < 1 || i >= NX - 1 || j >= NY - 1 || h[k] < 0.05) { p.age = 999; return; }
+        const u = (qx[k - 1] + qx[k]) / (2 * h[k]), v = (qy[k - NX] + qy[k]) / (2 * h[k]);
+        p.px = p.x; p.py = p.y;
+        p.x += u * 0.35; p.y += v * 0.35; p.age += 1;
+        ctx.moveTo(X(p.px), Y(p.py)); ctx.lineTo(X(p.x), Y(p.y));
+      });
+      ctx.stroke();
+
+      // rain streaks under the storm
+      if (rainOn > 0.04) {
+        ctx.strokeStyle = `rgba(79, 147, 179, ${0.5 * rainOn})`;
+        ctx.lineWidth = dpr;
+        ctx.beginPath();
+        const count = Math.round(90 * rainOn);
+        for (let n = 0; n < count; n += 1) {
+          const rx = cx + (Math.random() - 0.5) * 120, ry = cy + (Math.random() - 0.5) * 110;
+          const x0 = X(rx), y0 = Y(ry);
+          ctx.moveTo(x0, y0); ctx.lineTo(x0 - 3 * dpr, y0 + 11 * dpr);
+        }
+        ctx.stroke();
+      }
+
+      const status = phase < 0.38 ? 0 : phase < 0.68 ? 1 : 2;
+      if (status !== lastStatus) { statusEl.textContent = statusLabels[status]; lastStatus = status; }
+      const scale = zoom > 1.45 ? 1 : 0;
+      if (scale !== lastScale) { scaleEl.textContent = scaleLabels[scale]; lastScale = scale; }
+      figure.classList.toggle("is-raining", status === 0);
+    }
+
+    function advance(realDt) {
+      clock += realDt;
+      const phase = (clock % PERIOD) / PERIOD;
+      const storm = phase < 0.38 ? Math.sin((Math.PI * phase) / 0.38) ** 2 : 0;
+      const cx = -30 + (NX + 60) * Math.min(phase / 0.38, 1);
+      const cy = 70 + 12 * Math.sin(phase * 9);
+      const inflow = 20 + 420 * bump(phase, 0.34, 0.13);
+      let remaining = SIM_SPEED * realDt;
+      let guard = 0;
+      while (remaining > 0 && guard < 12) {
+        const dt = Math.min(remaining, 3, (0.7 * DX) / Math.sqrt(G * hMax));
+        step(dt, 2.6e-5 * storm, cx, cy, inflow);
+        remaining -= dt; guard += 1;
+      }
+      render(phase, storm, cx, cy);
+    }
+
+    resize();
+    if ("ResizeObserver" in window) new ResizeObserver(resize).observe(canvas);
+    else window.addEventListener("resize", resize);
+
+    if (reduceMotion.matches) {
+      // one still frame near the flood peak
+      clock = PERIOD * 0.5;
+      for (let n = 0; n < 420; n += 1) step(3, 0, 0, 0, 420);
+      render(0.5, 0, 0, 0);
+      return;
+    }
+
+    let visible = true, running = false, last = 0;
+    function frame(now) {
+      if (!visible || document.hidden) { running = false; return; }
+      const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
+      last = now;
+      advance(dt);
+      window.requestAnimationFrame(frame);
+    }
+    function start() {
+      if (running) return;
+      running = true; last = 0;
+      window.requestAnimationFrame(frame);
+    }
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      if (visible) start();
+    }, { threshold: 0.05 }).observe(figure);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden && visible) start(); });
+    start();
+  }
+
   setupNavigation();
   updateModelVideoMotion();
   revealSections();
   setupRecordCounters();
   setupResearchMotion();
+  setupHeroFlood();
   document.documentElement.classList.add("home-motion-ready");
 
   const onMotionPreferenceChange = () => updateModelVideoMotion();
