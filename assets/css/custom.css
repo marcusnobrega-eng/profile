@@ -9593,7 +9593,7 @@ body {
 /* Research-question diagrams. The markup draws one meaningful still frame (no script or reduced
    motion). home-water.js runs one 10 s timeline per diagram, only while it is on screen. */
 
-/* 01: fine grid coarsens, then observations bring the detail back */
+/* 01: fine grid with flow directions coarsens, then observations bring the detail back */
 .rq-cell {
   fill: var(--stanford-lagunita);
   opacity: var(--o);
@@ -9601,6 +9601,33 @@ body {
 
 .rq-coarse {
   fill: var(--stanford-lagunita);
+  opacity: 0;
+}
+
+.rq-arrow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rq-arrow--fine {
+  stroke: #0b3a45;
+  stroke-width: 1.2;
+  opacity: 0.7;
+}
+
+.rq-arrow--coarse {
+  stroke: var(--water-ink);
+  stroke-width: 2.4;
+  opacity: 0;
+}
+
+.rq-true-river {
+  fill: none;
+  stroke: #ffffff;
+  stroke-dasharray: 4 3;
+  stroke-linecap: round;
+  stroke-width: 1.8;
   opacity: 0;
 }
 
@@ -9626,7 +9653,8 @@ body {
   stroke-width: 2;
 }
 
-/* 02: rain soaks in, the water table rises toward the pond, and part of it stays as recharge */
+/* 02: valley section. Rain wets the soil, the water table rises into the riparian zone and the river
+   floods, then a drought: evapotranspiration dries the soil and the water table drops */
 .rq-rain {
   stroke: var(--water-blue-light);
   stroke-linecap: round;
@@ -9635,31 +9663,72 @@ body {
   animation-delay: var(--d);
 }
 
-.rq-ground { fill: #e9e2d5; }
-.rq-soil--2 { fill: #ddd1bd; }
-.rq-soil--3 { fill: #cdbfa6; }
+.rq-ground { fill: #e6dccb; }
 
-.rq-pond {
-  fill: var(--stanford-lagunita);
-  opacity: 0.8;
-  transform-origin: center;
+.rq-moist {
+  fill: #7fb3c6;
+  opacity: 0.22;
+}
+
+.rq-table { transform: translateY(-15px); }
+.rq-table__water { fill: #5fa8c4; opacity: 0.5; }
+
+.rq-table__line {
+  fill: none;
+  stroke: var(--stanford-lagunita);
+  stroke-dasharray: 5 4;
+  stroke-width: 1.6;
+  animation: rq-gwflow 1.2s linear infinite;
+}
+
+.rq-gw-arrow {
+  fill: none;
+  stroke: #0b5566;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  animation: rq-gw 1.6s ease-in-out infinite;
+  animation-delay: var(--d);
 }
 
 .rq-drop {
   fill: var(--stanford-lagunita);
   opacity: 0;
-  animation: rq-drop 2.4s ease-in infinite;
+  animation: rq-infil 2.2s ease-in infinite;
   animation-delay: var(--d);
 }
 
-.rq-table { transform: translateY(-30px); }
-.rq-table__water { fill: var(--stanford-lagunita); opacity: 0.28; }
+.rq-trunk { stroke: #6d5a46; stroke-linecap: round; stroke-width: 1.6; }
+.rq-crown { fill: #5f9268; }
 
-.rq-table__wave {
+.rq-river {
+  fill: var(--stanford-lagunita);
+  opacity: 0.85;
+  transform: translateY(-11px);
+}
+
+.rq-sun { opacity: 0; }
+.rq-sun circle { fill: #f2b84b; }
+
+.rq-sun__rays {
   fill: none;
-  stroke: var(--stanford-lagunita);
-  stroke-width: 2;
-  animation: rq-wave 2.4s linear infinite;
+  stroke: #f2b84b;
+  stroke-linecap: round;
+  stroke-width: 1.6;
+  transform-origin: center;
+  animation: rq-spin 14s linear infinite;
+}
+
+.rq-et { opacity: 0; }
+
+.rq-et-arrow {
+  fill: none;
+  stroke: #7fb2c3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+  animation: rq-et 2s ease-out infinite;
+  animation-delay: var(--d);
 }
 
 @keyframes rq-rain {
@@ -9668,25 +9737,39 @@ body {
   100% { opacity: 0; transform: translateY(28px); }
 }
 
-@keyframes rq-drop {
+@keyframes rq-infil {
   0% { opacity: 0; transform: translateY(0); }
   15% { opacity: 0.9; }
-  85% { opacity: 0.9; }
-  100% { opacity: 0; transform: translateY(64px); }
+  80% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(22px); }
 }
 
-@keyframes rq-wave {
-  from { transform: translateX(0); }
-  to { transform: translateX(40px); }
+@keyframes rq-gwflow {
+  to { stroke-dashoffset: -18; }
 }
 
-/* 03: storm bars grow and peak earlier, the part above the design line turns red, then the design line moves up */
-.rq-axis { stroke: var(--water-line); stroke-width: 1; }
+@keyframes rq-gw {
+  0% { opacity: 0; transform: translateX(-3px); }
+  40%, 70% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(4px); }
+}
 
+@keyframes rq-et {
+  0% { opacity: 0; transform: translateY(2px); }
+  35% { opacity: 0.95; }
+  100% { opacity: 0; transform: translateY(-7px); }
+}
+
+@keyframes rq-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 03: hyetograph hangs from the top; below it a detention pond overflows, then real-time control
+   draws it down before the same storm and keeps it below the rim */
 .rq-bar {
   fill: var(--stanford-lagunita);
   transform: scaleY(var(--b));
-  transform-origin: bottom;
+  transform-origin: top;
 }
 
 .rq-bar--excess { fill: var(--stanford-cardinal); }
@@ -9697,7 +9780,51 @@ body {
   stroke-width: 1.6;
 }
 
-.rq-design--old { opacity: 0; }
+.rq-house__roof { fill: #8f6a58; }
+.rq-house__wall { fill: #ece9e3; stroke: #b6b1a9; stroke-width: 0.8; }
+.rq-house__door { fill: #7f7776; }
+
+.rq-pipe { fill: #c9c3b8; }
+
+.rq-flow {
+  fill: none;
+  stroke: #ffffff;
+  stroke-dasharray: 3 4;
+  stroke-linecap: round;
+  stroke-width: 1.6;
+  animation: rq-pipeflow 0.9s linear infinite;
+}
+
+.rq-pond-water {
+  fill: var(--stanford-lagunita);
+  opacity: 0.82;
+  transform: translateY(-9px);
+}
+
+.rq-riser { fill: #6d6a64; }
+.rq-gate { fill: var(--water-ink); }
+
+.rq-antenna { opacity: 0; }
+.rq-mast { stroke: #53565a; stroke-linecap: round; stroke-width: 1.4; }
+.rq-mast__tip { fill: var(--stanford-cardinal); }
+
+.rq-signal {
+  fill: none;
+  stroke: var(--stanford-cardinal);
+  stroke-linecap: round;
+  stroke-width: 1.2;
+  animation: rq-signal 1.4s ease-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes rq-pipeflow {
+  to { stroke-dashoffset: -7; }
+}
+
+@keyframes rq-signal {
+  0%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
 
 /* phase label and four-step progress under each diagram (the theme makes figures flex rows) */
 .home-water .rq__viz,
@@ -9846,6 +9973,7 @@ body {
     transition: none !important;
   }
   .rq-drop { opacity: 0.8; }
+  .rq-et-arrow, .rq-signal { opacity: 0.9; }
 }
 
 /* Homepage: HydroPol2D capabilities with icons */

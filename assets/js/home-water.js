@@ -133,19 +133,24 @@
       grid(fig, add) {
         const obs = Array.from(fig.querySelectorAll(".rq-obs__dot"))
           .map((dot) => [Number(dot.getAttribute("cx")), Number(dot.getAttribute("cy"))]);
-        // the fine grid comes back first next to the observations, then farther away
+        // the fine grid and its flow arrows come back first next to the observations, then farther away
+        const back = (x, y) => 0.57 + Math.min(Math.min(...obs.map(([ox, oy]) => Math.hypot(x - ox, y - oy))) / 110, 1) * 0.15;
+        const fine = (el, x, y, o) => {
+          const t = back(x, y);
+          add(el, track("opacity", [[0, o], [0.16, o], [0.26, 0], [t, 0], [t + 0.06, o], [1, o]]));
+        };
         fig.querySelectorAll(".rq-cell").forEach((cell) => {
-          const o = parseFloat(cell.style.getPropertyValue("--o"));
-          const x = Number(cell.getAttribute("x")) + 11;
-          const y = Number(cell.getAttribute("y")) + 11;
-          const d = Math.min(...obs.map(([ox, oy]) => Math.hypot(x - ox, y - oy)));
-          const back = 0.57 + Math.min(d / 110, 1) * 0.15;
-          add(cell, track("opacity", [[0, o], [0.16, o], [0.26, 0], [back, 0], [back + 0.06, o], [1, o]]));
+          fine(cell, Number(cell.getAttribute("x")) + 11, Number(cell.getAttribute("y")) + 11,
+            parseFloat(cell.style.getPropertyValue("--o")));
         });
-        fig.querySelectorAll(".rq-coarse").forEach((cell) => {
-          const o = parseFloat(cell.style.getPropertyValue("--o"));
-          add(cell, track("opacity", [[0, 0], [0.16, 0], [0.26, o], [0.58, o], [0.74, 0], [1, 0]]));
+        fig.querySelectorAll(".rq-arrow--fine").forEach((arrow) => {
+          fine(arrow, Number(arrow.dataset.x), Number(arrow.dataset.y), 0.7);
         });
+        const coarse = (el, o) => add(el, track("opacity", [[0, 0], [0.16, 0], [0.26, o], [0.58, o], [0.74, 0], [1, 0]]));
+        fig.querySelectorAll(".rq-coarse").forEach((cell) => coarse(cell, parseFloat(cell.style.getPropertyValue("--o"))));
+        fig.querySelectorAll(".rq-arrow--coarse").forEach((arrow) => coarse(arrow, 0.95));
+        // the true river path shows how far the coarse arrows are from it
+        add(fig.querySelector(".rq-true-river"), track("opacity", [[0, 0], [0.24, 0], [0.3, 0.95], [0.58, 0.95], [0.66, 0], [1, 0]]));
         fig.querySelectorAll(".rq-obs__dot").forEach((dot, i) => {
           const s = 0.36 + (i % 2) * 0.03;
           add(dot, track("transform", [[0, "scale(0)"], [s, "scale(0)"], [s + 0.03, "scale(1.3)"],
@@ -161,32 +166,50 @@
           add(wave, track("transform", [[0, "scale(1)"], [0.56, "scale(1)"], [0.76, "scale(15)"], [1, "scale(15)"]]));
         });
       },
-      recharge(fig, add) {
-        add(fig.querySelector(".rq-rain-layer"), track("opacity", [[0, 1], [0.44, 1], [0.52, 0], [0.95, 0], [1, 1]]));
-        add(fig.querySelector(".rq-drops"), track("opacity", [[0, 0], [0.14, 0], [0.2, 1], [0.64, 1], [0.72, 0], [1, 0]]));
-        add(fig.querySelector(".rq-pond"), track("transform", [[0, "scale(0.25, 0.6)"], [0.06, "scale(0.25, 0.6)"],
-          [0.28, "scale(1, 1)"], [0.46, "scale(0.9, 0.95)"], [0.62, "scale(1.3, 1.45)"], [0.76, "scale(1.05, 1.1)"],
-          [0.93, "scale(0.25, 0.6)"], [1, "scale(0.25, 0.6)"]]));
-        add(fig.querySelector(".rq-table"), track("transform", [[0, shift(0)], [0.2, shift(0)], [0.62, shift(-44)],
-          [0.72, shift(-46)], [0.95, shift(-4)], [1, shift(0)]]));
+      valley(fig, add) {
+        add(fig.querySelector(".rq-rain-layer"), track("opacity", [[0, 1], [0.38, 1], [0.44, 0], [0.97, 0], [1, 1]]));
+        add(fig.querySelector(".rq-drops"), track("opacity", [[0, 0], [0.03, 1], [0.36, 1], [0.42, 0], [1, 0]]));
+        add(fig.querySelector(".rq-moist"), track("opacity", [[0, 0.08], [0.16, 0.24], [0.52, 0.24], [0.66, 0.12],
+          [0.9, 0], [1, 0.08]]));
+        // water table: rises into the riparian zone, then drops below the riverbed in the drought
+        add(fig.querySelector(".rq-table"), track("transform", [[0, shift(0)], [0.12, shift(0)], [0.38, shift(-15)],
+          [0.54, shift(-15)], [0.66, shift(-4)], [0.9, shift(14)], [1, shift(0)]]));
+        add(fig.querySelector(".rq-gw"), track("opacity", [[0, 0.3], [0.18, 0.3], [0.24, 1], [0.54, 1], [0.62, 0],
+          [0.97, 0], [1, 0.3]]));
+        // river: groundwater and runoff raise it over the banks, then it falls to low flow
+        add(fig.querySelector(".rq-river"), track("transform", [[0, shift(0)], [0.2, shift(-2)], [0.38, shift(-6)],
+          [0.48, shift(-11)], [0.56, shift(-11)], [0.66, shift(-1)], [0.9, shift(7)], [1, shift(0)]]));
+        add(fig.querySelector(".rq-sun"), track("opacity", [[0, 0], [0.56, 0], [0.62, 1], [0.93, 1], [0.97, 0], [1, 0]]));
+        add(fig.querySelector(".rq-et"), track("opacity", [[0, 0], [0.6, 0], [0.65, 1], [0.92, 1], [0.96, 0], [1, 0]]));
+        fig.querySelectorAll(".rq-crown").forEach((crown) => add(crown, track("fill", [[0, "#5f9268"], [0.62, "#5f9268"],
+          [0.9, "#a3a061"], [1, "#5f9268"]])));
       },
-      storm(fig, add) {
+      pond(fig, add) {
         const sets = [".rq-bars .rq-bar", ".rq-excess .rq-bar"].map((sel) => Array.from(fig.querySelectorAll(sel)));
         sets.forEach((bars) => bars.forEach((bar, i) => {
           const a = `scaleY(${bar.style.getPropertyValue("--a").trim()})`;
           const b = `scaleY(${bar.style.getPropertyValue("--b").trim()})`;
-          const lag = i * 0.012;
-          add(bar, track("transform", [[0, a], [0.18 + lag, a], [0.36 + lag, b], [0.86, b], [0.96, a], [1, a]]));
+          const lag = i * 0.01;
+          // design storm, a larger and earlier storm, a dry spell, then the same storm on the controlled pond
+          add(bar, track("transform", [[0, a], [0.18 + lag, a], [0.32 + lag, b], [0.57, b], [0.61, "scaleY(0.03)"],
+            [0.66 + lag, "scaleY(0.03)"], [0.74 + lag, b], [0.88, b], [0.96, a], [1, a]]));
         }));
-        sets[0].forEach((bar) => add(bar, track("fill", [[0, "#9cc9de"], [0.18, "#9cc9de"], [0.32, "#007c92"],
-          [0.86, "#007c92"], [0.96, "#9cc9de"], [1, "#9cc9de"]])));
-        add(fig.querySelector(".rq-excess"), track("opacity", [[0, 1], [0.62, 1], [0.7, 0], [0.97, 0], [1, 1]]));
-        add(fig.querySelector(".rq-design--new"), track("opacity", [[0, 1], [0.44, 1], [0.48, 0.3], [0.52, 1],
-          [0.56, 0.3], [0.6, 1], [1, 1]]));
-        add(fig.querySelector(".rq-design--new"), track("transform", [[0, shift(0)], [0.62, shift(0)], [0.74, shift(-38)],
-          [0.88, shift(-38)], [0.97, shift(0)], [1, shift(0)]]));
-        add(fig.querySelector(".rq-design--old"), track("opacity", [[0, 0], [0.62, 0], [0.7, 0.35], [0.88, 0.35],
-          [0.95, 0], [1, 0]]));
+        sets[0].forEach((bar) => add(bar, track("fill", [[0, "#9cc9de"], [0.18, "#9cc9de"], [0.3, "#007c92"],
+          [0.9, "#007c92"], [0.96, "#9cc9de"], [1, "#9cc9de"]])));
+        add(fig.querySelector(".rq-design"), track("opacity", [[0, 1], [0.4, 1], [0.44, 0.3], [0.48, 1],
+          [0.52, 0.3], [0.56, 1], [1, 1]]));
+        // pond level: fills below the rim, overtops and floods the street, then under control it is drawn
+        // down before the storm and peaks below the rim
+        add(fig.querySelector(".rq-pond-water"), track("transform", [[0, shift(34)], [0.04, shift(34)], [0.18, shift(16)],
+          [0.22, shift(15)], [0.34, shift(3)], [0.42, shift(-9)], [0.55, shift(-9)], [0.61, shift(8)], [0.68, shift(34)],
+          [0.72, shift(34)], [0.82, shift(12)], [0.88, shift(12)], [0.96, shift(34)], [1, shift(34)]]));
+        add(fig.querySelector(".rq-flow--in"), track("opacity", [[0, 0.2], [0.04, 1], [0.57, 1], [0.62, 0.2],
+          [0.68, 0.2], [0.72, 1], [0.9, 1], [0.96, 0.2], [1, 0.2]]));
+        add(fig.querySelector(".rq-flow--out"), track("opacity", [[0, 0.35], [0.6, 0.35], [0.62, 1], [0.92, 1],
+          [0.96, 0.35], [1, 0.35]]));
+        add(fig.querySelector(".rq-gate"), track("transform", [[0, shift(0)], [0.6, shift(0)], [0.63, shift(-8)],
+          [0.74, shift(-8)], [0.78, shift(-4)], [0.92, shift(-4)], [0.96, shift(0)], [1, shift(0)]]));
+        add(fig.querySelector(".rq-antenna"), track("opacity", [[0, 0], [0.57, 0], [0.61, 1], [0.93, 1], [0.97, 0], [1, 0]]));
       },
     };
 
