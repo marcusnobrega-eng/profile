@@ -567,7 +567,7 @@
       let remaining = SIM_SPEED * realDt, guard = 0;
       while (remaining > 0 && guard < 4) {
         const dt = Math.min(remaining, 1, (0.5 * DX) / Math.sqrt(G * hMax));
-        step(dt, 3e-5 * rain, cx, inflow);
+        step(dt, 6e-5 * rain, cx, inflow);
         remaining -= dt; guard += 1;
       }
       render(phase, rain);
@@ -578,7 +578,7 @@
     else window.addEventListener("resize", resize);
 
     if (reduceMotion.matches) {
-      for (let n = 0; n < 200; n += 1) step(0.8, 1.6e-5, 110, 12);
+      for (let n = 0; n < 200; n += 1) step(0.8, 6e-5, 110, 12);
       render(0.2, 0);
       return;
     }
