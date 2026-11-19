@@ -356,7 +356,7 @@
         const d = j - yc(i);
         const zb = 0.004 * (NX - i);
         let e;
-        if (Math.abs(d) < 4) { e = zb - 1 + 1.6 * (d / 4) ** 2; use[k] = 6; h[k] = Math.max(0, zb - 0.1 - e); }
+        if (Math.abs(d) < 4) { e = zb - 1 + 1.6 * (d / 4) ** 2; use[k] = 6; h[k] = Math.max(0, zb + 0.48 - e); }
         else if (d >= 4) { e = zb + 0.6 + 0.03 * (d - 4); use[k] = 5; }
         else if (d > -20) { e = zb + 0.6 + 0.008 * (-d - 4); use[k] = 4; }
         else {
@@ -506,7 +506,7 @@
     }
 
     let clock = 0, lastStatus = -1;
-    const raindrops = Array.from({ length: 46 }, () => [Math.random(), Math.random(), 0.6 + Math.random() * 0.8]);
+    const raindrops = Array.from({ length: 115 }, () => [Math.random(), Math.random(), 0.6 + Math.random() * 0.8]);
 
     function render(phase, rainOn) {
       if (!W || !H) { resize(); if (!W || !H) return; }
@@ -550,7 +550,7 @@
 
       // light rain over the city while it rains
       if (rainOn > 0.05) {
-        ctx.strokeStyle = `rgba(79, 147, 179, ${0.35 * rainOn})`;
+        ctx.strokeStyle = `rgba(79, 147, 179, ${0.45 * rainOn})`;
         ctx.beginPath();
         raindrops.forEach((drop) => {
           drop[1] = (drop[1] + 0.012 * drop[2]) % 1;
@@ -571,11 +571,12 @@
       const phase = (clock % PERIOD) / PERIOD;
       const rain = bell(phase, 0.05, 0.32);
       const cx = 30 + 160 * Math.min(Math.max((phase - 0.05) / 0.27, 0), 1);
-      const inflow = 12 + 85 * Math.exp(-(((phase - 0.5) / 0.11) ** 2));
+      // base flow near bankfull (about 41 m3/s for this channel), so the river is close to overflowing from the start
+      const inflow = 36 + 61 * Math.exp(-(((phase - 0.5) / 0.11) ** 2));
       let remaining = SIM_SPEED * realDt, guard = 0;
       while (remaining > 0 && guard < 6) {
         const dt = Math.min(remaining, 1, (0.5 * DX) / Math.sqrt(G * hMax));
-        step(dt, 6e-5 * rain, cx, inflow);
+        step(dt, 1.5e-4 * rain, cx, inflow);
         remaining -= dt; guard += 1;
       }
       render(phase, rain);
@@ -586,7 +587,7 @@
     else window.addEventListener("resize", resize);
 
     if (reduceMotion.matches) {
-      for (let n = 0; n < 200; n += 1) step(0.8, 6e-5, 110, 12);
+      for (let n = 0; n < 200; n += 1) step(0.8, 1.5e-4, 110, 36);
       render(0.2, 0);
       return;
     }
