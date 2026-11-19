@@ -341,8 +341,8 @@
     const statusLabels = statusEl.dataset.labels.split("|");
 
     const NX = 220, NY = 150, N = NX * NY, DX = 5, G = 9.81;
-    const PERIOD = 48;            // seconds of real time per event
-    const SIM_SPEED = 60;         // simulated seconds per real second
+    const PERIOD = 24;            // seconds of real time per event
+    const SIM_SPEED = 120;        // simulated seconds per real second (48 simulated minutes per event)
     const z = new Float32Array(N), h = new Float32Array(N), nMan = new Float32Array(N);
     const qx = new Float32Array(N), qy = new Float32Array(N);
     // land use: 0 lot, 1 street, 2 avenue, 3 yard, 4 park and floodplain, 5 field, 6 channel, 7 building
@@ -565,7 +565,7 @@
       const cx = 30 + 160 * Math.min(Math.max((phase - 0.05) / 0.27, 0), 1);
       const inflow = 12 + 85 * Math.exp(-(((phase - 0.5) / 0.11) ** 2));
       let remaining = SIM_SPEED * realDt, guard = 0;
-      while (remaining > 0 && guard < 4) {
+      while (remaining > 0 && guard < 6) {
         const dt = Math.min(remaining, 1, (0.5 * DX) / Math.sqrt(G * hMax));
         step(dt, 6e-5 * rain, cx, inflow);
         remaining -= dt; guard += 1;
