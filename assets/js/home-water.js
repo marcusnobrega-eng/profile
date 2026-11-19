@@ -167,22 +167,108 @@
         });
       },
       valley(fig, add) {
-        add(fig.querySelector(".rq-rain-layer"), track("opacity", [[0, 1], [0.38, 1], [0.44, 0], [0.97, 0], [1, 1]]));
-        add(fig.querySelector(".rq-drops"), track("opacity", [[0, 0], [0.03, 1], [0.36, 1], [0.42, 0], [1, 0]]));
-        add(fig.querySelector(".rq-moist"), track("opacity", [[0, 0.08], [0.16, 0.24], [0.52, 0.24], [0.66, 0.12],
-          [0.9, 0], [1, 0.08]]));
-        // water table: rises into the riparian zone, then drops below the riverbed in the drought
-        add(fig.querySelector(".rq-table"), track("transform", [[0, shift(0)], [0.12, shift(0)], [0.38, shift(-15)],
-          [0.54, shift(-15)], [0.66, shift(-4)], [0.9, shift(14)], [1, shift(0)]]));
-        add(fig.querySelector(".rq-gw"), track("opacity", [[0, 0.3], [0.18, 0.3], [0.24, 1], [0.54, 1], [0.62, 0],
-          [0.97, 0], [1, 0.3]]));
-        // river: groundwater and runoff raise it over the banks, then it falls to low flow
-        add(fig.querySelector(".rq-river"), track("transform", [[0, shift(0)], [0.2, shift(-2)], [0.38, shift(-6)],
-          [0.48, shift(-11)], [0.56, shift(-11)], [0.66, shift(-1)], [0.9, shift(7)], [1, shift(0)]]));
-        add(fig.querySelector(".rq-sun"), track("opacity", [[0, 0], [0.56, 0], [0.62, 1], [0.93, 1], [0.97, 0], [1, 0]]));
-        add(fig.querySelector(".rq-et"), track("opacity", [[0, 0], [0.6, 0], [0.65, 1], [0.92, 1], [0.96, 0], [1, 0]]));
+        const q = (sel) => fig.querySelector(sel);
+        const duration = Number(fig.dataset.rqDuration) || 12000;
+        // storm intensity: four layers of streaks switch on and off, so the rain rises to a peak and fades
+        const rain = [
+          [[0, 1], [0.4, 1], [0.45, 0], [0.95, 0], [1, 1]],
+          [[0, 0], [0.05, 0], [0.09, 1], [0.36, 1], [0.42, 0], [1, 0]],
+          [[0, 0], [0.12, 0], [0.16, 1], [0.32, 1], [0.38, 0], [1, 0]],
+          [[0, 0], [0.18, 0], [0.22, 1], [0.28, 1], [0.33, 0], [1, 0]],
+        ];
+        rain.forEach((pairs, i) => add(q(`.rq-rain-g--${i + 1}`), track("opacity", pairs)));
+        add(q(".rq-cloud"), track("opacity", [[0, 0.85], [0.2, 1], [0.38, 1], [0.48, 0], [0.94, 0], [1, 0.85]]));
+        add(q(".rq-cloud"), track("transform", [[0, "translateX(0px)"], [0.38, "translateX(8px)"], [0.48, "translateX(34px)"],
+          [0.94, "translateX(-24px)"], [1, "translateX(0px)"]]));
+        add(q(".rq-sun"), track("opacity", [[0, 0], [0.56, 0], [0.62, 1], [0.93, 1], [0.97, 0], [1, 0]]));
+        add(q(".rq-et"), track("opacity", [[0, 0], [0.6, 0], [0.66, 1], [0.92, 1], [0.96, 0], [1, 0]]));
         fig.querySelectorAll(".rq-crown").forEach((crown) => add(crown, track("fill", [[0, "#5f9268"], [0.62, "#5f9268"],
           [0.9, "#a3a061"], [1, "#5f9268"]])));
+
+        // fields drawn from one clock: [t, recharge/K, river stage (y), wet layer top and bottom below the surface, wetness]
+        const states = [
+          [0, 0.027, 85, 0, 4, 0.35], [0.08, 0.032, 84, 0, 10, 0.75], [0.22, 0.045, 81, 0, 24, 0.9],
+          [0.36, 0.055, 78, 0, 32, 0.85], [0.48, 0.03, 70, 0, 32, 0.8], [0.56, 0.026, 71, 1, 30, 0.7],
+          [0.66, 0.012, 80, 4, 26, 0.45], [0.8, -0.004, 86, 9, 22, 0.25], [0.92, -0.012, 88, 13, 20, 0.12],
+          [1, 0.027, 85, 0, 4, 0.35],
+        ];
+        const clock = add(q("svg"), track("opacity", [[0, 1], [1, 1]]));
+        const surface = q(".rq-surface");
+        const length = surface.getTotalLength();
+        const sy = new Array(241);
+        let last = { x: 0, y: surface.getPointAtLength(0).y };
+        for (let i = 1, x = 0; i <= 960 && x <= 240; i += 1) {
+          const p = surface.getPointAtLength((length * i) / 960);
+          while (x <= 240 && x <= p.x) {
+            sy[x] = p.x > last.x ? last.y + ((p.y - last.y) * (x - last.x)) / (p.x - last.x) : p.y;
+            x += 1;
+          }
+          last = p;
+        }
+        for (let x = 0; x <= 240; x += 1) if (sy[x] === undefined) sy[x] = sy[x - 1];
+
+        const els = {
+          line: q(".rq-table__line"), sat: q(".rq-table__water"), fringe: q(".rq-fringe"), wet: q(".rq-wet"),
+          river: q(".rq-river"), well: q(".rq-well__water"), flows: Array.from(fig.querySelectorAll(".rq-flowline")),
+        };
+        const smooth = (v) => v * v * (3 - 2 * v);
+        const stateAt = (t) => {
+          let k = 0;
+          while (k < states.length - 2 && t > states[k + 1][0]) k += 1;
+          const [a, b] = [states[k], states[k + 1]];
+          const f = smooth(Math.min(Math.max((t - a[0]) / (b[0] - a[0]), 0), 1));
+          return a.map((v, i) => v + (b[i] - v) * f);
+        };
+        const yBase = 128, xRiver = 179, xDivide = 260;
+        const waterTable = (x, nk, stage) => {
+          const hr = yBase - stage;
+          const h2 = x <= xRiver ? hr * hr + nk * (xRiver * xRiver - x * x)
+            : hr * hr + nk * ((xDivide - xRiver) ** 2 - (xDivide - x) ** 2);
+          return Math.max(yBase - Math.sqrt(Math.max(h2, 1)), sy[Math.round(x)] + 0.8);
+        };
+        const xs = Array.from({ length: 61 }, (_, i) => i * 4);
+        const pts = (list) => list.map(([x, y]) => `${x} ${y.toFixed(1)}`).join(" L");
+        let lastT = -1, lastTime = null, offset = 0;
+
+        const draw = () => {
+          const time = Number(clock.currentTime) || 0;
+          const t = (time % duration) / duration;
+          if (lastTime !== null && time !== lastTime) {
+            const [, nkNow, stageNow] = stateAt(t);
+            // positive flux: groundwater moves toward the river; negative: the river loses water to the aquifer
+            const flux = stageNow - waterTable(64, nkNow, stageNow);
+            offset -= (Math.min(Math.abs(time - lastTime), 100) / 1000) * flux * 0.9;
+            els.flows.forEach((path) => { path.style.strokeDashoffset = offset.toFixed(2); });
+          }
+          lastTime = time;
+          if (Math.abs(t - lastT) < 0.0005) return;
+          lastT = t;
+          const [, nk, stage, wetTop, wetBottom, wetness] = stateAt(t);
+          const wt = xs.map((x) => [x, waterTable(x, nk, stage)]);
+          const line = `M${pts(wt)}`;
+          els.line.setAttribute("d", line);
+          els.sat.setAttribute("d", `${line} L240 128 L0 128 Z`);
+          els.fringe.setAttribute("d", `${line} L${pts(wt.slice().reverse().map(([x, y]) => [x, y - 4.5]))} Z`);
+          const top = xs.map((x) => [x, sy[x] + wetTop]);
+          const bottom = wt.map(([x, y]) => [x, Math.min(sy[x] + wetBottom, y)]).reverse();
+          els.wet.setAttribute("d", `M${pts(top)} L${pts(bottom)} Z`);
+          els.wet.style.opacity = wetness.toFixed(3);
+          els.river.setAttribute("y", stage.toFixed(2));
+          const wellY = waterTable(70, nk, stage);
+          els.well.setAttribute("y", wellY.toFixed(1));
+          els.well.setAttribute("height", (127 - wellY).toFixed(1));
+          const starts = [24, 64, 104];
+          els.flows.forEach((path, i) => {
+            if (i < 3) {
+              const x0 = starts[i];
+              path.setAttribute("d", `M${x0} ${(waterTable(x0, nk, stage) + 3).toFixed(1)} Q${(x0 + (176 - x0) * 0.55).toFixed(1)} ${122 - i * 8} ${172 + i * 3} 92.5`);
+            } else {
+              path.setAttribute("d", `M234 ${(waterTable(234, nk, stage) + 3).toFixed(1)} Q206 110 186 92.5`);
+            }
+          });
+        };
+        const loop = () => { draw(); window.requestAnimationFrame(loop); };
+        window.requestAnimationFrame(loop);
       },
       pond(fig, add) {
         const sets = [".rq-bars .rq-bar", ".rq-excess .rq-bar"].map((sel) => Array.from(fig.querySelectorAll(sel)));
@@ -217,10 +303,11 @@
       const duration = Number(fig.dataset.rqDuration) || 10000;
       const animations = [];
       const add = (el, frames) => {
-        if (!el) return;
+        if (!el) return null;
         const animation = el.animate(frames, { duration, iterations: Infinity, fill: "both" });
         animation.pause();
         animations.push(animation);
+        return animation;
       };
       fig.querySelectorAll(".rq__phase").forEach((label) => {
         add(label, span(Number(label.dataset.from), Number(label.dataset.to), 1, 0));

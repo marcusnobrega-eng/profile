@@ -9653,49 +9653,47 @@ body {
   stroke-width: 2;
 }
 
-/* 02: valley section. Rain wets the soil, the water table rises into the riparian zone and the river
-   floods, then a drought: evapotranspiration dries the soil and the water table drops */
+/* 02: valley section. A storm wets the soil and recharges the aquifer, the water table (Dupuit) rises into
+   the riparian zone and the river floods, then a drought: evapotranspiration dries the soil from the top,
+   the water table drops below the river stage and the flow lines reverse. home-water.js draws the fields. */
+.rq-cloud path { fill: #a9b2b7; }
+.rq-cloud .rq-cloud__back { fill: #c3cacd; }
+
 .rq-rain {
-  stroke: var(--water-blue-light);
+  stroke: #6fa9c4;
   stroke-linecap: round;
-  stroke-width: 1.6;
-  animation: rq-rain 1.4s linear infinite;
+  stroke-width: 1.3;
+  opacity: 0;
+  animation: rq-rain var(--dur, 0.8s) linear infinite;
   animation-delay: var(--d);
 }
 
+.rq-rain-g--3 .rq-rain,
+.rq-rain-g--4 .rq-rain { stroke: #4f93b3; stroke-width: 1.5; }
+
+.rq-surface { fill: none; stroke: none; }
 .rq-ground { fill: #e6dccb; }
-
-.rq-moist {
-  fill: #7fb3c6;
-  opacity: 0.22;
-}
-
-.rq-table { transform: translateY(-15px); }
-.rq-table__water { fill: #5fa8c4; opacity: 0.5; }
+.rq-wet { fill: url(#rq-wet); opacity: 0.8; }
+.rq-table__water { fill: url(#rq-sat); opacity: 0.6; }
+.rq-fringe { fill: #a9d2e0; opacity: 0.55; }
+.rq-bedrock { fill: #b3a894; }
+.rq-bedrock__mark { fill: none; stroke: #9a8e79; stroke-linecap: round; stroke-width: 1; }
+.rq-well__casing { fill: #ffffff; stroke: #7f7776; stroke-width: 0.8; }
+.rq-well__water { fill: #1f6f8b; }
 
 .rq-table__line {
   fill: none;
-  stroke: var(--stanford-lagunita);
-  stroke-dasharray: 5 4;
-  stroke-width: 1.6;
-  animation: rq-gwflow 1.2s linear infinite;
+  stroke: #1f6f8b;
+  stroke-width: 1.4;
 }
 
-.rq-gw-arrow {
+.rq-flowline {
   fill: none;
-  stroke: #0b5566;
+  stroke: #ffffff;
+  stroke-dasharray: 3 5;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-  animation: rq-gw 1.6s ease-in-out infinite;
-  animation-delay: var(--d);
-}
-
-.rq-drop {
-  fill: var(--stanford-lagunita);
-  opacity: 0;
-  animation: rq-infil 2.2s ease-in infinite;
-  animation-delay: var(--d);
+  stroke-width: 1.3;
+  opacity: 0.75;
 }
 
 .rq-trunk { stroke: #6d5a46; stroke-linecap: round; stroke-width: 1.6; }
@@ -9704,7 +9702,6 @@ body {
 .rq-river {
   fill: var(--stanford-lagunita);
   opacity: 0.85;
-  transform: translateY(-11px);
 }
 
 .rq-sun { opacity: 0; }
@@ -9723,41 +9720,25 @@ body {
 
 .rq-et-arrow {
   fill: none;
-  stroke: #7fb2c3;
+  stroke: #79aebf;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.4;
-  animation: rq-et 2s ease-out infinite;
+  stroke-width: 1.5;
+  animation: rq-et 2.4s ease-out infinite;
   animation-delay: var(--d);
 }
 
 @keyframes rq-rain {
-  0% { opacity: 0; transform: translateY(0); }
-  20% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(28px); }
-}
-
-@keyframes rq-infil {
-  0% { opacity: 0; transform: translateY(0); }
-  15% { opacity: 0.9; }
-  80% { opacity: 0.9; }
-  100% { opacity: 0; transform: translateY(22px); }
-}
-
-@keyframes rq-gwflow {
-  to { stroke-dashoffset: -18; }
-}
-
-@keyframes rq-gw {
-  0% { opacity: 0; transform: translateX(-3px); }
-  40%, 70% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(4px); }
+  0% { opacity: 0; transform: translate(0, 0); }
+  12% { opacity: 0.95; }
+  85% { opacity: 0.95; }
+  100% { opacity: 0; transform: translate(-3px, var(--fall, 28px)); }
 }
 
 @keyframes rq-et {
-  0% { opacity: 0; transform: translateY(2px); }
-  35% { opacity: 0.95; }
-  100% { opacity: 0; transform: translateY(-7px); }
+  0% { opacity: 0; transform: translateY(3px); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-8px); }
 }
 
 @keyframes rq-spin {
@@ -9972,7 +9953,7 @@ body {
     animation: none !important;
     transition: none !important;
   }
-  .rq-drop { opacity: 0.8; }
+  .rq-rain { opacity: 0.8; }
   .rq-et-arrow, .rq-signal { opacity: 0.9; }
 }
 
