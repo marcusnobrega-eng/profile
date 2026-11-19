@@ -421,12 +421,13 @@
     }
 
     const rainCol = new Float32Array(NX);
-    // water colour and opacity by depth, in 1 cm classes up to 2.55 m
+    // water colour and opacity by depth, in 1 cm classes up to 2.55 m; colours follow the "cool" colormap
+    // (cyan for shallow water to magenta for deep water)
     const waterLUT = new Float32Array(256 * 4);
     for (let n = 0; n < 256; n += 1) {
       const d = n / 100, t = Math.pow(Math.min(d / 1.6, 1), 0.55);
       const alpha = d < 0.06 ? Math.max(0, (d - 0.01) / 0.05) * 0.38 : Math.min(0.9, 0.38 + (d - 0.06) * 2.6);
-      waterLUT.set([178 - 150 * t, 222 - 104 * t, 236 - 86 * t, alpha], n * 4);
+      waterLUT.set([255 * t, 255 * (1 - t), 255, alpha], n * 4);
     }
     const grid = document.createElement("canvas");
     grid.width = NX; grid.height = NY;
