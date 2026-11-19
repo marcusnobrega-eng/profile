@@ -9698,6 +9698,14 @@ body {
 
 .rq-trunk { stroke: #6d5a46; stroke-linecap: round; stroke-width: 1.6; }
 .rq-crown { fill: #5f9268; }
+.rq-crown--light { fill: #7fae80; }
+
+.rq-roots {
+  fill: none;
+  stroke: #8a6f55;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
 
 .rq-river {
   fill: var(--stanford-lagunita);

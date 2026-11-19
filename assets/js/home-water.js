@@ -182,8 +182,10 @@
           [0.94, "translateX(-24px)"], [1, "translateX(0px)"]]));
         add(q(".rq-sun"), track("opacity", [[0, 0], [0.56, 0], [0.62, 1], [0.93, 1], [0.97, 0], [1, 0]]));
         add(q(".rq-et"), track("opacity", [[0, 0], [0.6, 0], [0.66, 1], [0.92, 1], [0.96, 0], [1, 0]]));
-        fig.querySelectorAll(".rq-crown").forEach((crown) => add(crown, track("fill", [[0, "#5f9268"], [0.62, "#5f9268"],
-          [0.9, "#a3a061"], [1, "#5f9268"]])));
+        fig.querySelectorAll(".rq-crown").forEach((crown) => {
+          const [wet, dry] = crown.classList.contains("rq-crown--light") ? ["#7fae80", "#bdb67a"] : ["#5f9268", "#a3a061"];
+          add(crown, track("fill", [[0, wet], [0.62, wet], [0.9, dry], [1, wet]]));
+        });
 
         // fields drawn from one clock: [t, recharge/K, river stage (y), wet layer top and bottom below the surface, wetness]
         const states = [
