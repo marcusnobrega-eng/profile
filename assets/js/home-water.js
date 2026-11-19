@@ -413,7 +413,7 @@
     for (let j = 0; j < NY; j += 1) if (use[j * NX] === 6) inflowCells.push(j * NX);
 
     const palette = [[239, 235, 227], [218, 215, 208], [210, 207, 200], [229, 233, 219], [221, 232, 212],
-      [228, 231, 215], [207, 198, 178], [236, 232, 224]];
+      [228, 231, 215], [216, 224, 205], [236, 232, 224]];
     const base = new Uint8ClampedArray(N * 3);
     for (let k = 0; k < N; k += 1) {
       const c = palette[use[k]];
@@ -425,7 +425,8 @@
     const waterLUT = new Float32Array(256 * 4);
     for (let n = 0; n < 256; n += 1) {
       const d = n / 100, t = Math.pow(Math.min(d / 1.6, 1), 0.55);
-      waterLUT.set([178 - 150 * t, 222 - 104 * t, 236 - 86 * t, Math.min(0.9, 0.3 + d * 3.2)], n * 4);
+      const alpha = d < 0.06 ? Math.max(0, (d - 0.01) / 0.05) * 0.38 : Math.min(0.9, 0.38 + (d - 0.06) * 2.6);
+      waterLUT.set([178 - 150 * t, 222 - 104 * t, 236 - 86 * t, alpha], n * 4);
     }
     const grid = document.createElement("canvas");
     grid.width = NX; grid.height = NY;
@@ -433,8 +434,13 @@
     const image = gctx.createImageData(NX, NY);
     let hMax = 1;
 
+    // theta-weighted flux (de Almeida et al., 2012): blending each face's previous flux with its two neighbours
+    // damps the checkerboard oscillation of the plain local-inertial scheme
+    const THETA = 0.8, SIDE = 0.5 * (1 - THETA);
+    const qxOld = new Float32Array(N), qyOld = new Float32Array(N);
     function step(dt, rain, cx, inflow) {
       const c = G * dt;
+      qxOld.set(qx); qyOld.set(qy);
       for (let j = 0; j < NY; j += 1) {
         const row = j * NX;
         for (let i = 0; i < NX - 1; i += 1) {
@@ -444,7 +450,8 @@
           const hf = Math.max(ea, eb) - Math.max(z[a], z[b]);
           if (hf <= 0.002) { qx[a] = 0; continue; }
           const n = 0.5 * (nMan[a] + nMan[b]);
-          const q = (qx[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qx[a]) / (hf * hf * Math.cbrt(hf)));
+          const q0 = i > 0 && i < NX - 2 ? THETA * qxOld[a] + SIDE * (qxOld[a - 1] + qxOld[a + 1]) : qxOld[a];
+          const q = (q0 - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qxOld[a]) / (hf * hf * Math.cbrt(hf)));
           const qmax = hf * Math.sqrt(G * hf);          // Froude limit keeps shallow cells stable
           qx[a] = q > qmax ? qmax : q < -qmax ? -qmax : q;
         }
@@ -458,7 +465,8 @@
           const hf = Math.max(ea, eb) - Math.max(z[a], z[b]);
           if (hf <= 0.002) { qy[a] = 0; continue; }
           const n = 0.5 * (nMan[a] + nMan[b]);
-          const q = (qy[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qy[a]) / (hf * hf * Math.cbrt(hf)));
+          const q0 = j > 0 && j < NY - 2 ? THETA * qyOld[a] + SIDE * (qyOld[a - NX] + qyOld[a + NX]) : qyOld[a];
+          const q = (q0 - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qyOld[a]) / (hf * hf * Math.cbrt(hf)));
           const qmax = hf * Math.sqrt(G * hf);
           qy[a] = q > qmax ? qmax : q < -qmax ? -qmax : q;
         }
