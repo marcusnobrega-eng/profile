@@ -117,7 +117,7 @@ redirect_from:
           <h3>GRIDF-BR</h3>
           <p>Processes raster rainfall, extracts extremes, corrects satellite bias, and estimates intensity-duration-frequency curves consistently across Brazil.</p>
           <p class="model-card__scope">Earth observation · extremes · national scale</p>
-          <div class="model-card__actions"><a class="model-button" href="https://gridf-470516.projects.earthengine.app/view/gridf-br"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Web app</a><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/GRIDF"><i class="fab fa-github" aria-hidden="true"></i> Code</a></div>
+          <div class="model-card__actions"><a class="model-button" href="https://marcusnobrega-eng.github.io/GRIDF/"><i class="fas fa-globe" aria-hidden="true"></i> Website</a><a class="model-button model-button--secondary" href="https://github.com/marcusnobrega-eng/GRIDF"><i class="fab fa-github" aria-hidden="true"></i> Code</a></div>
         </div>
         <figure class="model-card__media"><img src="https://github.com/user-attachments/assets/1090dd66-fa1f-47b7-9207-df39a5387208" alt="GRIDF-BR interface and rainfall-extreme outputs" loading="eager"><figcaption>Nationally consistent rainfall-frequency estimation.</figcaption></figure>
       </article>
