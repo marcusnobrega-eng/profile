@@ -329,137 +329,165 @@
     });
   }
 
-  // Hero: a small local-inertial (Bates et al., 2010) flood model on a synthetic valley, run live in the page
+  // Hero: a small local-inertial (Bates et al., 2010) flood model of a riverside neighborhood, run live in the page.
+  // A rainstorm first overwhelms the street inlets (pluvial flooding); later the upstream flood wave arrives and
+  // the river overflows into the riverside park and the lowest streets (fluvial flooding); then the water drains.
   function setupHeroFlood() {
     const figure = document.querySelector("[data-hero-flood]");
     const canvas = figure && figure.querySelector("canvas");
     const ctx = canvas && canvas.getContext("2d");
     if (!ctx) return;
     const statusEl = figure.querySelector("[data-flood-status]");
-    const scaleEl = figure.querySelector("[data-flood-scale]");
     const statusLabels = statusEl.dataset.labels.split("|");
-    const scaleLabels = scaleEl.dataset.labels.split("|");
 
-    const NX = 192, NY = 138, N = NX * NY, DX = 10, G = 9.81;
-    const PERIOD = 32;            // seconds of real time per storm cycle
-    const SIM_SPEED = 240;        // simulated seconds per real second
+    const NX = 220, NY = 150, N = NX * NY, DX = 5, G = 9.81;
+    const PERIOD = 48;            // seconds of real time per event
+    const SIM_SPEED = 60;         // simulated seconds per real second
     const z = new Float32Array(N), h = new Float32Array(N), nMan = new Float32Array(N);
     const qx = new Float32Array(N), qy = new Float32Array(N);
-    const building = new Uint8Array(N), channel = new Uint8Array(N);
-    const yc = (x) => 69 + 24 * Math.sin(x / 30 + 0.4) + 7 * Math.sin(x / 11 + 1.3);
-    const noise = (x, y) => 0.5 * Math.sin(x * 0.21 + y * 0.13) + 0.35 * Math.sin(x * 0.07 - y * 0.19 + 2)
-      + 0.25 * Math.sin(x * 0.43 + y * 0.37);
+    // land use: 0 lot, 1 street, 2 avenue, 3 yard, 4 park and floodplain, 5 field, 6 channel, 7 building
+    const use = new Uint8Array(N);
+    const yc = (x) => 116 + 9 * Math.sin(x / 38 + 0.6) + 3.5 * Math.sin(x / 12);
+    const sag = (x, y, cx, cy, r, depth) => depth * Math.exp(-((x - cx) ** 2 + (y - cy) ** 2) / (2 * r * r));
 
-    // terrain: a valley sloping downstream, a meandering incised channel and a gently rising floodplain
     for (let j = 0; j < NY; j += 1) {
       for (let i = 0; i < NX; i += 1) {
         const k = j * NX + i;
-        const d = Math.abs(j - yc(i));
-        let e = 0.045 * (NX - i) + 0.022 * Math.pow(d, 1.4) + 0.1 * noise(i, j);
-        if (d < 2.6) { e -= 1.6 * (1 - (d / 2.6) ** 2); channel[k] = 1; h[k] = 1; }
+        const d = j - yc(i);
+        const zb = 0.004 * (NX - i);
+        let e;
+        if (Math.abs(d) < 4) { e = zb - 1 + 1.6 * (d / 4) ** 2; use[k] = 6; h[k] = Math.max(0, zb - 0.1 - e); }
+        else if (d >= 4) { e = zb + 0.6 + 0.03 * (d - 4); use[k] = 5; }
+        else if (d > -20) { e = zb + 0.6 + 0.008 * (-d - 4); use[k] = 4; }
+        else {
+          e = zb + 0.73 + 0.018 * (-d - 20) + 0.12 * Math.sin(i / 23) * Math.sin(j / 17)
+            - sag(i, j, 88, 52, 7, 0.32) - sag(i, j, 152, 70, 6, 0.28) - sag(i, j, 40, 30, 5, 0.22);
+          const vStreet = i % 22 < 2 || i % 66 < 3, hStreet = j % 18 < 2 || (j >= 40 && j < 43);
+          const riverside = d > -23;
+          use[k] = riverside ? 2 : vStreet || hStreet ? (i % 66 < 3 || (j >= 40 && j < 43) ? 2 : 1) : 0;
+          if (use[k] === 1 || use[k] === 2) e -= 0.12;
+        }
         z[k] = e;
-        nMan[k] = channel[k] ? 0.03 : 0.045;
+        nMan[k] = use[k] === 6 ? 0.03 : use[k] === 1 || use[k] === 2 ? 0.02 : use[k] === 4 || use[k] === 5 ? 0.05 : 0.035;
       }
     }
-    // two neighborhoods: 4 x 3 cell blocks with 2-cell streets
-    const blocks = [];
-    [[124, 168, 64, 88], [52, 84, 44, 62]].forEach(([x0, x1, y0, y1]) => {
-      for (let bx = x0; bx + 4 <= x1; bx += 6) {
-        for (let by = y0; by + 3 <= y1; by += 5) {
-          blocks.push([bx, by]);
-          for (let i = bx; i < bx + 4; i += 1) for (let j = by; j < by + 3; j += 1) {
-            const k = j * NX + i;
-            building[k] = 1; channel[k] = 0; h[k] = 0; z[k] += 4;
+
+    // blocks between streets: residential (houses with back yards), commercial (larger buildings) or parks
+    const buildings = [], trees = [];
+    const inCity = (i, j) => i >= 0 && i < NX && j >= 0 && j < NY && j - yc(i) <= -24;
+    const hash = (a, b) => { const s = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return s - Math.floor(s); };
+    const place = (x, y, w, hh, type) => {
+      for (let i = x; i < x + w; i += 1) for (let j = y; j < y + hh; j += 1) if (!inCity(i, j)) return;
+      buildings.push({ x, y, w, h: hh, type });
+      for (let i = x; i < x + w; i += 1) for (let j = y; j < y + hh; j += 1) { const k = j * NX + i; use[k] = 7; z[k] += 5; }
+    };
+    for (let bx = 0; bx < NX; bx += 22) {
+      for (let by = 0; by < NY; by += 18) {
+        const x0 = bx + (bx % 66 === 0 ? 3 : 2), x1 = bx + 22, y0 = by + 2, y1 = by + 18;
+        const r = hash(bx, by);
+        const avenue = bx % 66 === 0 || bx % 66 === 44 || (by <= 40 && by + 18 > 40);
+        if (r < 0.12) {
+          for (let n = 0; n < 9; n += 1) {
+            const tx = x0 + 2 + hash(n, bx) * (x1 - x0 - 4), ty = y0 + 2 + hash(by, n) * (y1 - y0 - 4);
+            if (inCity(Math.round(tx), Math.round(ty))) trees.push([tx, ty, 1.3 + hash(n, n + bx) * 1.2]);
           }
+          for (let i = x0; i < x1; i += 1) for (let j = y0; j < y1; j += 1) if (inCity(i, j) && use[j * NX + i] === 0) use[j * NX + i] = 4;
+        } else if (avenue && r < 0.62) {
+          const w = x1 - x0 - 4, mid = Math.floor(w / 2);
+          place(x0 + 2, y0 + 2, mid - 1, y1 - y0 - 4, "large");
+          place(x0 + 2 + mid + 1, y0 + 2, w - mid - 1, Math.floor((y1 - y0 - 4) * (0.5 + 0.4 * r)), "large");
+        } else {
+          for (let x = x0 + 1; x + 3 <= x1 - 1; x += 4) {
+            place(x, y0 + 1, 3, 3, "house");
+            place(x, y1 - 4, 3, 3, "house");
+          }
+          for (let i = x0; i < x1; i += 1) for (let j = y0 + 4; j < y1 - 4; j += 1) if (inCity(i, j) && use[j * NX + i] === 0) use[j * NX + i] = 3;
         }
       }
-    });
+    }
+    for (let n = 0; n < 46; n += 1) {      // trees along the riverside park
+      const tx = hash(n, 7) * NX, ty = yc(tx) - 6 - hash(7, n) * 12;
+      trees.push([tx, ty, 1.4 + hash(n, 3) * 1.4]);
+    }
     const inflowCells = [];
-    for (let j = 0; j < NY; j += 1) if (channel[j * NX]) inflowCells.push(j * NX);
+    for (let j = 0; j < NY; j += 1) if (use[j * NX] === 6) inflowCells.push(j * NX);
 
-    // shaded relief, computed once
+    const palette = [[239, 235, 227], [218, 215, 208], [210, 207, 200], [229, 233, 219], [221, 232, 212],
+      [228, 231, 215], [207, 198, 178], [236, 232, 224]];
     const base = new Uint8ClampedArray(N * 3);
-    let zMin = Infinity, zMax = -Infinity;
-    for (let k = 0; k < N; k += 1) if (!building[k]) { zMin = Math.min(zMin, z[k]); zMax = Math.max(zMax, z[k]); }
-    for (let j = 0; j < NY; j += 1) {
-      for (let i = 0; i < NX; i += 1) {
-        const k = j * NX + i;
-        const zx = z[j * NX + Math.min(i + 1, NX - 1)] - z[j * NX + Math.max(i - 1, 0)];
-        const zy = z[Math.min(j + 1, NY - 1) * NX + i] - z[Math.max(j - 1, 0) * NX + i];
-        const shade = Math.min(1.06, Math.max(0.84, 0.98 - 0.06 * zx - 0.08 * zy));
-        const f = Math.min(1, Math.max(0, (z[k] - zMin) / (zMax - zMin)));
-        let r = 241 - 26 * f, g = 238 - 16 * f, b = 230 - 30 * f;
-        if (channel[k]) { r = 214; g = 206; b = 190; }
-        if (building[k]) { r = 206; g = 201; b = 193; }
-        base[k * 3] = r * shade; base[k * 3 + 1] = g * shade; base[k * 3 + 2] = b * shade;
-      }
+    for (let k = 0; k < N; k += 1) {
+      const c = palette[use[k]];
+      base[k * 3] = c[0]; base[k * 3 + 1] = c[1]; base[k * 3 + 2] = c[2];
     }
 
+    const rainCol = new Float32Array(NX);
+    // water colour and opacity by depth, in 1 cm classes up to 2.55 m
+    const waterLUT = new Float32Array(256 * 4);
+    for (let n = 0; n < 256; n += 1) {
+      const d = n / 100, t = Math.pow(Math.min(d / 1.6, 1), 0.55);
+      waterLUT.set([178 - 150 * t, 222 - 104 * t, 236 - 86 * t, Math.min(0.9, 0.3 + d * 3.2)], n * 4);
+    }
     const grid = document.createElement("canvas");
     grid.width = NX; grid.height = NY;
     const gctx = grid.getContext("2d");
     const image = gctx.createImageData(NX, NY);
     let hMax = 1;
 
-    function step(dt, rain, cx, cy, inflow) {
+    function step(dt, rain, cx, inflow) {
       const c = G * dt;
       for (let j = 0; j < NY; j += 1) {
         const row = j * NX;
         for (let i = 0; i < NX - 1; i += 1) {
           const a = row + i, b = a + 1;
+          if (use[a] === 7 || use[b] === 7) { qx[a] = 0; continue; }
           const ea = z[a] + h[a], eb = z[b] + h[b];
           const hf = Math.max(ea, eb) - Math.max(z[a], z[b]);
           if (hf <= 0.002) { qx[a] = 0; continue; }
           const n = 0.5 * (nMan[a] + nMan[b]);
-          qx[a] = (qx[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qx[a]) / Math.pow(hf, 7 / 3));
+          const q = (qx[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qx[a]) / (hf * hf * Math.cbrt(hf)));
+          const qmax = hf * Math.sqrt(G * hf);          // Froude limit keeps shallow cells stable
+          qx[a] = q > qmax ? qmax : q < -qmax ? -qmax : q;
         }
       }
       for (let j = 0; j < NY - 1; j += 1) {
         const row = j * NX;
         for (let i = 0; i < NX; i += 1) {
           const a = row + i, b = a + NX;
+          if (use[a] === 7 || use[b] === 7) { qy[a] = 0; continue; }
           const ea = z[a] + h[a], eb = z[b] + h[b];
           const hf = Math.max(ea, eb) - Math.max(z[a], z[b]);
           if (hf <= 0.002) { qy[a] = 0; continue; }
           const n = 0.5 * (nMan[a] + nMan[b]);
-          qy[a] = (qy[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qy[a]) / Math.pow(hf, 7 / 3));
+          const q = (qy[a] - c * hf * (eb - ea) / DX) / (1 + c * n * n * Math.abs(qy[a]) / (hf * hf * Math.cbrt(hf)));
+          const qmax = hf * Math.sqrt(G * hf);
+          qy[a] = q > qmax ? qmax : q < -qmax ? -qmax : q;
         }
       }
-      const infiltration = 1.2e-5 * dt;
-      const sigma2 = 2 * 42 * 42;
+      const inlet = 7e-6 * dt, soak = 4.5e-6 * dt, lots = 1.5e-6 * dt;
+      if (rain > 0) for (let i = 0; i < NX; i += 1) rainCol[i] = dt * rain * (0.65 + 0.55 * Math.exp(-((i - cx) ** 2) / 4000));
       hMax = 0.05;
       for (let j = 0; j < NY; j += 1) {
         for (let i = 0; i < NX; i += 1) {
           const k = j * NX + i;
-          if (building[k]) continue;
+          const u = use[k];
+          if (u === 7) continue;
           let dq = 0;
           if (i > 0) dq += qx[k - 1];
           if (i < NX - 1) dq -= qx[k];
           if (j > 0) dq += qy[k - NX];
           if (j < NY - 1) dq -= qy[k];
           let v = h[k] + (dt * dq) / DX;
-          if (rain > 0) {
-            const r2 = (i - cx) * (i - cx) + (j - cy) * (j - cy);
-            v += dt * rain * (0.08 + Math.exp(-r2 / sigma2));
-          }
-          if (!channel[k]) v -= infiltration;
+          if (rain > 0) v += rainCol[i];
+          if (u === 1 || u === 2) v -= inlet;          // storm-drain inlets
+          else if (u === 3 || u === 4 || u === 5) v -= soak;
+          else if (u === 0) v -= lots;
           h[k] = v > 0 ? v : 0;
           if (h[k] > hMax) hMax = h[k];
         }
       }
       const add = (inflow * dt) / (DX * DX * inflowCells.length);
       inflowCells.forEach((k) => { h[k] += add; });
-      for (let j = 0; j < NY; j += 1) { h[j * NX + NX - 1] = 0; h[j * NX + NX - 2] *= 0.6; }   // free outlet downstream
-    }
-
-    // particles carried by the computed velocity
-    const particles = Array.from({ length: 260 }, () => ({ x: 0, y: 0, px: 0, py: 0, age: 999 }));
-    function respawn(p) {
-      for (let tries = 0; tries < 30; tries += 1) {
-        const i = Math.floor(Math.random() * NX), j = Math.floor(Math.random() * NY);
-        if (h[j * NX + i] > 0.08) { p.x = p.px = i + Math.random(); p.y = p.py = j + Math.random(); p.age = 0; return; }
-      }
-      p.age = 999;
+      for (let j = 0; j < NY; j += 1) { const k = j * NX + NX - 1; if (use[k] === 6 || use[k] === 4) h[k] *= 0.5; }
     }
 
     let W = 0, H = 0, dpr = 1;
@@ -469,102 +497,80 @@
       if (W && H && (canvas.width !== W || canvas.height !== H)) { canvas.width = W; canvas.height = H; }
     }
 
-    const smooth = (v) => v * v * (3 - 2 * v);
-    const bump = (x, c, w) => Math.exp(-(((x - c) / w) ** 2));
-    let clock = 0, lastStatus = -1, lastScale = -1;
+    let clock = 0, lastStatus = -1;
+    const raindrops = Array.from({ length: 46 }, () => [Math.random(), Math.random(), 0.6 + Math.random() * 0.8]);
 
-    function render(phase, rainOn, cx, cy) {
+    function render(phase, rainOn) {
       if (!W || !H) { resize(); if (!W || !H) return; }
       const data = image.data;
       for (let k = 0; k < N; k += 1) {
         let r = base[k * 3], g = base[k * 3 + 1], b = base[k * 3 + 2];
         const d = h[k];
-        if (d > 0.015 && !building[k]) {
-          const t = Math.pow(Math.min(d / 1.2, 1), 0.6);
-          const a = Math.min(0.92, 0.3 + d * 2.6);
-          r = r * (1 - a) + (168 - 154 * t) * a;
-          g = g * (1 - a) + (219 - 117 * t) * a;
-          b = b * (1 - a) + (232 - 100 * t) * a;
+        if (d > 0.012 && use[k] !== 7) {
+          const n = (d > 2.55 ? 255 : (d * 100) | 0) * 4, a = waterLUT[n + 3];
+          r = r * (1 - a) + waterLUT[n] * a;
+          g = g * (1 - a) + waterLUT[n + 1] * a;
+          b = b * (1 - a) + waterLUT[n + 2] * a;
         }
         data[k * 4] = r; data[k * 4 + 1] = g; data[k * 4 + 2] = b; data[k * 4 + 3] = 255;
       }
       gctx.putImageData(image, 0, 0);
-
-      // view: the whole catchment, then a zoom into the southern neighborhood at the flood peak
-      const zoom = 1 + 0.9 * smooth(Math.min(1, bump(phase, 0.55, 0.17) * 1.15));
-      const f = (zoom - 1) / 0.9;
-      const vx = 96 + (146 - 96) * f, vy = 69 + (74 - 69) * f;
-      const sw = NX / zoom, sh = NY / zoom;
-      const sx = Math.min(Math.max(vx - sw / 2, 0), NX - sw), sy = Math.min(Math.max(vy - sh / 2, 0), NY - sh);
       ctx.imageSmoothingEnabled = true;
-      ctx.drawImage(grid, sx, sy, sw, sh, 0, 0, W, H);
-      const X = (x) => ((x - sx) / sw) * W, Y = (y) => ((y - sy) / sh) * H;
+      ctx.drawImage(grid, 0, 0, W, H);
+      const sx = W / NX, sy = H / NY;
 
-      // buildings as crisp blocks with a soft shadow
-      ctx.fillStyle = "rgba(46, 45, 41, 0.10)";
-      blocks.forEach(([bx, by]) => ctx.fillRect(X(bx + 0.5), Y(by + 0.5), X(bx + 4.5) - X(bx + 0.5), Y(by + 3.5) - Y(by + 0.5)));
-      ctx.fillStyle = "#e9e5de";
-      ctx.strokeStyle = "rgba(46, 45, 41, 0.22)";
-      ctx.lineWidth = dpr * 0.8;
-      blocks.forEach(([bx, by]) => {
-        const x0 = X(bx), y0 = Y(by), w = X(bx + 4) - x0, hh = Y(by + 3) - y0;
+      // park trees, then buildings with a soft shadow
+      trees.forEach(([tx, ty, tr]) => {
+        ctx.fillStyle = "rgba(95, 146, 104, 0.55)";
+        ctx.beginPath(); ctx.arc(tx * sx, ty * sy, tr * sx, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.fillStyle = "rgba(46, 45, 41, 0.09)";
+      buildings.forEach((bd) => ctx.fillRect((bd.x + 0.6) * sx, (bd.y + 0.6) * sy, bd.w * sx, bd.h * sy));
+      ctx.lineWidth = 0.7 * dpr;
+      buildings.forEach((bd) => {
+        const x0 = bd.x * sx, y0 = bd.y * sy, w = bd.w * sx, hh = bd.h * sy;
+        ctx.fillStyle = bd.type === "house" ? "#f3ede3" : "#e2ded8";
+        ctx.strokeStyle = bd.type === "house" ? "rgba(143, 106, 88, 0.45)" : "rgba(46, 45, 41, 0.3)";
         ctx.fillRect(x0, y0, w, hh); ctx.strokeRect(x0, y0, w, hh);
-      });
-
-      // flow tracers
-      ctx.lineCap = "round";
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.75)";
-      ctx.lineWidth = 1.1 * dpr;
-      ctx.beginPath();
-      particles.forEach((p) => {
-        if (p.age > 140) respawn(p);
-        if (p.age > 140) return;
-        const i = Math.floor(p.x), j = Math.floor(p.y);
-        const k = j * NX + i;
-        if (i < 1 || j < 1 || i >= NX - 1 || j >= NY - 1 || h[k] < 0.05) { p.age = 999; return; }
-        const u = (qx[k - 1] + qx[k]) / (2 * h[k]), v = (qy[k - NX] + qy[k]) / (2 * h[k]);
-        p.px = p.x; p.py = p.y;
-        p.x += u * 0.35; p.y += v * 0.35; p.age += 1;
-        ctx.moveTo(X(p.px), Y(p.py)); ctx.lineTo(X(p.x), Y(p.y));
-      });
-      ctx.stroke();
-
-      // rain streaks under the storm
-      if (rainOn > 0.04) {
-        ctx.strokeStyle = `rgba(79, 147, 179, ${0.5 * rainOn})`;
-        ctx.lineWidth = dpr;
-        ctx.beginPath();
-        const count = Math.round(90 * rainOn);
-        for (let n = 0; n < count; n += 1) {
-          const rx = cx + (Math.random() - 0.5) * 120, ry = cy + (Math.random() - 0.5) * 110;
-          const x0 = X(rx), y0 = Y(ry);
-          ctx.moveTo(x0, y0); ctx.lineTo(x0 - 3 * dpr, y0 + 11 * dpr);
+        if (bd.type === "house") {
+          ctx.beginPath(); ctx.moveTo(x0 + w * 0.15, y0 + hh / 2); ctx.lineTo(x0 + w * 0.85, y0 + hh / 2); ctx.stroke();
+        } else {
+          ctx.fillStyle = "rgba(46, 45, 41, 0.07)";
+          ctx.fillRect(x0 + w * 0.3, y0 + hh * 0.3, w * 0.25, hh * 0.25);
         }
+      });
+
+      // light rain over the city while it rains
+      if (rainOn > 0.05) {
+        ctx.strokeStyle = `rgba(79, 147, 179, ${0.35 * rainOn})`;
+        ctx.beginPath();
+        raindrops.forEach((drop) => {
+          drop[1] = (drop[1] + 0.012 * drop[2]) % 1;
+          const x0 = drop[0] * W, y0 = drop[1] * H * 0.8;
+          ctx.moveTo(x0, y0); ctx.lineTo(x0 - 2 * dpr, y0 + 8 * dpr);
+        });
         ctx.stroke();
       }
 
-      const status = phase < 0.38 ? 0 : phase < 0.68 ? 1 : 2;
+      const status = phase < 0.34 ? 0 : phase < 0.68 ? 1 : 2;
       if (status !== lastStatus) { statusEl.textContent = statusLabels[status]; lastStatus = status; }
-      const scale = zoom > 1.45 ? 1 : 0;
-      if (scale !== lastScale) { scaleEl.textContent = scaleLabels[scale]; lastScale = scale; }
-      figure.classList.toggle("is-raining", status === 0);
+      figure.classList.toggle("is-raining", rainOn > 0.05);
     }
 
+    const bell = (x, a, b) => (x <= a || x >= b ? 0 : Math.sin((Math.PI * (x - a)) / (b - a)) ** 2);
     function advance(realDt) {
       clock += realDt;
       const phase = (clock % PERIOD) / PERIOD;
-      const storm = phase < 0.38 ? Math.sin((Math.PI * phase) / 0.38) ** 2 : 0;
-      const cx = -30 + (NX + 60) * Math.min(phase / 0.38, 1);
-      const cy = 70 + 12 * Math.sin(phase * 9);
-      const inflow = 20 + 420 * bump(phase, 0.34, 0.13);
-      let remaining = SIM_SPEED * realDt;
-      let guard = 0;
-      while (remaining > 0 && guard < 12) {
-        const dt = Math.min(remaining, 3, (0.7 * DX) / Math.sqrt(G * hMax));
-        step(dt, 2.6e-5 * storm, cx, cy, inflow);
+      const rain = bell(phase, 0.05, 0.32);
+      const cx = 30 + 160 * Math.min(Math.max((phase - 0.05) / 0.27, 0), 1);
+      const inflow = 12 + 85 * Math.exp(-(((phase - 0.5) / 0.11) ** 2));
+      let remaining = SIM_SPEED * realDt, guard = 0;
+      while (remaining > 0 && guard < 4) {
+        const dt = Math.min(remaining, 1, (0.5 * DX) / Math.sqrt(G * hMax));
+        step(dt, 3e-5 * rain, cx, inflow);
         remaining -= dt; guard += 1;
       }
-      render(phase, storm, cx, cy);
+      render(phase, rain);
     }
 
     resize();
@@ -572,32 +578,25 @@
     else window.addEventListener("resize", resize);
 
     if (reduceMotion.matches) {
-      // one still frame near the flood peak
-      clock = PERIOD * 0.5;
-      for (let n = 0; n < 420; n += 1) step(3, 0, 0, 0, 420);
-      render(0.5, 0, 0, 0);
+      for (let n = 0; n < 200; n += 1) step(0.8, 1.6e-5, 110, 12);
+      render(0.2, 0);
       return;
     }
 
-    let visible = true, running = false, last = 0;
+    // the loop keeps ticking but does no work while the figure is off screen (browsers pause it in hidden tabs)
+    let visible = true, last = 0;
     function frame(now) {
-      if (!visible || document.hidden) { running = false; return; }
-      const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
-      last = now;
-      advance(dt);
+      if (visible && !document.hidden) {
+        const dt = last ? Math.min((now - last) / 1000, 0.05) : 0.016;
+        advance(dt);
+        last = now;
+      } else {
+        last = 0;
+      }
       window.requestAnimationFrame(frame);
     }
-    function start() {
-      if (running) return;
-      running = true; last = 0;
-      window.requestAnimationFrame(frame);
-    }
-    new IntersectionObserver((entries) => {
-      visible = entries[0].isIntersecting;
-      if (visible) start();
-    }, { threshold: 0.05 }).observe(figure);
-    document.addEventListener("visibilitychange", () => { if (!document.hidden && visible) start(); });
-    start();
+    new IntersectionObserver((entries) => { visible = entries[0].isIntersecting; }, { threshold: 0.05 }).observe(figure);
+    window.requestAnimationFrame(frame);
   }
 
   setupNavigation();
