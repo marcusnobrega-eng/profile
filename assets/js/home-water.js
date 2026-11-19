@@ -329,7 +329,8 @@
     });
   }
 
-  // Hero: a small local-inertial (Bates et al., 2010) flood model of a riverside neighborhood, run live in the page.
+  // Hero: HydroPol2D's local-inertial hydrodynamic scheme (Bates et al., 2010, with the de Almeida et al., 2012
+  // flux weighting) on a synthetic riverside neighborhood, run live in the page.
   // A rainstorm first overwhelms the street inlets (pluvial flooding); later the upstream flood wave arrives and
   // the river overflows into the riverside park and the lowest streets (fluvial flooding); then the water drains.
   function setupHeroFlood() {
@@ -357,8 +358,10 @@
         const zb = 0.004 * (NX - i);
         let e;
         if (Math.abs(d) < 4) { e = zb - 1 + 1.6 * (d / 4) ** 2; use[k] = 6; h[k] = Math.max(0, zb + 0.48 - e); }
-        else if (d >= 4) { e = zb + 0.6 + 0.03 * (d - 4); use[k] = 5; }
-        else if (d > -20) { e = zb + 0.6 + 0.008 * (-d - 4); use[k] = 4; }
+        else if (d >= 4) {
+          e = zb + 0.6 + 0.03 * (d - 4) + Math.min(1, (d - 4) / 10) * (0.3 * Math.sin(i / 31 + 0.8) + 0.12 * Math.sin(i / 13) * Math.sin(j / 9));
+          use[k] = 5;
+        } else if (d > -20) { e = zb + 0.6 + 0.008 * (-d - 4) + 0.04 * Math.sin(i / 9 + j / 7); use[k] = 4; }
         else {
           e = zb + 0.73 + 0.018 * (-d - 20) + 0.12 * Math.sin(i / 23) * Math.sin(j / 17)
             - sag(i, j, 88, 52, 7, 0.32) - sag(i, j, 152, 70, 6, 0.28) - sag(i, j, 40, 30, 5, 0.22);
@@ -372,13 +375,16 @@
       }
     }
 
+    const zGround = Float32Array.from(z);
+
     // blocks between streets: residential (houses with back yards), commercial (larger buildings) or parks
     const buildings = [], trees = [];
     const inCity = (i, j) => i >= 0 && i < NX && j >= 0 && j < NY && j - yc(i) <= -24;
     const hash = (a, b) => { const s = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return s - Math.floor(s); };
     const place = (x, y, w, hh, type) => {
       for (let i = x; i < x + w; i += 1) for (let j = y; j < y + hh; j += 1) if (!inCity(i, j)) return;
-      buildings.push({ x, y, w, h: hh, type });
+      const roofs = type === "house" ? ["#d8c3ae", "#cdb49b", "#e3d4c3", "#c9a98c", "#dccbb9"] : ["#d9dad6", "#cdd0cf", "#e1e0da", "#c8ccce"];
+      buildings.push({ x, y, w, h: hh, type, roof: roofs[Math.floor(hash(x, y) * roofs.length)] });
       for (let i = x; i < x + w; i += 1) for (let j = y; j < y + hh; j += 1) { const k = j * NX + i; use[k] = 7; z[k] += 5; }
     };
     for (let bx = 0; bx < NX; bx += 22) {
@@ -412,22 +418,38 @@
     const inflowCells = [];
     for (let j = 0; j < NY; j += 1) if (use[j * NX] === 6) inflowCells.push(j * NX);
 
-    const palette = [[239, 235, 227], [218, 215, 208], [210, 207, 200], [229, 233, 219], [221, 232, 212],
-      [228, 231, 215], [216, 224, 205], [236, 232, 224]];
+    // ground colours from the site palette, with shaded relief (light from the north-west) and a little texture
+    const palette = [[236, 232, 224], [214, 211, 205], [203, 200, 194], [218, 228, 205], [207, 222, 196],
+      [224, 227, 203], [190, 210, 178], [236, 232, 224]];
+    const crops = [[224, 227, 203], [212, 221, 190], [230, 224, 204], [218, 226, 199]];
     const base = new Uint8ClampedArray(N * 3);
-    for (let k = 0; k < N; k += 1) {
-      const c = palette[use[k]];
-      base[k * 3] = c[0]; base[k * 3 + 1] = c[1]; base[k * 3 + 2] = c[2];
+    for (let j = 0; j < NY; j += 1) {
+      for (let i = 0; i < NX; i += 1) {
+        const k = j * NX + i, u = use[k], d = j - yc(i);
+        let c = palette[u];
+        if (u === 5) c = crops[Math.floor((i + 0.6 * d) / 16) & 3];      // crop strips on the south bank
+        if (u === 4 && d > -10) c = palette[6];                            // riparian strip along the bank
+        const zx = (zGround[j * NX + Math.min(i + 1, NX - 1)] - zGround[j * NX + Math.max(i - 1, 0)]) / (2 * DX);
+        const zy = (zGround[Math.min(j + 1, NY - 1) * NX + i] - zGround[Math.max(j - 1, 0) * NX + i]) / (2 * DX);
+        const shade = Math.min(1.08, Math.max(0.86, 1 + 22 * (zx + zy) * 0.7));
+        const natural = u >= 3 && u <= 6;
+        const tex = natural ? 0.965 + 0.07 * hash(i, j) : 0.985 + 0.03 * hash(i, j);
+        base[k * 3] = c[0] * shade * tex; base[k * 3 + 1] = c[1] * shade * tex; base[k * 3 + 2] = c[2] * shade * tex;
+      }
     }
 
     const rainCol = new Float32Array(NX);
-    // water colour and opacity by depth, in 1 cm classes up to 2.55 m; colours follow the "cool" colormap
-    // (cyan for shallow water to magenta for deep water)
+    // water colour and opacity by depth, in 1 cm classes up to 2.55 m, in the site's blues:
+    // light sky for shallow water, through Stanford Sky and Lagunita, to a deep blue
+    const ramp = [[0, 196, 230, 238], [0.25, 103, 175, 210], [0.5, 66, 152, 181], [0.75, 0, 124, 146], [1, 1, 84, 112]];
     const waterLUT = new Float32Array(256 * 4);
     for (let n = 0; n < 256; n += 1) {
       const d = n / 100, t = Math.pow(Math.min(d / 1.6, 1), 0.55);
+      let s = 0;
+      while (s < ramp.length - 2 && t > ramp[s + 1][0]) s += 1;
+      const [a, b] = [ramp[s], ramp[s + 1]], f = (t - a[0]) / (b[0] - a[0]);
       const alpha = d < 0.06 ? Math.max(0, (d - 0.01) / 0.05) * 0.38 : Math.min(0.9, 0.38 + (d - 0.06) * 2.6);
-      waterLUT.set([255 * t, 255 * (1 - t), 255, alpha], n * 4);
+      waterLUT.set([a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f, a[3] + (b[3] - a[3]) * f, alpha], n * 4);
     }
     const grid = document.createElement("canvas");
     grid.width = NX; grid.height = NY;
@@ -528,24 +550,30 @@
       ctx.drawImage(grid, 0, 0, W, H);
       const sx = W / NX, sy = H / NY;
 
-      // park trees, then buildings with a soft shadow
+      // trees with a canopy shadow, then buildings with a soft shadow to the south-east
       trees.forEach(([tx, ty, tr]) => {
-        ctx.fillStyle = "rgba(95, 146, 104, 0.55)";
-        ctx.beginPath(); ctx.arc(tx * sx, ty * sy, tr * sx, 0, Math.PI * 2); ctx.fill();
+        const x = tx * sx, y = ty * sy, r = tr * sx;
+        ctx.fillStyle = "rgba(23, 94, 84, 0.16)";
+        ctx.beginPath(); ctx.arc(x + r * 0.35, y + r * 0.35, r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "rgba(23, 94, 84, 0.62)";
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "rgba(111, 162, 135, 0.55)";
+        ctx.beginPath(); ctx.arc(x - r * 0.3, y - r * 0.3, r * 0.55, 0, Math.PI * 2); ctx.fill();
       });
-      ctx.fillStyle = "rgba(46, 45, 41, 0.09)";
-      buildings.forEach((bd) => ctx.fillRect((bd.x + 0.6) * sx, (bd.y + 0.6) * sy, bd.w * sx, bd.h * sy));
+      ctx.fillStyle = "rgba(46, 45, 41, 0.13)";
+      buildings.forEach((bd) => ctx.fillRect((bd.x + 0.7) * sx, (bd.y + 0.7) * sy, bd.w * sx, bd.h * sy));
       ctx.lineWidth = 0.7 * dpr;
       buildings.forEach((bd) => {
         const x0 = bd.x * sx, y0 = bd.y * sy, w = bd.w * sx, hh = bd.h * sy;
-        ctx.fillStyle = bd.type === "house" ? "#f3ede3" : "#e2ded8";
-        ctx.strokeStyle = bd.type === "house" ? "rgba(143, 106, 88, 0.45)" : "rgba(46, 45, 41, 0.3)";
+        ctx.fillStyle = bd.roof;
+        ctx.strokeStyle = bd.type === "house" ? "rgba(93, 75, 60, 0.4)" : "rgba(46, 45, 41, 0.3)";
         ctx.fillRect(x0, y0, w, hh); ctx.strokeRect(x0, y0, w, hh);
         if (bd.type === "house") {
-          ctx.beginPath(); ctx.moveTo(x0 + w * 0.15, y0 + hh / 2); ctx.lineTo(x0 + w * 0.85, y0 + hh / 2); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x0 + w * 0.12, y0 + hh / 2); ctx.lineTo(x0 + w * 0.88, y0 + hh / 2); ctx.stroke();
         } else {
-          ctx.fillStyle = "rgba(46, 45, 41, 0.07)";
-          ctx.fillRect(x0 + w * 0.3, y0 + hh * 0.3, w * 0.25, hh * 0.25);
+          ctx.fillStyle = "rgba(46, 45, 41, 0.1)";
+          ctx.fillRect(x0 + w * 0.22, y0 + hh * 0.25, w * 0.18, hh * 0.18);
+          ctx.fillRect(x0 + w * 0.58, y0 + hh * 0.55, w * 0.14, hh * 0.14);
         }
       });
 

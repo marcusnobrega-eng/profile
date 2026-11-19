@@ -10170,7 +10170,7 @@ body {
   width: 3.4rem;
   height: 0.45rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  background: linear-gradient(90deg, #c4e6ee, #67afd2, #4298b5, #007c92, #015470);
 }
 
 @keyframes hero-flood-pulse {

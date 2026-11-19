@@ -32,9 +32,9 @@ home_water: true
 
   </div>
 
-  <figure class="hero-flood" data-hero-flood role="img" aria-label="Simulação animada de inundação em duas dimensões em um bairro à beira de um rio. Uma chuva forte primeiro alaga ruas e cruzamentos baixos (inundação pluvial), depois o rio sobe e transborda para o parque ribeirinho e as ruas próximas (inundação fluvial), e a água escoa.">
+  <figure class="hero-flood" data-hero-flood role="img" aria-label="Simulação animada de inundação com o solver local-inercial do HydroPol2D, rodando no navegador em um bairro sintético à beira de um rio. Uma chuva forte primeiro alaga ruas e cruzamentos baixos (inundação pluvial), depois o rio sobe e transborda para o parque ribeirinho (inundação fluvial), e a água escoa.">
     <canvas class="hero-flood__canvas" aria-hidden="true"></canvas>
-    <p class="hero-flood__title">Modelo 2D de inundação · simulado no seu navegador</p>
+    <p class="hero-flood__title">Solver local-inercial do HydroPol2D · rodando no seu navegador</p>
     <div class="hero-flood__bar" aria-hidden="true">
       <span class="hero-flood__chip hero-flood__chip--status"><i></i><span data-flood-status data-labels="Inundação pluvial|Inundação fluvial|Drenagem">Inundação pluvial</span></span>
       <span class="hero-flood__legend">Profundidade da água<b></b></span>

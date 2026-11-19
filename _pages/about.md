@@ -35,9 +35,9 @@ redirect_from:
 
   </div>
 
-  <figure class="hero-flood" data-hero-flood role="img" aria-label="Animated two-dimensional flood simulation of a riverside neighborhood. A rainstorm first floods streets and low intersections (pluvial flooding), then the river rises and overflows into the riverside park and nearby streets (fluvial flooding), and the water drains.">
+  <figure class="hero-flood" data-hero-flood role="img" aria-label="Animated flood simulation with HydroPol2D's local-inertial solver, running in the browser on a synthetic riverside neighborhood. A rainstorm first floods streets and low intersections (pluvial flooding), then the river rises and overflows into the riverside park (fluvial flooding), and the water drains.">
     <canvas class="hero-flood__canvas" aria-hidden="true"></canvas>
-    <p class="hero-flood__title">2D flood model · simulated in your browser</p>
+    <p class="hero-flood__title">HydroPol2D local-inertial solver · running in your browser</p>
     <div class="hero-flood__bar" aria-hidden="true">
       <span class="hero-flood__chip hero-flood__chip--status"><i></i><span data-flood-status data-labels="Pluvial flood|Fluvial flood|Drainage">Pluvial flood</span></span>
       <span class="hero-flood__legend">Water depth<b></b></span>
