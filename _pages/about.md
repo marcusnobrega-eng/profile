@@ -2,6 +2,7 @@
 layout: home
 permalink: /
 title: "Marcus N. Gomes Jr."
+seo_title: "Marcus N. Gomes Jr. - Hydrologist and flood scientist, Stanford"
 excerpt: "Flood scientist studying what models must retain across scales to produce locally relevant predictions of depth, timing, exposure, and risk."
 author_profile: false
 lang: en
@@ -15,9 +16,11 @@ redirect_from:
 
 <section class="water-hero" aria-labelledby="home-title">
   <div class="water-hero__copy">
+    <p class="water-hero__name">Marcus N. Gomes Jr., Ph.D.</p>
     <h1 id="home-title">Flood science<br><span>across scales.</span></h1>
     <p class="water-hero__lead">I am a hydrologist and water resources engineer. I study how rainfall, soils, groundwater, rivers, and infrastructure interact to shape floods and water availability, and what models must keep to predict local impacts.</p>
     <p class="water-hero__affiliation"><i class="fas fa-location-dot" aria-hidden="true"></i> Postdoctoral Researcher · Stanford Earth System Science</p>
+    <p class="water-hero__affiliation water-hero__email"><i class="far fa-envelope" aria-hidden="true"></i> <a href="mailto:mngomes@stanford.edu">mngomes@stanford.edu</a></p>
 
     <nav class="water-social" aria-label="Academic and social profiles">
       <a href="https://scholar.google.com/citations?user=Ls-Nj0YAAAAJ&amp;hl=en&amp;oi=ao" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>

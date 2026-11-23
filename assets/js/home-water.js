@@ -23,11 +23,28 @@
       button.setAttribute("aria-expanded", "false");
     }
 
+    const language = nav.querySelector(".masthead__language");
+
+    // Keep the links in the bar whenever they fit on one line before the
+    // language switch; collapse them into the menu only when they do not.
+    function linksFit() {
+      if (window.matchMedia("(max-width: 760px)").matches) return false;
+      const limit = (language ? language.getBoundingClientRect().left : nav.getBoundingClientRect().right) - 8;
+      const top = menuItems[0].offsetTop;
+      const firstLink = menuItems[0].querySelector("a");
+      const logoLink = logo && logo.querySelector("a");
+      if (firstLink && logoLink && logoLink.getBoundingClientRect().height > firstLink.getBoundingClientRect().height * 1.5) return false;
+      return menuItems.every((item) => item.offsetTop === top && item.getBoundingClientRect().right <= limit);
+    }
+
     function layoutNavigation() {
       closeMenu();
-      const compact = window.matchMedia("(max-width: 1100px)").matches;
-      menuItems.forEach((item) => (compact ? hidden : visible).appendChild(item));
-      button.classList.toggle("hidden", !compact);
+      menuItems.forEach((item) => visible.appendChild(item));
+      button.classList.add("hidden");
+      if (menuItems.length && !linksFit()) {
+        menuItems.forEach((item) => hidden.appendChild(item));
+        button.classList.remove("hidden");
+      }
     }
 
     button.addEventListener("click", () => {
@@ -44,6 +61,8 @@
     });
 
     layoutNavigation();
+    // Link widths change once the web fonts arrive, so measure again then.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutNavigation);
   }
 
   function updateModelVideoMotion() {

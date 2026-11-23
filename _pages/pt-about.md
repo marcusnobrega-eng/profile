@@ -2,6 +2,7 @@
 layout: home
 permalink: /pt/
 title: "Marcus N. Gomes Jr."
+seo_title: "Marcus N. Gomes Jr. - Hidrólogo e engenheiro de recursos hídricos, Stanford"
 excerpt: "Hidrólogo que estuda o que os modelos precisam manter entre escalas para prever localmente a profundidade, o tempo de chegada, a exposição e o risco de inundações."
 author_profile: false
 lang: pt
@@ -12,9 +13,11 @@ home_water: true
 
 <section class="water-hero" aria-labelledby="home-title">
   <div class="water-hero__copy">
+    <p class="water-hero__name">Marcus N. Gomes Jr., Ph.D.</p>
     <h1 id="home-title">Ciência das inundações<br><span>entre escalas.</span></h1>
     <p class="water-hero__lead">Sou hidrólogo e engenheiro de recursos hídricos. Estudo como a chuva, os solos, as águas subterrâneas, os rios e a infraestrutura interagem e moldam as inundações e a disponibilidade hídrica, e o que os modelos precisam manter para prever impactos locais.</p>
     <p class="water-hero__affiliation"><i class="fas fa-location-dot" aria-hidden="true"></i> Pesquisador de pós-doutorado · Stanford Earth System Science</p>
+    <p class="water-hero__affiliation water-hero__email"><i class="far fa-envelope" aria-hidden="true"></i> <a href="mailto:mngomes@stanford.edu">mngomes@stanford.edu</a></p>
 
     <nav class="water-social" aria-label="Perfis acadêmicos e redes sociais">
       <a href="https://scholar.google.com/citations?user=Ls-Nj0YAAAAJ&amp;hl=en&amp;oi=ao" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>

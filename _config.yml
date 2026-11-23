@@ -134,7 +134,8 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "social-card.jpg" # Open Graph default share image, 1200x630, in /images/
+og_image_alt             : "Marcus N. Gomes Jr., Ph.D. Flood science across scales. Postdoctoral Researcher, Stanford Earth System Science."
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -156,6 +157,10 @@ include:
   - _pages
   - files
 exclude:
+  - markdown_generator
+  - talkmap
+  - talkmap.ipynb
+  - talkmap.py
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache
@@ -212,7 +217,7 @@ kramdown:
 # These settings control the types of collections used by the template
 collections:
   teaching:
-    output: true
+    output: false
     permalink: /:collection/:path/
   news:
     output: true
@@ -221,7 +226,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   portfolio:
-    output: true
+    output: false
     permalink: /:collection/:path/
   talks:
     output: true
@@ -335,10 +340,10 @@ whitelist:
 #  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
 #  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
-  type: liquid
+  type: # off: the archive page was a template page
   path: /categories/
 tag_archive:
-  type: liquid
+  type: # off: the archive page was a template page
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
